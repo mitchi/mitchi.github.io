@@ -38,6 +38,7 @@ https://edmondlachance.com/cerberus-spells/Mouton.html
 https://edmondlachance.com/cerberus-spells/No%20retreat.html
 https://edmondlachance.com/cerberus-spells/Petit%20feu.html
 https://edmondlachance.com/cerberus-spells/Prot%C3%A8ge%20son%20esprit.html
+https://edmondlachance.com/cerberus-spells/README.html
 https://edmondlachance.com/cerberus-spells/Regenerate.html
 https://edmondlachance.com/cerberus-spells/Share%20the%20pain.html
 https://edmondlachance.com/cerberus-spells/Smoke%20Sight.html
@@ -50,4 +51,6 @@ https://edmondlachance.com/cerberus-spells/Travail%20sous%20l'influence.html
 https://edmondlachance.com/cerberus-spells/Twist%20Fate.html
 https://edmondlachance.com/cerberus-spells/Unstable%20Barrier.html
 https://edmondlachance.com/cerberus-spells/Vicious%20Dispel.html
+https://edmondlachance.com/cerberus-spells/alphabetical.html
 https://edmondlachance.com/cerberus-spells/index.html
+https://edmondlachance.com/cerberus-spells/index_by_level.html
