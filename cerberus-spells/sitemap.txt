@@ -2,7 +2,9 @@ https://edmondlachance.com/cerberus-spells/Automatic%20Barrier.html
 https://edmondlachance.com/cerberus-spells/Ball%20of%20Light.html
 https://edmondlachance.com/cerberus-spells/Barrier%20Sphere.html
 https://edmondlachance.com/cerberus-spells/Barrier.html
+https://edmondlachance.com/cerberus-spells/Cat%20Paw.html
 https://edmondlachance.com/cerberus-spells/Chaines%20de%20feu.html
+https://edmondlachance.com/cerberus-spells/Come%20to%20nose.html
 https://edmondlachance.com/cerberus-spells/Copy%20Magic.html
 https://edmondlachance.com/cerberus-spells/Create%20Dire%20Wolf.html
 https://edmondlachance.com/cerberus-spells/Create%20Giant%20Fire%20Salamander.html
@@ -20,6 +22,7 @@ https://edmondlachance.com/cerberus-spells/Dominate%20IV.html
 https://edmondlachance.com/cerberus-spells/D%C3%A9fense%20Co%C3%BBteuse.html
 https://edmondlachance.com/cerberus-spells/Elemental%20Swap.html
 https://edmondlachance.com/cerberus-spells/Energy%20Barrier.html
+https://edmondlachance.com/cerberus-spells/Entre%20deux%20v%C3%A9rit%C3%A9s.html
 https://edmondlachance.com/cerberus-spells/Eternal%20Timestop.html
 https://edmondlachance.com/cerberus-spells/Fire%20Grip.html
 https://edmondlachance.com/cerberus-spells/Fire%20Master.html
@@ -27,6 +30,7 @@ https://edmondlachance.com/cerberus-spells/Fireball.html
 https://edmondlachance.com/cerberus-spells/Flame%20Barrier.html
 https://edmondlachance.com/cerberus-spells/Grab%20Gold.html
 https://edmondlachance.com/cerberus-spells/Greater%20Negociation.html
+https://edmondlachance.com/cerberus-spells/Guided%20Past.html
 https://edmondlachance.com/cerberus-spells/Hidden%20Spell.html
 https://edmondlachance.com/cerberus-spells/Ignis%20Fatis.html
 https://edmondlachance.com/cerberus-spells/Illuminate.html
@@ -44,6 +48,7 @@ https://edmondlachance.com/cerberus-spells/No%20retreat.html
 https://edmondlachance.com/cerberus-spells/Petit%20feu.html
 https://edmondlachance.com/cerberus-spells/Prot%C3%A8ge%20son%20esprit.html
 https://edmondlachance.com/cerberus-spells/Regenerate.html
+https://edmondlachance.com/cerberus-spells/Restitution.html
 https://edmondlachance.com/cerberus-spells/Share%20the%20pain.html
 https://edmondlachance.com/cerberus-spells/Smoke%20Sight.html
 https://edmondlachance.com/cerberus-spells/Stoneheart%20Contract.html
@@ -55,6 +60,7 @@ https://edmondlachance.com/cerberus-spells/Travail%20sous%20l'influence.html
 https://edmondlachance.com/cerberus-spells/Twist%20Fate.html
 https://edmondlachance.com/cerberus-spells/Unstable%20Barrier.html
 https://edmondlachance.com/cerberus-spells/Vicious%20Dispel.html
+https://edmondlachance.com/cerberus-spells/Weak%20Telekinesis.html
 https://edmondlachance.com/cerberus-spells/alphabetical.html
 https://edmondlachance.com/cerberus-spells/index.html
 https://edmondlachance.com/cerberus-spells/index_by_level.html
