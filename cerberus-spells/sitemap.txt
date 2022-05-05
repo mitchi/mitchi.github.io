@@ -49,10 +49,13 @@ https://edmondlachance.com/cerberus-spells/Mouton.html
 https://edmondlachance.com/cerberus-spells/No%20retreat.html
 https://edmondlachance.com/cerberus-spells/Petit%20feu.html
 https://edmondlachance.com/cerberus-spells/Prot%C3%A8ge%20son%20esprit.html
+https://edmondlachance.com/cerberus-spells/Reassemble.html
 https://edmondlachance.com/cerberus-spells/Regenerate.html
 https://edmondlachance.com/cerberus-spells/Restitution.html
 https://edmondlachance.com/cerberus-spells/Share%20the%20pain.html
 https://edmondlachance.com/cerberus-spells/Smoke%20Sight.html
+https://edmondlachance.com/cerberus-spells/Soul%20Fragment.html
+https://edmondlachance.com/cerberus-spells/Soul%20Reunion.html
 https://edmondlachance.com/cerberus-spells/Stoneheart%20Contract.html
 https://edmondlachance.com/cerberus-spells/Swap.html
 https://edmondlachance.com/cerberus-spells/Teleport%20Mark.html
@@ -62,6 +65,7 @@ https://edmondlachance.com/cerberus-spells/To%20the%20past.html
 https://edmondlachance.com/cerberus-spells/Tornado.html
 https://edmondlachance.com/cerberus-spells/Transmission.html
 https://edmondlachance.com/cerberus-spells/Transmit%20Knowledge.html
+https://edmondlachance.com/cerberus-spells/Trap%20Memory.html
 https://edmondlachance.com/cerberus-spells/Travail%20sous%20l'influence.html
 https://edmondlachance.com/cerberus-spells/Twist%20Fate.html
 https://edmondlachance.com/cerberus-spells/Unstable%20Barrier.html
