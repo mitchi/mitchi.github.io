@@ -1,15 +1,19 @@
 https://edmondlachance.com/cerberus-spells/Alois's%20Arm.html
 https://edmondlachance.com/cerberus-spells/Armure%20cach%C3%A9e.html
+https://edmondlachance.com/cerberus-spells/Arm%C3%A9e%20des%20morts.html
 https://edmondlachance.com/cerberus-spells/Automatic%20Barrier.html
 https://edmondlachance.com/cerberus-spells/Ball%20of%20Light.html
 https://edmondlachance.com/cerberus-spells/Barrier%20Sphere.html
 https://edmondlachance.com/cerberus-spells/Barrier.html
 https://edmondlachance.com/cerberus-spells/Cat%20Paw.html
 https://edmondlachance.com/cerberus-spells/Chaines%20de%20feu.html
+https://edmondlachance.com/cerberus-spells/Colporter.html
 https://edmondlachance.com/cerberus-spells/Come%20to%20nose.html
 https://edmondlachance.com/cerberus-spells/Copy%20Magic.html
+https://edmondlachance.com/cerberus-spells/Corps%20Sup%C3%A9rieur.html
 https://edmondlachance.com/cerberus-spells/Create%20Dire%20Wolf.html
 https://edmondlachance.com/cerberus-spells/Create%20Giant%20Fire%20Salamander.html
+https://edmondlachance.com/cerberus-spells/Create%20Greater%20Ghoul.html
 https://edmondlachance.com/cerberus-spells/Create%20Green%20Troll.html
 https://edmondlachance.com/cerberus-spells/Deactivate.html
 https://edmondlachance.com/cerberus-spells/Derni%C3%A8re%20Barri%C3%A8re.html
@@ -58,6 +62,7 @@ https://edmondlachance.com/cerberus-spells/Prot%C3%A8ge%20son%20esprit.html
 https://edmondlachance.com/cerberus-spells/Reassemble.html
 https://edmondlachance.com/cerberus-spells/Regenerate.html
 https://edmondlachance.com/cerberus-spells/Restitution.html
+https://edmondlachance.com/cerberus-spells/Share%20Fortune.html
 https://edmondlachance.com/cerberus-spells/Share%20the%20pain.html
 https://edmondlachance.com/cerberus-spells/Skelette.html
 https://edmondlachance.com/cerberus-spells/Smoke%20Sight.html
