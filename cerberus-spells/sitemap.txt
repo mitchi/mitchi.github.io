@@ -58,6 +58,7 @@ https://edmondlachance.com/cerberus-spells/Reassemble.html
 https://edmondlachance.com/cerberus-spells/Regenerate.html
 https://edmondlachance.com/cerberus-spells/Restitution.html
 https://edmondlachance.com/cerberus-spells/Share%20the%20pain.html
+https://edmondlachance.com/cerberus-spells/Skelette.html
 https://edmondlachance.com/cerberus-spells/Smoke%20Sight.html
 https://edmondlachance.com/cerberus-spells/Soul%20Fragment.html
 https://edmondlachance.com/cerberus-spells/Soul%20Reunion.html
@@ -76,6 +77,7 @@ https://edmondlachance.com/cerberus-spells/Twist%20Fate.html
 https://edmondlachance.com/cerberus-spells/Unstable%20Barrier.html
 https://edmondlachance.com/cerberus-spells/Vicious%20Dispel.html
 https://edmondlachance.com/cerberus-spells/Weak%20Telekinesis.html
+https://edmondlachance.com/cerberus-spells/Zombie.html
 https://edmondlachance.com/cerberus-spells/alphabetical.html
 https://edmondlachance.com/cerberus-spells/index.html
 https://edmondlachance.com/cerberus-spells/index_by_level.html
