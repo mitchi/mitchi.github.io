@@ -27,6 +27,7 @@ https://edmondlachance.com/cerberus-spells/Dominate%20I.html
 https://edmondlachance.com/cerberus-spells/Dominate%20II.html
 https://edmondlachance.com/cerberus-spells/Dominate%20III.html
 https://edmondlachance.com/cerberus-spells/Dominate%20IV.html
+https://edmondlachance.com/cerberus-spells/Dual%20Fireballs.html
 https://edmondlachance.com/cerberus-spells/D%C3%A9fense%20Co%C3%BBteuse.html
 https://edmondlachance.com/cerberus-spells/Elemental%20Swap.html
 https://edmondlachance.com/cerberus-spells/Energy%20Barrier.html
@@ -53,6 +54,7 @@ https://edmondlachance.com/cerberus-spells/Incinerate.html
 https://edmondlachance.com/cerberus-spells/Intangible.html
 https://edmondlachance.com/cerberus-spells/Inventaire.html
 https://edmondlachance.com/cerberus-spells/Le%20mur%20du%20n%C3%A9ant.html
+https://edmondlachance.com/cerberus-spells/Lien.html
 https://edmondlachance.com/cerberus-spells/Light%20Bindings.html
 https://edmondlachance.com/cerberus-spells/Light%20Wolves.html
 https://edmondlachance.com/cerberus-spells/Long%20Barrier.html
@@ -64,6 +66,7 @@ https://edmondlachance.com/cerberus-spells/Mouvements%20guid%C3%A9s.html
 https://edmondlachance.com/cerberus-spells/No%20retreat.html
 https://edmondlachance.com/cerberus-spells/Petit%20feu.html
 https://edmondlachance.com/cerberus-spells/Plus%20solide.html
+https://edmondlachance.com/cerberus-spells/Prot%C3%A8ge%20son%20corps.html
 https://edmondlachance.com/cerberus-spells/Prot%C3%A8ge%20son%20esprit.html
 https://edmondlachance.com/cerberus-spells/Reassemble.html
 https://edmondlachance.com/cerberus-spells/Regenerate.html
@@ -82,6 +85,7 @@ https://edmondlachance.com/cerberus-spells/To%20the%20past%20II.html
 https://edmondlachance.com/cerberus-spells/To%20the%20past%20III.html
 https://edmondlachance.com/cerberus-spells/To%20the%20past.html
 https://edmondlachance.com/cerberus-spells/Tornado.html
+https://edmondlachance.com/cerberus-spells/Tracker.html
 https://edmondlachance.com/cerberus-spells/Transformation%20en%20Aigle.html
 https://edmondlachance.com/cerberus-spells/Transmission.html
 https://edmondlachance.com/cerberus-spells/Transmit%20Knowledge.html
