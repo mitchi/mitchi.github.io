@@ -35,6 +35,7 @@ https://edmondlachance.com/cerberus-spells/Fire%20Grip.html
 https://edmondlachance.com/cerberus-spells/Fire%20Master.html
 https://edmondlachance.com/cerberus-spells/Fireball.html
 https://edmondlachance.com/cerberus-spells/Flame%20Barrier.html
+https://edmondlachance.com/cerberus-spells/Flame%20blade.html
 https://edmondlachance.com/cerberus-spells/Futur%20proche.html
 https://edmondlachance.com/cerberus-spells/Grab%20Gold.html
 https://edmondlachance.com/cerberus-spells/Greater%20Negociation.html
@@ -60,6 +61,7 @@ https://edmondlachance.com/cerberus-spells/Mouton.html
 https://edmondlachance.com/cerberus-spells/Mouvements%20guid%C3%A9s.html
 https://edmondlachance.com/cerberus-spells/No%20retreat.html
 https://edmondlachance.com/cerberus-spells/Petit%20feu.html
+https://edmondlachance.com/cerberus-spells/Plus%20solide.html
 https://edmondlachance.com/cerberus-spells/Prot%C3%A8ge%20son%20esprit.html
 https://edmondlachance.com/cerberus-spells/Reassemble.html
 https://edmondlachance.com/cerberus-spells/Regenerate.html
