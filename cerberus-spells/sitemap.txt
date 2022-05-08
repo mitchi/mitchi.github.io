@@ -9,6 +9,7 @@ https://edmondlachance.com/cerberus-spells/Ball%20of%20Light.html
 https://edmondlachance.com/cerberus-spells/Barrier%20Sphere.html
 https://edmondlachance.com/cerberus-spells/Barrier.html
 https://edmondlachance.com/cerberus-spells/Bring%20Message.html
+https://edmondlachance.com/cerberus-spells/Bulle%20de%20destruction.html
 https://edmondlachance.com/cerberus-spells/Cat%20Paw.html
 https://edmondlachance.com/cerberus-spells/Chaines%20de%20feu.html
 https://edmondlachance.com/cerberus-spells/Clone%20Alchimique.html
@@ -39,6 +40,7 @@ https://edmondlachance.com/cerberus-spells/D%C3%A9fense%20Co%C3%BBteuse.html
 https://edmondlachance.com/cerberus-spells/Elemental%20Swap.html
 https://edmondlachance.com/cerberus-spells/Energy%20Barrier.html
 https://edmondlachance.com/cerberus-spells/Entre%20deux%20v%C3%A9rit%C3%A9s.html
+https://edmondlachance.com/cerberus-spells/Enveloppe.html
 https://edmondlachance.com/cerberus-spells/Eternal%20Timestop.html
 https://edmondlachance.com/cerberus-spells/Fake%20Powerup.html
 https://edmondlachance.com/cerberus-spells/Familier.html
@@ -75,12 +77,14 @@ https://edmondlachance.com/cerberus-spells/Mouvements%20guid%C3%A9s.html
 https://edmondlachance.com/cerberus-spells/No%20retreat.html
 https://edmondlachance.com/cerberus-spells/Petit%20feu.html
 https://edmondlachance.com/cerberus-spells/Plus%20solide.html
+https://edmondlachance.com/cerberus-spells/Propri%C3%A9t%C3%A9.html
 https://edmondlachance.com/cerberus-spells/Prot%C3%A8ge%20son%20corps.html
 https://edmondlachance.com/cerberus-spells/Prot%C3%A8ge%20son%20esprit.html
 https://edmondlachance.com/cerberus-spells/Pr%C3%A9paration%20aux%20c%C3%A9r%C3%A9briles.html
 https://edmondlachance.com/cerberus-spells/Reassemble.html
 https://edmondlachance.com/cerberus-spells/Regenerate.html
 https://edmondlachance.com/cerberus-spells/Restitution.html
+https://edmondlachance.com/cerberus-spells/Sang%20pi%C3%A8ge.html
 https://edmondlachance.com/cerberus-spells/Share%20Fortune.html
 https://edmondlachance.com/cerberus-spells/Share%20the%20pain.html
 https://edmondlachance.com/cerberus-spells/Skelette.html
@@ -97,6 +101,7 @@ https://edmondlachance.com/cerberus-spells/To%20the%20past.html
 https://edmondlachance.com/cerberus-spells/Tornado.html
 https://edmondlachance.com/cerberus-spells/Tracker.html
 https://edmondlachance.com/cerberus-spells/Transformation%20en%20Aigle.html
+https://edmondlachance.com/cerberus-spells/Transformation%20en%20slime.html
 https://edmondlachance.com/cerberus-spells/Transmission.html
 https://edmondlachance.com/cerberus-spells/Transmit%20Knowledge.html
 https://edmondlachance.com/cerberus-spells/Trap%20Memory.html
