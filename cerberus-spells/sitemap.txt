@@ -50,6 +50,7 @@ https://edmondlachance.com/cerberus-spells/Fire%20Master.html
 https://edmondlachance.com/cerberus-spells/Fireball.html
 https://edmondlachance.com/cerberus-spells/Flame%20Barrier.html
 https://edmondlachance.com/cerberus-spells/Flame%20blade.html
+https://edmondlachance.com/cerberus-spells/Forecast.html
 https://edmondlachance.com/cerberus-spells/Futur%20proche.html
 https://edmondlachance.com/cerberus-spells/Grab%20Gold.html
 https://edmondlachance.com/cerberus-spells/Greater%20Negociation.html
@@ -104,6 +105,7 @@ https://edmondlachance.com/cerberus-spells/To%20the%20past.html
 https://edmondlachance.com/cerberus-spells/Tornado.html
 https://edmondlachance.com/cerberus-spells/Tracker.html
 https://edmondlachance.com/cerberus-spells/Transformation%20en%20Aigle.html
+https://edmondlachance.com/cerberus-spells/Transformation%20en%20Dragon%20Rouge.html
 https://edmondlachance.com/cerberus-spells/Transformation%20en%20slime.html
 https://edmondlachance.com/cerberus-spells/Transmission.html
 https://edmondlachance.com/cerberus-spells/Transmit%20Knowledge.html
@@ -116,6 +118,7 @@ https://edmondlachance.com/cerberus-spells/Verchoix.html
 https://edmondlachance.com/cerberus-spells/Vicious%20Dispel.html
 https://edmondlachance.com/cerberus-spells/Weak%20Telekinesis.html
 https://edmondlachance.com/cerberus-spells/Wind%20Flight.html
+https://edmondlachance.com/cerberus-spells/Witness.html
 https://edmondlachance.com/cerberus-spells/Zombie.html
 https://edmondlachance.com/cerberus-spells/alphabetical.html
 https://edmondlachance.com/cerberus-spells/index.html
