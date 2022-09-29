@@ -63,6 +63,7 @@ https://edmondlachance.com/cerberus-spells/Grab%20Gold.html
 https://edmondlachance.com/cerberus-spells/Greater%20Negociation.html
 https://edmondlachance.com/cerberus-spells/Guide%20Fant%C3%B4me.html
 https://edmondlachance.com/cerberus-spells/Guided%20Past.html
+https://edmondlachance.com/cerberus-spells/Halt.html
 https://edmondlachance.com/cerberus-spells/Hidden%20Spell.html
 https://edmondlachance.com/cerberus-spells/Hide%20Speech.html
 https://edmondlachance.com/cerberus-spells/I%20take%20for%20my%20master.html
@@ -125,6 +126,7 @@ https://edmondlachance.com/cerberus-spells/Transmit%20Knowledge.html
 https://edmondlachance.com/cerberus-spells/Trap%20Memory.html
 https://edmondlachance.com/cerberus-spells/Travail%20sous%20l'influence.html
 https://edmondlachance.com/cerberus-spells/Twist%20Fate.html
+https://edmondlachance.com/cerberus-spells/Unique%20Signature.html
 https://edmondlachance.com/cerberus-spells/Unstable%20Barrier.html
 https://edmondlachance.com/cerberus-spells/Vent%20de%20cristal.html
 https://edmondlachance.com/cerberus-spells/Verchoix.html
