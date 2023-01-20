@@ -1,0 +1,5 @@
+copy ./output-html/*.html "C:\Users\lacha\Documents\mitchi.github.io\cerberus-spells"
+copy ./output-html/sitemap.txt "C:\Users\lacha\Documents\mitchi.github.io\cerberus-spells"
+copy ./img/* "C:\Users\lacha\Documents\mitchi.github.io\cerberus-spells\img/"
+copy ./output-latex/cerberus-spells.pdf "C:\Users\lacha\Documents\mitchi.github.io\dnd"
+echo "transfers are done"
