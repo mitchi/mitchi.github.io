@@ -1,7 +1,6 @@
 https://edmondlachance.com/cerberus-spells/Abruti.html
 https://edmondlachance.com/cerberus-spells/Acid%20Fall.html
 https://edmondlachance.com/cerberus-spells/Alois's%20Arm.html
-https://edmondlachance.com/cerberus-spells/alphabetical.html
 https://edmondlachance.com/cerberus-spells/Animate%20Weapon.html
 https://edmondlachance.com/cerberus-spells/Archon's%20favor.html
 https://edmondlachance.com/cerberus-spells/Armure%20cach%C3%A9e.html
@@ -22,8 +21,8 @@ https://edmondlachance.com/cerberus-spells/Clone%20Alchimique.html
 https://edmondlachance.com/cerberus-spells/Colle%20d'araign%C3%A9e.html
 https://edmondlachance.com/cerberus-spells/Colporter.html
 https://edmondlachance.com/cerberus-spells/Come%20to%20nose.html
-https://edmondlachance.com/cerberus-spells/Contr%C3%B4le%20de%20clone%20sup%C3%A9rieur.html
 https://edmondlachance.com/cerberus-spells/Contr%C3%B4le%20de%20Clone.html
+https://edmondlachance.com/cerberus-spells/Contr%C3%B4le%20de%20clone%20sup%C3%A9rieur.html
 https://edmondlachance.com/cerberus-spells/Copy%20Magic.html
 https://edmondlachance.com/cerberus-spells/Corps%20Sup%C3%A9rieur.html
 https://edmondlachance.com/cerberus-spells/Create%20Dire%20Wolf.html
@@ -70,6 +69,7 @@ https://edmondlachance.com/cerberus-spells/Flame%20blade.html
 https://edmondlachance.com/cerberus-spells/Forecast.html
 https://edmondlachance.com/cerberus-spells/Futur%20proche.html
 https://edmondlachance.com/cerberus-spells/Grab%20Gold.html
+https://edmondlachance.com/cerberus-spells/Gravity%20Crush.html
 https://edmondlachance.com/cerberus-spells/Greater%20Negociation.html
 https://edmondlachance.com/cerberus-spells/Guide%20Fant%C3%B4me.html
 https://edmondlachance.com/cerberus-spells/Guided%20Past.html
@@ -86,8 +86,6 @@ https://edmondlachance.com/cerberus-spells/Ice%20Arrow%20VI.html
 https://edmondlachance.com/cerberus-spells/Ignis%20Fatis.html
 https://edmondlachance.com/cerberus-spells/Illuminate.html
 https://edmondlachance.com/cerberus-spells/Incinerate.html
-https://edmondlachance.com/cerberus-spells/index.html
-https://edmondlachance.com/cerberus-spells/index_by_level.html
 https://edmondlachance.com/cerberus-spells/Intangible.html
 https://edmondlachance.com/cerberus-spells/Inventaire.html
 https://edmondlachance.com/cerberus-spells/L'oeil%20du%20basilisk.html
@@ -115,6 +113,7 @@ https://edmondlachance.com/cerberus-spells/Reassemble.html
 https://edmondlachance.com/cerberus-spells/Regenerate.html
 https://edmondlachance.com/cerberus-spells/Restitution.html
 https://edmondlachance.com/cerberus-spells/Sang%20pi%C3%A8ge.html
+https://edmondlachance.com/cerberus-spells/Shadow%20Weapon.html
 https://edmondlachance.com/cerberus-spells/Share%20Fortune.html
 https://edmondlachance.com/cerberus-spells/Share%20the%20pain.html
 https://edmondlachance.com/cerberus-spells/Skelette.html
@@ -156,5 +155,8 @@ https://edmondlachance.com/cerberus-spells/Well%20Teleport.html
 https://edmondlachance.com/cerberus-spells/Wind%20Flight.html
 https://edmondlachance.com/cerberus-spells/Witness.html
 https://edmondlachance.com/cerberus-spells/Zombie.html
+https://edmondlachance.com/cerberus-spells/alphabetical.html
+https://edmondlachance.com/cerberus-spells/index.html
+https://edmondlachance.com/cerberus-spells/index_by_level.html
 https://edmondlachance.com/cerberus-spells/%C3%89change%20Critique.html
 https://edmondlachance.com/cerberus-spells/%C3%89tude%20en%20Profondeur.html
