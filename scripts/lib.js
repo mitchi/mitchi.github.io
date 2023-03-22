@@ -33,3 +33,13 @@ export function get_span_dictionary(ids) {
   }
   return spans
 }
+
+/**
+ * Just add a new object to the dictionary
+ * @param {*} dict 
+ * @param {*} element 
+ * @returns 
+ */
+export function dict_add(dict, element) {
+    return {...dict, element}
+}

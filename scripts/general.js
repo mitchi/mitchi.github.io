@@ -1,7 +1,13 @@
 //@ts-check
-//A file with general functions
 
-//Adjust the attack bonus using the size of the creature as well
+//Ce fichier contient des fonctions qui peuvent servir à d'autres créatures ou d'autres sorts
+
+/**
+ * 
+ * @param {*} attack_bonus 
+ * @param {*} size 
+ * @returns attack_bonus
+ */
 export function calculate_attack_bonus_size(attack_bonus, size) {
   size = size.toLowerCase()
 
@@ -88,4 +94,73 @@ export function reflex_size(reflex, size) {
   }
   
   return reflex
+}
+
+/**
+ * Adjust the touch AC according to the size of the creature
+ * @param {number} touchac 
+ * @param {string} size 
+ * @returns new armor value
+ */
+export function touch_ac_size(touchac, size) {
+
+  switch (size) {
+    case "small":
+      touchac *= 1.25
+      break
+    case "medium":
+      touchac *= 1
+      break
+    case "large":
+      touchac *= 0.8
+      break
+    case "huge":
+      touchac *= 0.7
+      break
+    case "gargantuan":
+      touchac *= 0.6
+      break
+    case "colossal":
+      touchac *= 0.5
+      break
+  }
+  return touchac
+}
+
+/**
+ * Adjust an attack roll or damage roll from a multiplier
+ * These multipliers are added together before applying them one final time
+ */
+export function adjust_bonus(bonus, multiplier) {
+     return bonus * multiplier
+}
+
+/**
+ * Calculate the multiplier from a list of effects. Example, a +5 weapon adds 60% damage, so 0.6
+ * @param {number[]} effects 
+ */
+export function calculate_multiplier(effects) {
+  let multiplier = 1
+  for (let effect of effects) {
+      multiplier += effect
+  }
+  return multiplier
+}
+
+
+/**
+ * Truncate number properties of an object
+ * @param {*} obj 
+ * @returns 
+ */
+export function truncate_numbers(obj) {
+  const truncatedObj = {};
+  for (const key in obj) {
+    if (typeof obj[key] === 'number') {
+      truncatedObj[key] = Math.trunc(obj[key]);
+    } else {
+      truncatedObj[key] = obj[key];
+    }
+  }
+  return truncatedObj;
 }
