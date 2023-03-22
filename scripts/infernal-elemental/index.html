@@ -161,8 +161,9 @@
   <body>
     <div id="app"></div>
 
-    <h1 id="summon-water-elemental">Igni, Infernal Elemental</h1>
-   <p> <em>Un puissant élémentaire de feu au service de son charismatique maitre</em>   </p>
+    <div> 
+    <img src="elemental.PNG">
+  </div>
 
     <label for="charisma">Charisma</label>
     <input type="text" id="charisma">
@@ -174,15 +175,58 @@
     <input type="text" id="spell-dc">
     <br/>
     <label for="size">Size</label>
-
     <select id="size">
-        <option value="small">Small</option>
-        <option value="medium">Medium</option>
-        <option value="large">Large</option>
-        <option value="huge">Huge</option>
-        <option value="gargantuan">Gargantuan</option>
-        <option value="colossal">Colossal</option>
-      </select>
+      <option value="small">Small</option>
+      <option selected value="medium">Medium</option>
+      <option value="large">Large</option>
+      <option value="huge">Huge</option>
+      <option value="gargantuan">Gargantuan</option>
+      <option value="colossal">Colossal</option>
+    </select>
+
+   
+
+    <h1 id="summon-water-elemental">Igni, Infernal Elemental</h1>
+   <p> <em>Un puissant élémentaire de feu au service de son maitre, Aldor l'Infernal</em>   </p>
+
+      <strong>Perception</strong> <span id="perception"></span> <strong>Stealth</strong> <span id="stealth"></span>  <strong>Darkvision</strong> 300ft<br>
+     
+      <strong>Will</strong> <span id="will"></span> <strong>Reflex</strong> <span id="reflex"></span> <br>
+      <strong>HP</strong> <span id="hp"></span>  <strong>AC</strong> <span id="ac"></span>
+      <strong>Flat-Footed</strong> <span id="flatfooted"></span> <strong>Touch</strong> <span id="touchac"></span>
+
+      <br/>
+      <strong>Speed</strong> <span id="speed"></span> <strong>Vertical jump</strong> <span id="vertical"></span>  <strong>Horizontal jump</strong> <span id="horizontal"></span> <strong>Flying speed</strong> <span id="flying"></span>
+
+
+      <h2 id="summon-water-elemental">Combat</h2>
+
+      Igni can attack <span id="scimitars_times"> </span> per turn with his scimitars, and <span id="arrows_times">  </span> with his fire arrows.
+      Also, he can attack <span id="spiked_ball_times"> </span> times with Polymarch's spiked ball. <br>
+
+      <strong>Dual Fire Scimitars</strong> <span id="scimitars"> </span>  <br>
+      <strong>Fire Arrows</strong> <span id="arrows"> </span>   <br>
+      <strong>+5 M5 Polymarch's Spiked Ball</strong> <span id="spikedball"> </span>   <br>
+
+      <h2 id="summon-water-elemental">Abilities</h2>
+
+      <strong>A Barrier for the Elemental Lord</strong> <br>
+      Igni creates a barrier of fire to protect his elemental lord. The barrier has <span id="barrier"></span> hp and deals <span id="fire-presence"> </span> fire damage when it explodes.
+
+      <br>
+      <br/>
+      <strong> Fire Embrace</strong> <br>
+      Igni embraces a target enemy. Fire Embrace deals 4x the damage of Fire Presence and tries to transmute the enemy into a solid fire statue, DC<span id="fortitude"></span> Fortitude save.
+      
+      <br>
+      <br/>
+      <strong>Diminish Size</strong> <br>
+      Changes its size at the command of Aldor. Minimum size is medium. 
+      
+      <br>
+      <br/>
+      <strong>Fire Presence</strong> <br>
+      25d10 fire damage per turn, Radius is equal to Igni’s reach. Fire Presence can be turned off by Aldor with a swift action
 
     <ul>
         <li>HP =  <span id="hp"></span> </li>
@@ -197,6 +241,15 @@
         <li>Reflex Save =  <span id="reflex"></span> </li>
         SPECIAL ATTACK DC
     </ul>
+
+    <hr/>
+
+    <h2>Roll20</h2>
+
+    <strong>Scimitar</strong> <br>
+    <p id="scimitar-roll">
+
+    </p>
 
    <!-- index.html -->
     <script type="module" src="app.js">
