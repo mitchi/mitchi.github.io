@@ -1,9 +1,22 @@
 //https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html
 //https://stackoverflow.com/questions/71953553/disable-cors-in-brave-browser
 
-import { adjust_bonus, calculate_attack_bonus_size, truncate_numbers } from "../general.js"
+import {
+  adjust_armor_classes,
+  adjust_bonus,
+  adjust_dexterity_size,
+  adjust_naturalarmor_size,
+  adjust_speed_size,
+  calculate_attack_bonus_size,
+  calculate_weapon_dice_size,
+  truncate_numbers,
+} from "../general.js"
 import { write, get_span_dictionary, dict_add } from "../lib.js"
-import {attaques_scimitars_roll20, attaques_spiked_ball_roll20} from "./elemental.js"
+import {
+  attaques_arrows_roll20,
+  attaques_scimitars_roll20,
+  attaques_spiked_ball_roll20,
+} from "./elemental.js"
 
 function myApp() {
   // Select the input elements
@@ -16,6 +29,7 @@ function myApp() {
 
   let ids = new Set([
     "hp",
+    "dex",
     "ac",
     "attack-bonus",
     "damage-bonus",
@@ -29,6 +43,7 @@ function myApp() {
     "stealth",
     "flatfooted",
     "touchac",
+    "natural_armor",
     "speed",
     "horizontal",
     "vertical",
@@ -38,6 +53,7 @@ function myApp() {
     "scimitars_roll20",
     "arrows",
     "arrows_times",
+    "arrows_roll20",
     "spikedball",
     "spikedball_times",
     "spikedball_roll20",
@@ -47,18 +63,13 @@ function myApp() {
 
   // Define the updateSpells function
   function update_all() {
+    if (!charismaInput || !size_input) return
+
     const charisma_value = parseInt(charismaInput.value)
     const size_value = size_input.value
+    const size = size_value
 
-    const hp = charisma_value * 500
-    const ac = charisma_value * 5
-    const touch_ac = ac * 0.75
-    const flat_footed_ac = ac * 0.3
 
-    const speed = charisma_value * 20
-    const horizontal = speed / 3
-    const vertical = speed / 10
-    const flying = speed / 4
 
     const attack_bonus = calculate_attack_bonus_size(
       charisma_value * 5,
@@ -68,19 +79,36 @@ function myApp() {
       charisma_value * 3,
       size_value
     )
-    const fire_damage_str = `${charisma_value}d${charisma_value}`
+    const fire_damage_str = `${charisma_value}d10`
     const base_number_attacks = charisma_value / 4
-    const fire_presence_str = `${charisma_value}d${2 * charisma_value}`
+    const fire_presence_str = `${2*charisma_value}d10`
+
+    const dex = adjust_dexterity_size(charisma_value * 1.5, size)
+    const natural_armor = adjust_naturalarmor_size(charisma_value * 3, size)
+    const hp = charisma_value * 500
+    const ac = natural_armor + dex + 10
+    const touch_ac = dex + 10
+    const flat_footed_ac = natural_armor + 10
+
+    const speed = adjust_speed_size(charisma_value * 13, size)
+    const horizontal = speed / 3
+    const vertical = speed / 10
+    const flying = speed / 2
 
     const fortitude = charisma_value * 3
     const barrier = charisma_value * 10
-    const will = charisma_value * 3
-    const reflex = charisma_value * 3
+    const will = charisma_value * 2
+    const reflex = dex * 2
 
     const perception = charisma_value * 4
-    const stealth = charisma_value * 3.5
+    const stealth = dex * 2.5
 
+    /**
+     * @type {import("./types/computedValues.js").ComputedValues}
+     */
     let computed_values = {
+      dex,
+      natural_armor,
       hp,
       ac,
       touch_ac,
@@ -98,28 +126,26 @@ function myApp() {
       will,
       reflex,
       barrier,
-      perception, stealth,
+      perception,
+      stealth,
+      size,
     }
 
+    //computed_values = adjust_armor_classes(computed_values, size)
     computed_values = truncate_numbers(computed_values)
-    console.log("computed_values", computed_values)
-
     write_to_spans(computed_values)
-
   }
 
   /**
    * This function writes to the DOM the values we have computed
-   * @param {*} computed_values 
+   * @param {*} computed_values
    */
   function write_to_spans(computed_values) {
+    write(dict["dex"], `${computed_values.dex}`)
 
     write(dict["hp"], `${computed_values.hp}`)
     write(dict["ac"], `${computed_values.ac}`)
-    write(
-      dict["attack-bonus"],
-      `${computed_values.attack_bonus}`
-    )
+    write(dict["attack-bonus"], `${computed_values.attack_bonus}`)
     write(dict["damage-bonus"], `${computed_values.damage_bonus}`)
 
     write(dict["fire-damage"], `${computed_values.fire_damage_str}`)
@@ -137,26 +163,45 @@ function myApp() {
     write(dict["vertical"], `${computed_values.vertical}`)
     write(dict["flying"], `${computed_values.flying}`)
 
+    write(dict["scimitars"], `${calculate_weapon_dice_size(computed_values.size)}`)
+    write(dict["arrows"], `${calculate_weapon_dice_size(computed_values.size)}`)
+
     write(dict["scimitars_times"], `${computed_values.base_number_attacks + 2}`)
+
+    write(dict["arrows_times"], `${computed_values.base_number_attacks}`)
+
     write(
       dict["scimitars_roll20"],
       `${attaques_scimitars_roll20(
         computed_values.attack_bonus,
         computed_values.damage_bonus,
-        computed_values.fire_damage_str
+        computed_values.fire_damage_str,
+        computed_values.size
       )}`
     )
+
+    write(
+      dict["arrows_roll20"],
+      `${attaques_arrows_roll20(
+        computed_values.attack_bonus,
+        computed_values.damage_bonus,
+        computed_values.fire_damage_str,
+        computed_values.size
+      )}`
+    )
+
 
     write(dict["spikedball_times"], `${computed_values.base_number_attacks}`)
     write(
       dict["spikedball_roll20"],
-      `${attaques_spiked_ball_roll20(computed_values.attack_bonus, computed_values.damage_bonus)}`
+      `${attaques_spiked_ball_roll20(
+        computed_values.attack_bonus,
+        computed_values.damage_bonus
+      )}`
     )
 
+    write(dict["natural_armor"], `${computed_values.natural_armor}`)
   }
-
-
-
 } //end of MyApp
 
 // Initialize the application when the DOM is ready

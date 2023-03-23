@@ -1,5 +1,5 @@
   //@ts-check
-import { adjust_bonus } from "../general.js"
+import { adjust_bonus, calculate_weapon_dice_size } from "../general.js"
   
   /**
    * Générer les attaques de la spiked ball
@@ -21,14 +21,36 @@ import { adjust_bonus } from "../general.js"
   export function attaques_scimitars_roll20(
     attack_bonus,
     damage_bonus,
-    fire_damage_str
+    fire_damage_str,
+    size
   ) {
     let crit = 18
     attack_bonus = Math.floor(adjust_bonus(attack_bonus, 1.0)) //weapon is not magic
     damage_bonus = Math.floor(adjust_bonus(damage_bonus, 1.0)) //weapon is not magic
 
     let str = `Attack [[1d20cs>${crit}+${attack_bonus}]] Confirm [[1d20cs>${crit}+${attack_bonus}]]
-                Damage [[4d10+${damage_bonus}]]`
+                Damage [[${calculate_weapon_dice_size(size)}+${damage_bonus}]]`
     let str2 = `Fire damage (touch): [[${fire_damage_str}]]`
     return `${str} ${str2}`
   }
+
+
+    /**
+   * Générer les attaques des scimitares
+   */
+    export function attaques_arrows_roll20(
+        attack_bonus,
+        damage_bonus,
+        fire_damage_str
+      ) {
+        let crit = 20
+        attack_bonus = Math.floor(adjust_bonus(attack_bonus, 1.0)) //weapon is not magic
+        damage_bonus = Math.floor(adjust_bonus(damage_bonus, 1.0)) //weapon is not magic
+
+        //Ajustement fleches, 30% damage reduction en dégats feu et physical
+    
+        let str = `Attack [[1d20cs>${crit}+${attack_bonus}]] Confirm [[1d20cs>${crit}+${attack_bonus}]]
+                    Damage [[4d10+${damage_bonus}]]`
+        let str2 = `Fire damage (touch): [[${fire_damage_str}]]`
+        return `${str} ${str2}`
+      }

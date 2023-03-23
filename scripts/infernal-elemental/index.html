@@ -184,9 +184,9 @@
    <p> <em>Un puissant élémentaire de feu au service de son maitre, Aldor l'Infernal</em>   </p>
 
       <strong>Perception</strong> <span id="perception"></span> <strong>Stealth</strong> <span id="stealth"></span>  <strong>Darkvision</strong> 300ft<br>
-     
-      <strong>Will</strong> <span id="will"></span> <strong>Reflex</strong> <span id="reflex"></span> <br>
-      <strong>HP</strong> <span id="hp"></span>  <strong>AC</strong> <span id="ac"></span>
+
+      <strong>Will</strong> <span id="will"></span> <strong>Reflex</strong> <span id="reflex"></span> <strong>Dexterity</strong> <span id="dex"></span>  <strong>Natural Armor</strong>  <span id="natural_armor"></span> <br>
+      <strong>HP</strong> <span id="hp"></span>  <strong>AC</strong> <span id="ac"></span> 
       <strong>Flat-Footed</strong> <span id="flatfooted"></span> <strong>Touch</strong> <span id="touchac"></span>
 
       <br/>
@@ -195,15 +195,30 @@
 
       <h2>Combat</h2>
 
-      Igni can attack <span id="scimitars_times"> </span> times per turn with his scimitars, and <span id="arrows_times">  </span> with his fire arrows.
-      Also, he can attack <span id="spikedball_times"> </span> times with Polymarch's spiked ball. <br>
+      Igni peut attaquer <span id="scimitars_times"> </span> fois par tour avec ses cimeterres, et <span id="arrows_times"> </span> avec ses flèches enflammées.
+      De plus, il peut attaquer <span id="spikedball_times"> </span> fois avec la boule à pointes de Polymarch. <br>
 
-     <p>  <em>Dual Fire Scimitars</em> <span id="scimitars"> </span>  <br> 
+     <p>  <em>Dual Fire Scimitars</em> <br> 
+      Les scimitars sont l'arme de choix de l'élémentaire. Ce dernier les manie avec grande aisance, avec un style mixte, qui intègre des techniques que son maitre, Aldor, lui a enseigné. Les scimitars sont l'arme la plus destructrice d'Igni, car il obtient des attaques supplémentaires, et ses dégats de feu deviennent beaucoup plus importants. <br>
+      Dégats de l'arme:  </strong> <span id="scimitars"> </span>   <br>
+      Attack roll: </strong> <span id="attack-bonus"> </span> <br>
+      Damage roll: </strong> <span id="damage-bonus"> </span> <br>
+      Number of attacks: </strong> <span id="scimitars_times"> </span>
       <p id="scimitars_roll20"></p>
     </p>
 
 
-     <p>  <em>Fire Arrows</em> <span id="arrows"> </span>   <br> </p>
+     <p>  <em>Fire Arrows</em>   <br>
+      Les scimitars d'Igni disparaissent. Les mains d'Igni se transforment en flèches de feu. Ces flèches sont très puissantes, et permettent à Igni d'attaquer confortablement depuis une grande distance.
+      Le boulet a été forgé avec de l'acier utilisant du fer de très bonne qualité. Les piques, eux, ont été affinés par des experts. De plus, le boulet est enchanté. <br>
+      <u>Range increment</u>: 300ft. Distance maximale: 1200ft  <br>
+      Dégats de l'arme:  </strong> <span id="arrows"> </span>   <br>
+      Attack roll: </strong> <span id="attack-bonus"> </span> <br>
+      Damage roll: </strong> <span id="damage-bonus"> </span> <br>
+      Number of attacks: </strong> <span id="arrows_times"> </span>
+        <p id="arrows_roll20"></p>
+    
+    </p>
      <p></p> <em>Terreur: +5 M5 Spiked Ball</em> <br>
         Un boulet avec piques tranchants de taille Large. Il faut +10 STR, au minimum, pour le manier.
         Le boulet a été forgé avec de l'acier utilisant du fer de très bonne qualité. Les piques, eux, ont été affinés par des experts. De plus, le boulet est enchanté. <br>
@@ -212,7 +227,7 @@
         Reach de l'arme (variable): 50 ft au maximum <br>
         Dégats de l'arme: 4d10 </strong> <span id="spikedball"> </span>   <br>
         Attack roll: </strong> <span id="attack-bonus"> </span> <br>
-        Damage roll: </strong> <span id="damage-bonus"> </span> 
+        Damage roll: </strong> <span id="damage-bonus"> </span> <br>
         Number of attacks: </strong> <span id="spikedball_times"> </span>
 
         <p id="spikedball_roll20"></p>
@@ -220,24 +235,30 @@
       </p>
 
       <h2>Abilities</h2>
+      Si non mentionné, le temps de l'action est d'un tick (comme une Swift action). <br>
 
+      <p> 
       <strong>A Barrier for the Elemental Lord</strong> <br>
-      Igni creates a barrier of fire to protect his elemental lord. The barrier has <span id="barrier"></span> hp and deals <span id="fire-presence"> </span> fire damage when it explodes.
+      Igni creates a barrier of fire to protect his elemental lord. The barrier has <span id="barrier"></span> hp and deals <span id="fire-presence"> </span> fire damage when it explodes. The barrier ability can be used 3 times per day.
+      <br> Time: 1 tick
 
-      <br>
-      <br/>
+    </p>
+
+      <p>
       <strong> Fire Embrace</strong> <br>
-      Igni embraces a target enemy. Fire Embrace deals 4x the damage of Fire Presence and tries to transmute the enemy into a solid fire statue, DC<span id="fortitude"></span> Fortitude save.
+      Igni embraces a target enemy. Fire Embrace deals 4x the damage of Fire Presence and tries to transmute the enemy into a solid fire statue, DC<span id="fortitude"></span> Fortitude save. Fire Embrace can only be used once per day.
       
-      <br>
-      <br/>
+    </p>
+
+    <p>
       <strong>Diminish Size</strong> <br>
-      Changes its size at the command of Aldor. Minimum size is medium. 
+      Changes its size at the command of Aldor. Minimum size is medium. Time = 1 tick.
+    </p>
       
-      <br>
-      <br/>
+    <p>
       <strong>Fire Presence</strong> <br>
       <span id="fire-presence"> </span> damage per turn, Radius is equal to Igni’s reach. Fire Presence can be turned off by Aldor with a swift action
+    </p>
 
    <!-- index.html -->
     <script type="module" src="app.js">
