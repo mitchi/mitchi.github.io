@@ -1,5 +1,6 @@
 https://edmondlachance.com/cerberus-spells/Abruti.html
 https://edmondlachance.com/cerberus-spells/Acid%20Fall.html
+https://edmondlachance.com/cerberus-spells/Acid%20Splash.html
 https://edmondlachance.com/cerberus-spells/Aldor's%20Flame%20Barrier%20II.html
 https://edmondlachance.com/cerberus-spells/Alois%20Timestop.html
 https://edmondlachance.com/cerberus-spells/Alois's%20Arm.html
@@ -187,6 +188,7 @@ https://edmondlachance.com/cerberus-spells/Wind%20Flight.html
 https://edmondlachance.com/cerberus-spells/Witness.html
 https://edmondlachance.com/cerberus-spells/Zombie.html
 https://edmondlachance.com/cerberus-spells/alphabetical.html
+https://edmondlachance.com/cerberus-spells/edmond.html
 https://edmondlachance.com/cerberus-spells/index.html
 https://edmondlachance.com/cerberus-spells/index_by_level.html
 https://edmondlachance.com/cerberus-spells/%C3%89change%20Critique.html
