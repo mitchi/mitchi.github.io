@@ -164,39 +164,72 @@
 <h1 id="telekinesis">Telekinesis</h1>
 <p><em>Le sort signature des psychic qui permet de contrôler finement
 plusieurs objets par la pensée</em></p>
-<p><strong>Wizard 6, Transmutation</strong><br />
+<p><strong>Transmutation</strong><br />
+<strong>Damage type</strong>: Physical<br />
 <strong>Action</strong>: Standard<br />
 <strong>Components</strong>: V,S,M<br />
-<strong>Duration</strong>: 1 round, concentration<br />
-<strong>Origin</strong>: Psychic</p>
-<p>Ce sort permet au Psychic/Mage de contrôler par sa pensée un ou
-plusieurs objets. Si l’objet contrôlé est un être vivant, il faut alors
-battre son Will Save afin de contrôler son corps. Si l’objet contrôlé
-est une arme magique, alors il faut ajouter les modificateurs de cette
-arme aux dégâts et à l’attack roll.</p>
+<strong>Duration</strong>: Instantaneous<br />
+<strong>Spell Lists</strong>: Arcane,Psychic<br />
+<strong>Levels</strong>: 5,6,7,8,9,10<br />
+<strong>Origin</strong>: Psychic<br />
+<strong>Target</strong>: close objects</p>
+<p>Ce sort permet au psychic de contrôler par sa pensée un ou plusieurs
+objets. Si l’objet contrôlé est un être vivant, il faut alors battre son
+Will Save afin de contrôler son corps. Si l’objet contrôlé est une arme
+magique, alors il faut ajouter les modificateurs de cette arme aux
+dégâts et à l’attack roll.</p>
 <p><strong>Vitesse de l'objet contrôlé</strong><br />
-10 ft par caster level. Cette vitesse augmente en lançant Telekinesis
-avec Overcast</p>
-<p><strong>Taille manipulée</strong><br />
-La taille de l'objet manipulée dépend du caster level du magicien :</p>
+Cette vitesse augmente lorsque l'objet contrôlé est plus petit que la
+taille maximale.</p>
 <ul>
-<li>Medium CL 10+</li>
-<li>Large CL 15+</li>
-<li>Huge CL 20+</li>
-<li>Gargantuan CL 30+</li>
-<li>Colossal CL 40+</li>
+<li>Taille maximale: 10 ft/CL</li>
+<li>Taille -1: 15 ft/CL</li>
+<li>Taille -2: 25 ft/CL</li>
+<li>Taille -3: 40 ft/CL</li>
+<li>Taille -4: 60 ft/CL</li>
+<li>Taille -5: 85 ft/CL</li>
 </ul>
-<p><strong>Attack Roll</strong><br />
-L’attack roll est valide pour les tirs (flèches ou balles) et les objets
-projetés. Il est égal à 5xINT.</p>
-<p><strong>Nombre d’objets</strong>: 1 objet manipulé par caster
-level.</p>
-<p><strong>Concentration maximale</strong><br />
+<p>Exemple: CL30, +15INT Psychic. 15 rochers de taille colossale, chacun
+allant a une vitesse de 10x30 = 300 ft.</p>
+<p>OU</p>
+<p>1875 objets de taille small, chacun allant à une vitesse de 85ft * 30
+= 2550 ft</p>
+<p><strong>Taille manipulée</strong><br />
+La taille de l'objet manipulée dépend du niveau du sort Telekinesis.</p>
+<ul>
+<li>Small: Telekinesis I (niveau 5)</li>
+<li>Medium: Telekinesis II (niveau 6)</li>
+<li>Large: Telekinesis III (niveau 7)</li>
+<li>Huge: Telekinesis IV (niveau 8)</li>
+<li>Gargantuan: Telekinesis V (niveau 9)</li>
+<li>Colossal: Telekinesis VI (niveau 10)</li>
+</ul>
+<p><strong>Nombre d’objets</strong>:<br />
+De base, un objet peut être manipulé par point d'intelligence. Ensuite,
+le nombre d'objets augmente si les objets manipulés sont plus petits, et
+le processus se répète pour chaque niveau.</p>
+<p>Cette augmentation fonctionne en utilisant un multiplicateur de 2.5x
+et en arrondissant à l'unité supérieure.</p>
+<ul>
+<li>Taille -0: 1xINT</li>
+<li>Taille -1: 3xINT</li>
+<li>Taille -2: 8xINT</li>
+<li>Taille -3: 20xINT</li>
+<li>Taille -4: 50xINT</li>
+<li>Taille -5: 125xINT</li>
+</ul>
+<p>Exemple:<br />
+15 objets colossaux manipulés avec Telekinesis VI: 30 objets gargantuan,
+60 objects huge, 120 large, 240 medium, 480 small.</p>
+<p>Note:<br />
 Le psychic peut contrôler un objet d’une catégorie au-dessus de sa
-catégorie maximale en ne contrôlant que cet objet seulement.</p>
+catégorie maximale en ne contrôlant que cet objet seulement. La vitesse
+de l'objet est diminuée de moitié.</p>
+<p><strong>Attack Roll</strong><br />
+L’attack roll est utilisé pour les tirs (flèches ou balles) et les
+objets projetés. Il est égal à 5xCL.</p>
 <p><strong>Durée du sort</strong><br />
-<em>Telekinesis</em> a une durée d'un tour, soit 3 ticks, ce qui permet
-d'attaquer trois fois par tour avec un seul sort.</p>
+<em>Telekinesis</em> a une durée d'un tick.</p>
 <p><strong>Modes d’utilisation</strong></p>
 <p><em>Fine manipulation</em><br />
 Lorsqu’un objet est contrôlé par Télékinésie, celui-ci peut être bougé
@@ -216,31 +249,23 @@ ou un arc. À noter que l'arc et ses flèches compte comme un seul
 objet.</p>
 <p>Dégâts par taille</p>
 <ul>
-<li>Medium 1d8 dégâts</li>
-<li>Large 2d8</li>
-<li>Huge 4d8</li>
-<li>Gargantuan 8d8</li>
-<li>Colossal 16d8</li>
+<li>Small 1d8</li>
+<li>Medium 3d8</li>
+<li>Large 8d8</li>
+<li>Huge 20d8</li>
+<li>Gargantuan 50d8</li>
+<li>Colossal 125d8</li>
 </ul>
-<p><strong>Dégâts de vitesse</strong><br />
-Les objets font un dégât collectif égal à 1 point de dégât par vitesse,
-soit 10 dégâts par CL. Ces dégâts sont répartis entre le nombre total
-d’objets utilisés. Exemple, avec 200 dégâts (CL 20) et 20 objets, chaque
-objet fait 10 damage avec sa vitesse. Les dégâts de vitesse augmentent
-avec le feat Overcast.</p>
 <p><strong>Résumé</strong></p>
 <ol type="1">
 <li>Choisissez un ou plusieurs objets à contrôler (nombre d'objets
-limité par le caster level).</li>
-<li>Vérifiez la taille maximale de l'objet contrôlable selon le caster
-level.</li>
+limité par l'intelligence).</li>
+<li>Vérifiez la taille maximale de l'objet contrôlable en fonction du
+niveau du sort</li>
 <li>Utilisez la fine manipulation ou la projection violente pour
 contrôler l'objet.</li>
-<li>Calculez les dégâts en fonction de la taille et de la vitesse de
-l'objet, ainsi que des modificateurs d'objets magiques ou
-explosifs.</li>
-<li>Répartissez les dégâts de vitesse entre le nombre total d'objets
-utilisés.</li>
+<li>Calculez les dégâts en tenant compte des modificateurs de
+dégats.</li>
 </ol>
 </body>
 </html>
