@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>index_by_level</title>
+  <title>Reactive Dispel</title>
   <style>
     html {
       line-height: 1.5;
@@ -159,51 +159,84 @@
   <![endif]-->
 </head>
 <body>
-<h1 id="cerberus-spells">Cerberus Spells</h1>
-<p><strong>Spell indexes</strong>: <a
-href="index.html">Level/School</a>|<a
-href="index_by_level.html">Level</a>|<a
-href="alphabetical.html">Alphabetical</a><br />
-<strong>Spell Level</strong>: <a href="#level-0">0</a>|<a
-href="#level-1">1</a>|<a href="#level-2">2</a>|<a
-href="#level-3">3</a>|<a href="#level-4">4</a>|<a
-href="#level-5">5</a>|<a href="#level-6">6</a>|<a
-href="#level-7">7</a>|<a href="#level-8">8</a>|<a
-href="#level-9">9</a>|<a href="#level-10">10</a><br />
-<strong>Number of spells</strong>: 167</p>
-<h2 id="level-0">Level 0</h2>
-<h2 id="level-1">Level 1</h2>
-<h2 id="level-2">Level 2</h2>
-<p><a href="Weak%20Telekinesis.html">Weak Telekinesis</a></p>
-<h2 id="level-3">Level 3</h2>
-<p><a href="Cat%20Paw.html">Cat Paw</a><br />
-<a href="Come%20to%20nose.html">Come to nose</a></p>
-<h2 id="level-4">Level 4</h2>
-<p><a href="Chaines%20de%20feu.html">Chaines de feu</a><br />
-<a href="Intangible.html">Intangible</a><br />
-<a href="Smoke%20Sight.html">Smoke Sight</a></p>
-<h2 id="level-5">Level 5</h2>
-<p><a href="Descente%20de%20Feu.html">Descente de Feu</a><br />
-<a href="Dominate%20I.html">Dominate I</a><br />
-<a href="D%C3%A9fense%20Co%C3%BBteuse.html">Défense Coûteuse</a><br />
-<a href="Guided%20Past.html">Guided Past</a></p>
-<h2 id="level-6">Level 6</h2>
-<p><a href="Dominate%20II.html">Dominate II</a><br />
-<a href="Petit%20feu.html">Petit feu</a><br />
-<a href="Share%20the%20pain.html">Share the pain</a></p>
-<h2 id="level-7">Level 7</h2>
-<p><a href="Dominate%20III.html">Dominate III</a><br />
-<a href="To%20the%20past.html">To the past</a></p>
-<h2 id="level-8">Level 8</h2>
-<p><a href="Dominate%20IV.html">Dominate IV</a><br />
-<a href="To%20the%20past%20II.html">To the past II</a></p>
-<h2 id="level-9">Level 9</h2>
-<p><a href="Entre%20deux%20v%C3%A9rit%C3%A9s.html">Entre deux
-vérités</a><br />
-<a href="Grab%20Gold.html">Grab Gold</a><br />
-<a href="Restitution.html">Restitution</a><br />
-<a href="To%20the%20past%20III.html">To the past III</a><br />
-<a href="Transmit%20Knowledge.html">Transmit Knowledge</a></p>
-<h2 id="level-10">Level 10</h2>
+<p><a href="index.html">Spell Index</a></p>
+<hr />
+<h1 id="reactive-dispel">Reactive Dispel</h1>
+<p><em>A latent abjuration spell that triggers when the spellcaster
+cannot react</em></p>
+<p><strong>Abjuration</strong><br />
+<strong>Action</strong>: Full<br />
+<strong>Components</strong>: V,S,M<br />
+<strong>Duration</strong>: Permanent<br />
+<strong>Spell Lists</strong>: Arcane<br />
+<strong>Levels</strong>: 9</p>
+<p>Reactive Dispel is an advanced abjuration spell developed by the
+brilliant yet paranoid sorcerer Émile Adelbrand. Its primary purpose was
+to counter the spells of his rival, Gérard Alois. When dormant, Reactive
+Dispel manifests as a faint, shimmering aura around the caster, visible
+only by a magic detection spell. When Reactive Dispel activates to
+cancel a detected spell, the spell automatically wakes up the
+spellcaster, if he's asleep. When Reactive Dispel activates, perform a
+caster level check against the incoming spell's caster level.</p>
+<h3 id="triggers">Triggers</h3>
+<p>Reactive Dispel requires careful preparation by the caster. The
+sorcerer must specify trigger conditions:</p>
+<ol type="1">
+<li><p><strong>Incoming Spell Power</strong></p>
+<ul>
+<li>Weak+</li>
+<li>Medium+</li>
+<li>Strong+ (equivalent to Reactive Dispel's power level)</li>
+</ul></li>
+<li><p><strong>Spell Schools</strong></p>
+<ul>
+<li>Transmutation</li>
+<li>Enchantment, Mind-control (subschools can be specified)</li>
+<li>Other schools as needed</li>
+</ul></li>
+<li><p><strong>Caster Recognition</strong></p>
+<ul>
+<li>Specify individual casters (e.g., "spells cast by Gérard
+Alois")</li>
+</ul></li>
+<li><p><strong>Temporal Triggers</strong></p>
+<ul>
+<li>Activate during specific times (e.g., "during night hours", "at dawn
+or dusk")</li>
+</ul></li>
+</ol>
+<h3 id="intelligence-scaling">Intelligence Scaling</h3>
+<p>A sorcerer's intelligence determines the number of Reactive Dispels
+they can maintain:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Intelligence (INT)</th>
+<th>Number of Reactive Dispels</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10-20</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>20-30</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>30+</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metamagic-interaction">Metamagic Interaction</h2>
+<p>Sorcerers can apply metamagic effects to enhance Reactive Dispel:</p>
+<ul>
+<li><strong>Hidden Spell (1 additional spell slot)</strong>: Makes
+Reactive Dispel harder to detect with a Detect Magic spell</li>
+<li><strong>Twinned Spell (3 additional spell slots)</strong>: Allows
+the caster to protect an additional target within 30 feet</li>
+</ul>
 </body>
 </html>
