@@ -157,8 +157,41 @@
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
+<style>
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+        body.dark-mode a {
+            color: #add8e6;
+        }
+        body.dark-mode a:visited {
+            color: #d8bfd8;
+        }
+        body.dark-mode blockquote {
+            border-left-color: #4a4a4a;
+            color: #b0b0b0;
+        }
+        /* Toggle button styles */
+        #dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        body.dark-mode #dark-mode-toggle {
+            background-color: #4a4a4a;
+            color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
+<button id="dark-mode-toggle">Toggle Dark Mode</button>
 <p><a href="index.html">Spell Index</a></p>
 <hr />
 <h1 id="regenerate">Regenerate</h1>
@@ -178,5 +211,22 @@ limbs, organs and diseases are healed. The regenerate spell was invented
 by copying a troll's regeneration. The target creature will heal 1% of
 it's max HP per caster level, per tick. The regeneration is halved when
 the target takes fire or acid damage during the current turn.</p>
+<script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+        }
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+    </script>
 </body>
 </html>
