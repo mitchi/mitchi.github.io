@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Magic Missile</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<style>
+            /* Dark mode styles */
+            html.dark-mode,
+            body.dark-mode {
+                background-color: #1a1a1a;
+                color: #f1f1f1;
+            }
+
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+
+            /* Toggle button styles */
+            #dark-mode-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: #f1f1f1;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            body.dark-mode #dark-mode-toggle {
+                background-color: #4a4a4a;
+                color: #f1f1f1;
+            }
+
+            /* Dark mode styles */
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+        </style>
+</head>
+<body>
+<button id="dark-mode-toggle">Toggle Dark Mode</button>
+<p><a href="index.html">Spell Index</a></p>
+<hr />
+<h1 id="magic-missile">Magic Missile</h1>
+<p><em>Unerring bolts of magical force strike and repel your
+foes</em></p>
+<p><strong>Evocation</strong><br />
+<strong>Damage type</strong>: Force<br />
+<strong>Action</strong>: Standard<br />
+<strong>Components</strong>: V,S<br />
+<strong>Duration</strong>: Instantaneous<br />
+<strong>Spell Lists</strong>: Arcane,Divine<br />
+<strong>Levels</strong>: 1,3,5,7,9,10<br />
+<strong>Range</strong>: Long (400 ft + 40 ft/level)</p>
+<p>Magic Missile conjures glowing darts of magical energy that
+unerringly seek out and strike their targets. These missiles of pure
+force not only bypass mundane armor and shields but also possess
+significant kinetic energy, capable of pushing back creatures of
+increasing size in any direction as the spell's power grows.</p>
+<p>At its most basic level, the caster hurls a number of missiles equal
+to their caster level, each dealing respectable force damage. What sets
+Magic Missile apart is its dual nature as both a damage-dealing and
+crowd control spell. Each missile, regardless of the caster's level, can
+push a medium-sized creature back 5 feet upon impact. As the caster's
+mastery over the spell increases, so does its ability to affect larger
+creatures.</p>
+<p>The spell's reliability is legendary among spellcasters. Unlike many
+spells that allow saving throws or require attack rolls, these arcane
+projectiles always find their mark, striking with unwavering accuracy.
+This predictability, combined with its pushing effect, makes Magic
+Missile an incredibly versatile tool in any magic user's arsenal.</p>
+<p>At higher levels, the sheer number and power of the missiles increase
+dramatically. By the time a caster reaches the pinnacle of their magical
+prowess, they can launch a veritable storm of force bolts, each capable
+of dealing significant damage and collectively able to push back even
+the most colossal of creatures.</p>
+<p>The force of Magic Missile not only damages but also repels its
+targets. The push effect varies based on the spell's level and the
+target's size. For the largest creature size the spell can affect at
+each level, the push distance is always 5 feet per missile. However,
+when targeting smaller creatures, the push distance increases
+significantly.</p>
+<p>To calculate the maximum pushback distance, start with a base of 5
+feet and add 5 feet for each size category difference between the
+largest affected creature size and the target's size. For example, a
+10th-level Magic Missile can push a Colossal+ creature 5 feet, but would
+push a Medium creature 30 feet per missile (5 feet base + 25 feet for
+five size categories smaller).</p>
+<p>This scaling push effect allows for dramatic battlefield control,
+especially against smaller foes. A high-level caster could potentially
+push a group of medium-sized enemies hundreds of feet with a single
+casting, dramatically altering the battlefield dynamics or even forcing
+foes off cliffs or into hazardous terrain.</p>
+<p>When used creatively, Magic Missile can serve various tactical
+purposes beyond simple damage. The force of the missiles can be used to
+create space on a battlefield, push enemies into hazardous terrain, or
+even propel allies short distances in emergencies. In non-combat
+situations, the spell can be employed to trigger distant mechanisms,
+clear paths of debris, or create impressive displays of magical
+prowess.</p>
+<h2 id="scaling-effects">Scaling Effects</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Spell Level</th>
+<th style="text-align: center;">Missiles per CL</th>
+<th style="text-align: center;">Damage per Missile</th>
+<th style="text-align: center;">Max Creature Size Affected</th>
+<th style="text-align: center;">Push Distance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1d4</td>
+<td style="text-align: center;">Medium</td>
+<td style="text-align: center;">5 feet</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2d4</td>
+<td style="text-align: center;">Large</td>
+<td style="text-align: center;">5 feet</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4d4</td>
+<td style="text-align: center;">Huge</td>
+<td style="text-align: center;">5 feet</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8d4</td>
+<td style="text-align: center;">Gargantuan</td>
+<td style="text-align: center;">5 feet</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">16d4</td>
+<td style="text-align: center;">Colossal</td>
+<td style="text-align: center;">5 feet</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">32d4</td>
+<td style="text-align: center;">Colossal+</td>
+<td style="text-align: center;">5 feet</td>
+</tr>
+</tbody>
+</table>
+<h2 id="additional-notes">Additional Notes</h2>
+<ul>
+<li>Magic Missile always hits its target unless blocked by specific
+spells (e.g., Shield) or total cover.</li>
+<li>The caster can choose to direct all missiles at a single target or
+split them among multiple targets as desired.</li>
+<li>Multiple missiles striking the same target have a cumulative pushing
+effect.</li>
+<li>The spell can affect incorporeal creatures, making it useful against
+ethereal or ghostly foes.</li>
+</ul>
+<script>
+            const darkModeToggle = document.getElementById("dark-mode-toggle");
+            const body = document.body;
+            const html = document.documentElement;
+
+            darkModeToggle.addEventListener("click", () => {
+                html.classList.toggle("dark-mode");
+                body.classList.toggle("dark-mode");
+                const isDarkMode = html.classList.contains("dark-mode");
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            });
+
+            // On load, apply saved theme
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                html.classList.add("dark-mode");
+                body.classList.add("dark-mode");
+            }
+        </script>
+</body>
+</html>
