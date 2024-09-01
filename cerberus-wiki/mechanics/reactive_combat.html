@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>reactive_combat</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#reactive-combat" id="toc-reactive-combat">Reactive
+Combat</a>
+<ul>
+<li><a href="#motivation-behind-reactive-combat"
+id="toc-motivation-behind-reactive-combat">Motivation Behind Reactive
+Combat</a></li>
+<li><a href="#the-difference-between-roleplay-mode-and-combat-mode"
+id="toc-the-difference-between-roleplay-mode-and-combat-mode">The
+Difference Between Roleplay Mode and Combat Mode</a></li>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#general-concepts" id="toc-general-concepts">General
+Concepts</a></li>
+<li><a href="#basic-action-pool" id="toc-basic-action-pool">Basic Action
+Pool</a>
+<ul>
+<li><a href="#progression-of-attacks-and-spells"
+id="toc-progression-of-attacks-and-spells">Progression of Attacks and
+Spells</a></li>
+</ul></li>
+<li><a href="#action-duration" id="toc-action-duration">Action
+Duration</a></li>
+<li><a href="#attacks" id="toc-attacks">Attacks</a></li>
+<li><a href="#magic-and-spells" id="toc-magic-and-spells">Magic and
+Spells</a></li>
+<li><a href="#movement" id="toc-movement">Movement</a></li>
+<li><a href="#reactive-nature-in-practice"
+id="toc-reactive-nature-in-practice">Reactive Nature in
+Practice</a></li>
+<li><a href="#area-of-effect-abilities"
+id="toc-area-of-effect-abilities">Area of Effect Abilities</a></li>
+<li><a href="#additional-notes" id="toc-additional-notes">Additional
+notes</a></li>
+</ul></li>
+<li><a href="#examples" id="toc-examples">Examples</a>
+<ul>
+<li><a href="#scenario-the-sorcerer-vs-the-archers"
+id="toc-scenario-the-sorcerer-vs-the-archers">Scenario: The sorcerer vs
+the archers</a>
+<ul>
+<li><a href="#combat-setup" id="toc-combat-setup">Combat Setup:</a></li>
+<li><a href="#turn-breakdown" id="toc-turn-breakdown">Turn
+Breakdown:</a></li>
+</ul></li>
+<li><a href="#scenario-the-heist" id="toc-scenario-the-heist">Scenario:
+The Heist</a></li>
+<li><a href="#scenario-deflecting-the-assassins-strike"
+id="toc-scenario-deflecting-the-assassins-strike">Scenario: Deflecting
+the Assassin's Strike</a>
+<ul>
+<li><a href="#setup" id="toc-setup">Setup:</a></li>
+<li><a href="#the-scene-unfolds" id="toc-the-scene-unfolds">The Scene
+Unfolds:</a></li>
+<li><a href="#analysis" id="toc-analysis">Analysis:</a></li>
+</ul></li>
+<li><a href="#scenario-the-duelists-gambit"
+id="toc-scenario-the-duelists-gambit">Scenario: The Duelist's Gambit</a>
+<ul>
+<li><a href="#setup-1" id="toc-setup-1">Setup:</a></li>
+<li><a href="#the-scene-unfolds-1" id="toc-the-scene-unfolds-1">The
+Scene Unfolds:</a></li>
+<li><a href="#tick-2" id="toc-tick-2">Tick #2</a></li>
+<li><a href="#analysis-1" id="toc-analysis-1">Analysis:</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="reactive-combat">Reactive Combat</h1>
+<h2 id="motivation-behind-reactive-combat">Motivation Behind Reactive
+Combat</h2>
+<p>In traditional tabletop RPGs like Pathfinder and D&amp;D, combat is
+largely sequential rather than reactive. It's difficult to react to
+actions, and all creatures/players roll for initiative at the start of
+combat, creating a complex management task for the GM that adds little
+depth to gameplay.</p>
+<p>This leads to two main issues:</p>
+<ol type="1">
+<li>A sequential combat system can be detrimental to narrative flow,
+becoming disconnected from the story the GM and players are trying to
+tell.</li>
+<li>Players tend to optimize their characters' actions for sequential
+combat, rather than for the combat they truly want to experience.</li>
+</ol>
+<p>While reaction mechanics exist in D&amp;D and Pathfinder, they are
+often underutilized or overcomplicated. For instance, Pathfinder's ready
+actions require players to declare conditions in advance, while D&amp;D
+5e's reaction system can lead to overly scripted encounters.</p>
+<p>In short, these existing combat systems demand significant management
+but offer little in return beyond a highly sequential combat experience.
+This limits character possibilities and hinders combat scenes from
+effectively telling our story.</p>
+<p>To address these issues, I've developed a solution with my group of
+players: the reactive combat system.</p>
+<h2 id="the-difference-between-roleplay-mode-and-combat-mode">The
+Difference Between Roleplay Mode and Combat Mode</h2>
+<p>It's important to recognize that most gameplay occurs in Roleplay
+Mode, where players perform actions and engage in dialogue at various
+paces, from seconds to years in game time.</p>
+<p>However, we need a turn-based mode for situations where characters
+compete with other creatures, such as during combat. We'll call this
+Combat Mode. Here, each turn represents a specific amount of time,
+typically 6 to 10 seconds.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The reactive combat system is built on three key concepts:</p>
+<ol type="1">
+<li>Character actions: The type and number of actions change with the
+character's or creature's level. For example, a high-level wizard might
+cast three complex spells per turn, while a novice mage can only cast
+one.</li>
+<li>Action duration: Some actions are faster than others. Generally, the
+longer an action takes, the more powerful it is.</li>
+<li>Action priority: When two characters perform actions of the same
+duration simultaneously, how do we determine which action takes
+precedence?</li>
+</ol>
+<h2 id="general-concepts">General Concepts</h2>
+<ol type="1">
+<li>A combat turn consists of 3 time units. Time is the smallest unit of
+measure within a turn.</li>
+<li>Characters regain used actions in the next turn.</li>
+<li>Actions lasting longer than 1 time unit can extend into the next
+turn. If this happens, the action is recovered in the following
+turn.</li>
+<li>When two characters' actions conflict, both make a Reflex roll. The
+higher roll wins. If tied, reroll.</li>
+<li>The Reflex roll represents a character's ability to react quickly to
+any event. It's improved by dexterity, experience, items, enchantments,
+and various feats.</li>
+<li>Initiative bonus: The character who announces their action first,
+risking being countered, gains a +25% or +5 bonus to their Reflex
+roll.</li>
+<li>Characters only roll Reflex when someone wants to act before them.
+This rule is crucial to allow for situations like a paladin blocking a
+barbarian's charge with their shield.</li>
+<li>Reflex Rolls are primarily based on the character's Dexterity stat
+and class. Some classes (e.g., Rogue) have bonuses for reacting.
+Conditional bonuses may apply when using a shield, certain spells,
+items, or techniques.</li>
+<li>Reflex Roll calculation: 1d20 + Reflex Save bonus (Dexterity
+modifier + class feats + class level bonus, etc.)</li>
+<li>Each turn consists of 3 time units (ticks), and characters have a
+pool of actions they can use within these ticks.</li>
+</ol>
+<p>In the next section, we'll cover the Basic Action Pool and more
+specific rules for combat actions.</p>
+<h2 id="basic-action-pool">Basic Action Pool</h2>
+<p>All human-like characters at level 1 start with the following basic
+action pool:</p>
+<ul>
+<li>Attacks per turn: 3</li>
+<li>Spells per turn: 2</li>
+<li>General actions per turn (such as drinking a potion, reloading a
+crossbow, picking up an object): 3</li>
+</ul>
+<p>As characters progress, their action pool increases. Generally, when
+the number of attacks per turn exceeds 3, the character can choose to
+make two attacks in a single time unit. For example, a character with
+four attacks per turn could distribute them as follows:</p>
+<p>Time 1: 1 attack Time 2: 1 attack Time 3: 2 attacks</p>
+<p>Totaling 4 attacks.</p>
+<p>Example of action distribution for a high-level character with 8
+attacks per turn, two spells per turn, and 2 potions: a) 3 attacks in
+the first tick, 3 in the second, and 2 in the last (total: 8 attacks) b)
+2 quickened spells (one in first tick, one in second) and 3 attacks in
+the last tick c) Drink a potion, attack 3 times, and cast a spell (using
+all 3 ticks)</p>
+<h3 id="progression-of-attacks-and-spells">Progression of Attacks and
+Spells</h3>
+<ul>
+<li>All characters gain an additional attack at Base Attack Bonus (BAB)
+values of 5, 10, 15, 20, etc.</li>
+<li>When the number of attacks exceeds 3, one chosen time unit can have
+two attacks.</li>
+<li>All characters gain an additional spell at level 10.</li>
+</ul>
+<h2 id="action-duration">Action Duration</h2>
+<ul>
+<li>Spells: Variable between 1, 2, or 3 time units</li>
+<li>Regular attack: 1 time unit</li>
+<li>Special attack (such as a grapple): &gt;1 time unit</li>
+<li>Drawing an item: 1 time unit</li>
+<li>Drinking a potion: 1 time unit</li>
+<li>Standard action spell: 2 ticks (first tick for channeling, second
+for release)</li>
+<li>Quickened spells: Typically 1 tick, but use more spell slots
+(mana)</li>
+<li>General actions (e.g., drinking a potion, jumping on a horse):
+Usually 1 tick</li>
+</ul>
+<h2 id="attacks">Attacks</h2>
+<p>[Note: The original document didn't provide specific information
+about attacks. I'll add a placeholder section here.]</p>
+<p>Attacks form a core part of combat actions. The number of attacks a
+character can perform increases with their level and Base Attack Bonus
+(BAB). Remember that when a character has more than 3 attacks per turn,
+they can perform two attacks in a single time unit.</p>
+<h2 id="magic-and-spells">Magic and Spells</h2>
+<p>[Note: The original document didn't provide detailed information
+about magic and spells. I'll add a placeholder section based on the
+general concepts.]</p>
+<p>Spellcasting is a flexible action in the Reactive Combat System. The
+number of spells a character can cast per turn increases as they level
+up, with all characters gaining an additional spell slot at level
+10.</p>
+<p>Spell casting time can vary between 1, 2, or 3 time units, generally
+correlating with the spell's power or complexity. This variability
+allows for strategic decision-making in combat, as players must balance
+the power of their spells with the time it takes to cast them.</p>
+<p>Spell casting time is spell-specific but can be modified with
+metamagic. Quickening a spell reduces casting time but increases the
+spell slot (mana) cost. For multi-turn spells:</p>
+<p>First tick: The character channels the spell (can move a bit,
+potentially to cover) Second tick: The spell is released</p>
+<p>Reflex saves are used to handle priority conflicts for spell
+release.</p>
+<h2 id="movement">Movement</h2>
+<p>All movement occurs simultaneously with other actions, at the
+character's speed. If a character has a speed of 20ft, they can move
+20ft while attacking. Their movement can be distributed as they choose
+during their actions.</p>
+<p>This system allows for dynamic, fluid combat scenarios where
+characters can reposition themselves while performing other actions,
+adding an extra layer of tactical depth to encounters.</p>
+<p>Difficult terrain rules still apply, affecting movement speed.
+Opportunity attacks have been removed from this system to streamline
+combat flow.</p>
+<hr />
+<p>This concludes the translation and reworking of your Reactive Combat
+System document. The system presents an interesting alternative to
+traditional turn-based combat, emphasizing reactivity and fluid action.
+It allows for more dynamic encounters that can better reflect the
+narrative flow of the game.</p>
+<p>Key features of this system include:</p>
+<ol type="1">
+<li>A flexible action economy based on time units</li>
+<li>Increased options for character actions as they level up</li>
+<li>A reactive system that allows for interrupts and quick
+responses</li>
+<li>Integrated movement that occurs alongside other actions</li>
+</ol>
+<p>This system could potentially lead to more engaging and narratively
+coherent combat scenarios, addressing the issues you identified with
+traditional systems. However, it may require some practice for players
+and GMs to become comfortable with its more fluid nature.</p>
+<h2 id="reactive-nature-in-practice">Reactive Nature in Practice</h2>
+<p>The system is most reactive for characters with high Reflex saves.
+Having the highest Reflex save is analogous to being in the dealer
+position in Texas Hold'em poker, allowing you to react to others'
+actions. Example scenario: Two mages are fighting. Mage A has a Reflex
+save of 1d20+15, Mage B has 1d20+16.</p>
+<p>Mage A announces casting Fireball on Mage B. Mage B declares casting
+Stone Wall for protection. Both roll Reflex saves: Mage A gets 20, Mage
+B gets 19. The GM rules that the Stone Wall comes up too late, and the
+Fireball deals damage to Mage B.</p>
+<h2 id="area-of-effect-abilities">Area of Effect Abilities</h2>
+<p>Area of effect spells function similarly to traditional systems. In
+situations where multiple characters are affected: Example: An NPC is
+casting Hold Monster Mass</p>
+<p>Three players attempt to react. If one succeeds in their reaction
+(determined by Reflex saves), they might interrupt and cancel the
+spell.</p>
+<h2 id="additional-notes">Additional notes</h2>
+<ol type="1">
+<li>To encourage roleplay and decision-making before determining action
+order, consider giving a small bonus (e.g., 10%) to characters who
+announce their actions first. This bonus can be calibrated by the
+GM.</li>
+</ol>
+<h1 id="examples">Examples</h1>
+<p>Here's an example combat scenario using the Reactive Combat
+System:</p>
+<h2 id="scenario-the-sorcerer-vs-the-archers">Scenario: The sorcerer vs
+the archers</h2>
+<h3 id="combat-setup">Combat Setup:</h3>
+<ul>
+<li><strong>Location</strong>: An open field with some scattered
+ruins.</li>
+<li><strong>Characters</strong>:
+<ul>
+<li><strong>Sorcerer</strong> - A seasoned magic user with high Reflex
+due to his experience and Dexterity.</li>
+<li><strong>Archer 1</strong> &amp; <strong>Archer 2</strong> - Skilled
+hunters but with average Reflex saves.</li>
+</ul></li>
+</ul>
+<h3 id="turn-breakdown">Turn Breakdown:</h3>
+<p><strong>Start of Combat:</strong></p>
+<ul>
+<li><p><strong>Time Unit 1:</strong></p>
+<ul>
+<li><strong>Sorcerer</strong>: Begins the turn, thinking of casting a
+protective spell but hasn't announced yet.</li>
+<li><strong>Archer 1 &amp; 2</strong>: Both decide to shoot at the
+sorcerer, not knowing his plan. They announce this action.</li>
+</ul></li>
+<li><p><strong>Reflex Rolls for Action Priority:</strong></p>
+<ul>
+<li>Sorcerer rolls for Reflex: 1d20 + 15 = 28 (including his high
+Dexterity and class bonuses)</li>
+<li>Archer 1 rolls for Reflex: 1d20 + 5 = 12</li>
+<li>Archer 2 rolls for Reflex: 1d20 + 5 = 17</li>
+</ul></li>
+<li><p><strong>Outcome</strong>: Sorcerer wins the Reflex roll, allowing
+him to react to the archers' announcement.</p></li>
+<li><p><strong>Sorcerer's Action</strong>: Announces casting
+<strong>Quickened Wall of Stone</strong> (which takes 1 time unit due to
+being quickened, but uses more mana).</p></li>
+<li><p><strong>Time Unit 1 Resolution:</strong></p>
+<ul>
+<li>Sorcerer's <strong>Wall of Stone</strong> rises from the ground just
+as the archers release their arrows. The wall forms a barrier, and the
+arrows thud harmlessly against the stone.</li>
+</ul></li>
+</ul>
+<p><strong>Time Unit 2:</strong></p>
+<ul>
+<li><p><strong>Sorcerer</strong>: Now safe behind his wall, decides to
+prepare a counterattack spell, perhaps a <strong>Fireball</strong> for
+the next tick.</p></li>
+<li><p><strong>Archer 1 &amp; 2</strong>: Realize their arrows were
+ineffective. They must decide whether to move to get a line of sight
+around the wall or wait for another opportunity.</p></li>
+<li><p><strong>Archer 1</strong>: Decides to move around the wall to get
+a shot, using his movement for this tick.</p></li>
+<li><p><strong>Archer 2</strong>: Chooses to ready an action to shoot if
+the sorcerer becomes visible.</p></li>
+</ul>
+<p><strong>Time Unit 3:</strong></p>
+<ul>
+<li><strong>Sorcerer</strong>: Begins channeling
+<strong>Fireball</strong> (standard 2-tick spell, this being the first
+tick for channeling).</li>
+<li><strong>Archer 1</strong>: Is still moving, trying to flank the
+sorcerer but hasn't got a clear shot yet.</li>
+<li><strong>Archer 2</strong>: Waiting, sees no clear shot as the
+sorcerer remains behind the wall.</li>
+</ul>
+<p><strong>End of Turn:</strong></p>
+<ul>
+<li>The turn ends with the sorcerer halfway through casting his
+<strong>Fireball</strong>, and the archers repositioning or waiting. The
+next turn will start with the sorcerer potentially unleashing his spell
+if he maintains concentration, and the archers trying to find an angle
+or react to whatever comes next.</li>
+</ul>
+<h2 id="scenario-the-heist">Scenario: The Heist</h2>
+<p><strong>Setting</strong>: A grand museum during a gala event. The
+objective is to steal a valuable artifact from a secure display case
+without triggering the alarm.</p>
+<p><strong>Characters</strong>:</p>
+<ul>
+<li><strong>Thief</strong> - A rogue with exceptional Dexterity and high
+Reflex save.</li>
+<li><strong>Guard</strong> - A vigilant watchman with moderate
+Reflex.</li>
+<li><strong>Mage</strong> - An accomplice who can cast minor illusions
+to distract.</li>
+</ul>
+<p><strong>Time Unit 1:</strong></p>
+<ul>
+<li><p><strong>Thief</strong>: Begins to approach the artifact,
+intending to use a tool to disable the security system (a complex action
+that takes 2 time units).</p></li>
+<li><p><strong>Guard</strong>: Starts his routine patrol, not yet aware
+of the thief's intentions.</p></li>
+<li><p><strong>Mage</strong>: Observes from a distance, ready to cast an
+illusion if needed.</p></li>
+</ul>
+<p><strong>Time Unit 2:</strong></p>
+<ul>
+<li><p><strong>Thief</strong>: Continues working on the security system.
+Announces intent to pick the lock this tick.</p></li>
+<li><p><strong>Guard</strong>: Notices something off about the display
+case's shadow (not the thief directly, but something unusual).</p></li>
+<li><p><strong>Reflex Rolls for Reaction:</strong></p>
+<ul>
+<li>Thief rolls for Reflex: 1d20 + 18 = 32 (high Dexterity, rogue class
+bonus)</li>
+<li>Guard rolls for Reflex: 1d20 + 7 = 15 (average awareness)</li>
+</ul></li>
+<li><p><strong>Outcome</strong>: Thief wins, allowing her to react to
+the guard's suspicion.</p></li>
+<li><p><strong>Thief's Action</strong>: Quickly uses a smoke pellet to
+create a minor distraction, pretending it's part of the exhibit's
+special effects for the gala.</p></li>
+<li><p><strong>Mage</strong>: Seeing the need, casts a <strong>Minor
+Illusion</strong> of a guest "accidentally" knocking over a champagne
+tower nearby, creating noise and visual distraction.</p></li>
+</ul>
+<p><strong>Time Unit 3:</strong></p>
+<ul>
+<li><p><strong>Guard</strong>: Distracted by the illusion and the smoke,
+moves towards the sound, thinking there's a clumsy guest or a minor
+mishap.</p></li>
+<li><p><strong>Thief</strong>: With the guard's attention diverted, she
+completes disabling the security (second tick of the action), now ready
+to open the case.</p></li>
+<li><p><strong>Mage</strong>: Maintains the illusion, moving it slightly
+to keep the guard's attention away from the thief.</p></li>
+</ul>
+<p><strong>End of Sequence:</strong></p>
+<ul>
+<li><p><strong>Thief</strong>: Opens the case and swaps the artifact
+with a fake, all within the same tick due to her high skill level
+allowing for multiple precise actions in one time unit.</p></li>
+<li><p><strong>Guard</strong>: Still investigating the distraction,
+unaware that the theft has occurred.</p></li>
+<li><p><strong>Mage</strong>: Begins to move away from the scene, ready
+to dispel the illusion once safely out of sight.</p></li>
+</ul>
+<h2 id="scenario-deflecting-the-assassins-strike">Scenario: Deflecting
+the Assassin's Strike</h2>
+<h3 id="setup">Setup:</h3>
+<ul>
+<li>Lord Valorian, an important NPC, is giving a public speech in the
+town square.</li>
+<li>The party has been hired as additional security due to recent
+threats.</li>
+<li>Paladin Thorne (level 10, Reflex Save +8, +50% bonus when using
+shield) is scanning the crowd from the side of the stage.</li>
+<li>An assassin (level 12, Reflex Save +14, Stealth +16) is hidden in
+the crowd.</li>
+</ul>
+<h3 id="the-scene-unfolds">The Scene Unfolds:</h3>
+<ol type="1">
+<li><p>GM: "Lord Valorian is midway through his speech about the new
+trade agreement. Thorne, you're scanning the crowd. Give me a Perception
+check."</p></li>
+<li><p>Thorne's player rolls Perception: 1d20+5 = 25 GM rolls Stealth
+for the assassin: 1d20+16 = 24</p></li>
+<li><p>GM: "As you scan the crowd, something catches your eye. You can't
+quite place it, but your instincts tell you something's amiss in the
+southeast corner of the square."</p></li>
+<li><p>Thorne's player: "I want to focus my attention on that area and
+ready my shield, preparing to protect Lord Valorian if needed."</p></li>
+<li><p>GM: "Alright. As you focus, you suddenly spot a hooded figure
+reaching into their cloak. A glint of metal catches your eye – they're
+drawing a throwing knife! The assassin is about to throw. This will be a
+contest of Reflex saves. Remember, you get a 50% bonus for using your
+shield."</p></li>
+<li><p>GM rolls for the assassin: 1d20+14 = 27 Thorne's player rolls:
+1d20+9 = 19, with 50% shield bonus becomes 28</p></li>
+<li><p>GM: "The assassin's arm blurs as they launch the knife with
+incredible speed. But Thorne, your heightened awareness and your shield
+at the ready allow you to react just as quickly. What do you
+do?"</p></li>
+<li><p>Thorne's player: "I'll leap in front of Lord Valorian, raising my
+shield to intercept the knife!"</p></li>
+<li><p>GM: "With a resounding clang, the knife strikes your shield dead
+center, the impact reverberating through your arm. Lord Valorian
+flinches at the sudden movement and noise but remains unharmed. The
+crowd erupts into chaos, screams filling the air. Despite the chaos,
+your eyes lock onto the assassin. He is trying to slip away through the
+panicking crowd, about 50 feet from you now."</p></li>
+<li><p>Thorne's player: "I'll shout to my companions to protect Lord
+Valorian, then I'm going to pursue the assassin!"</p></li>
+<li><p>GM: "Alright! As your companions rush to secure Lord Valorian,
+you leap off the stage, shield still in hand, in hot pursuit of the
+assassin.</p></li>
+</ol>
+<h3 id="analysis">Analysis:</h3>
+<p>This revised scenario demonstrates several key aspects of the
+Reactive Combat system:</p>
+<ol type="1">
+<li>Use of skill checks (Perception vs. Stealth) to set up the combat
+situation.</li>
+<li>Proper application of Reflex saves to determine action order and
+success.</li>
+<li>Incorporation of equipment bonuses (shield providing 50% bonus to
+Reflex save).</li>
+<li>The system's ability to handle split-second, high-stakes
+actions.</li>
+<li>Seamless transition from a single reactive moment to a broader
+combat/chase scenario.</li>
+<li>The potential for the situation to evolve based on the outcome of
+key rolls.</li>
+</ol>
+<h2 id="scenario-the-duelists-gambit">Scenario: The Duelist's
+Gambit</h2>
+<h3 id="setup-1">Setup:</h3>
+<ul>
+<li>Paladin Reynard (level 12, Reflex Save +13)</li>
+<li>Evil Sorcerer Malthus (level 12, Reflex Save +11)</li>
+<li>Setting: A crowded tavern in the city's underbelly</li>
+</ul>
+<h3 id="the-scene-unfolds-1">The Scene Unfolds:</h3>
+<h4 id="tick-1">Tick #1</h4>
+<p>GM: "The tavern is bustling with the usual evening crowd when
+suddenly, Reynard, you spot your sworn enemy, the evil sorcerer Malthus,
+sitting at a corner table. Malthus, you also notice Reynard at the same
+moment. What do you both do?"</p>
+<p>Reynard's player: "I'm going to leap towards Malthus, sword drawn,
+ready to strike him down with everything I've got."</p>
+<p>Malthus's player: "Knowing I can't win in a direct fight, I'm going
+to flee. I reveal my rod of quicken and announce that I'm casting
+Quickened Dimension Door to escape."</p>
+<p>GM: "Alright, Reynard's charge and two sword attacks will take 1
+tick. Malthus, your Quickened Dimension Door also takes 1 tick. Let's
+roll for Reflex to see who acts first."</p>
+<p>Reynard rolls: 1d20+13 = 25 Malthus rolls: 1d20+11 = 23</p>
+<p>GM: "Reynard, your paladin charges the sorcerer with incredible
+speed. You notice a rod glowing in Malthus's hand, likely for
+spellcasting. You strike fast and true, and the deep wound you inflict
+on the sorcerer's torso disrupts his spellcasting. Malthus, your spell
+fails as pain sears through your body. Reynard, you ready your second
+sword hit, but this time, Malthus's luck allows him to avoid a fatal
+injury, though he's still badly wounded."</p>
+<p>Malthus's player: "I grimace in pain, clutching my wound. That was
+too close!"</p>
+<p>Reynard's player: "I press my advantage, ready to end this once and
+for all."</p>
+<h3 id="tick-2">Tick #2</h3>
+<p>GM: "Alright, what are your actions for this tick?"</p>
+<p>Reynard's player: "I'm attacking Malthus again, determined to finish
+him off this time."</p>
+<p>Malthus's player: "I'm going to try Quickened Dimension Door again.
+This time, I'm confident I can pull it off. Malthus says, 'You are
+strong, just like your father was. But you have a long way to go. The
+next time we meet, it won't be so easy.' Then I activate my rod of
+quicken and cast Quickened Dimension Door."</p>
+<p>GM: "Excellent roleplaying! Let's roll for Reflex again."</p>
+<p>Malthus rolls: 1d20+11 = 30 (a critical roll!) Reynard rolls: 1d20+13
+= 28</p>
+<p>GM: "Reynard, you swing your sword with all your might, but you feel
+nothing but the ale-scented air of the tavern. Your foe has escaped.
+Malthus, in a flash of arcane energy, you disappear just as Reynard's
+blade whistles through the space where you stood a split second ago. You
+reappear several blocks away, wounded but alive."</p>
+<p>Reynard's player: "I let out a roar of frustration, my sword
+embedding itself in the tavern's wooden floor where Malthus stood."</p>
+<p>Malthus's player: "I collapse against a wall in the alley where I've
+teleported, breathing heavily. That was far too close, but I've survived
+to fight another day."</p>
+<h3 id="analysis-1">Analysis:</h3>
+<p>This scenario demonstrates several key aspects of the Reactive Combat
+system:</p>
+<ol type="1">
+<li>Tick-by-tick resolution of actions, allowing for dynamic, fast-paced
+combat.</li>
+<li>Use of Reflex saves to determine the order and success of actions
+within each tick.</li>
+<li>Integration of magical items and spells (rod of quicken, Dimension
+Door) into the combat system.</li>
+<li>The impact of successful actions on subsequent ticks (Malthus's
+failed spell in Tick #1 due to Reynard's attack).</li>
+<li>How critical rolls (Malthus's 30 in Tick #2) can turn the tide of
+battle.</li>
+<li>The system's support for dramatic, cinematic moments and character
+roleplaying.</li>
+</ol>
+<p>The Reactive Combat system allows for a tense, back-and-forth
+encounter where each action feels crucial and impactful. It seamlessly
+integrates both martial and magical actions, creating a dynamic and
+unpredictable combat experience.</p>
+</body>
+</html>
