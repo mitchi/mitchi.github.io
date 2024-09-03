@@ -173,10 +173,17 @@ Difference Between Roleplay Mode and Combat Mode</a></li>
 <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
 <li><a href="#general-concepts" id="toc-general-concepts">General
 Concepts</a></li>
-<li><a href="#basic-action-pool" id="toc-basic-action-pool">Basic Action
-Pool</a></li>
-<li><a href="#advanced-action-pool"
-id="toc-advanced-action-pool">Advanced action pool</a>
+<li><a href="#action-economy" id="toc-action-economy">Action
+Economy</a></li>
+<li><a href="#basic-concepts" id="toc-basic-concepts">Basic
+Concepts</a></li>
+<li><a href="#action-tiers" id="toc-action-tiers">Action Tiers</a></li>
+<li><a href="#action-board" id="toc-action-board">Action Board</a></li>
+<li><a href="#example-1-tier2-character"
+id="toc-example-1-tier2-character">Example 1: TIER2 Character</a></li>
+<li><a href="#example-2-tier3-character"
+id="toc-example-2-tier3-character">Example 2: TIER3 Character</a></li>
+<li><a href="#key-rules" id="toc-key-rules">Key Rules</a>
 <ul>
 <li><a href="#progression-of-attacks-and-spells"
 id="toc-progression-of-attacks-and-spells">Progression of Attacks and
@@ -323,7 +330,7 @@ pool of actions they can use within these ticks.</li>
 </ol>
 <p>In the next section, we'll cover the Basic Action Pool and more
 specific rules for combat actions.</p>
-<h2 id="basic-action-pool">Basic Action Pool</h2>
+<h2 id="action-economy">Action Economy</h2>
 <p>All human-like characters at level 1 start with the following basic
 action pool:</p>
 <ul>
@@ -332,42 +339,170 @@ action pool:</p>
 <li>General actions per turn (such as drinking a potion, reloading a
 crossbow, picking up an object): 3</li>
 </ul>
-<p>As characters progress, their action pool increases. Generally, when
-the number of attacks per turn exceeds 3, the character can choose to
-make two attacks in a single time unit. For example, a character with
-four attacks per turn could distribute them as follows:</p>
-<p>Time 1: 1 attack Time 2: 1 attack Time 3: 2 attacks</p>
-<p>Totaling 4 attacks.</p>
-<p>Example of action distribution for a high-level character with 8
-attacks per turn, two spells per turn, and 2 potions: a) 3 attacks in
-the first tick, 3 in the second, and 2 in the last (total: 8 attacks) b)
-2 quickened spells (one in first tick, one in second) and 3 attacks in
-the last tick c) Drink a potion, attack 3 times, and cast a spell (using
-all 3 ticks)</p>
-<h2 id="advanced-action-pool">Advanced action pool</h2>
-<p>The action system is designed to scale, creating captivating combats
-between high level characters.</p>
-<p>When the action pool looks like this, with 3 actions per category, it
-means that in a given tick, only one category of action can be
-played.</p>
-<p>Attacks per turn: 3 Spells per turn: 3 General actions per turn:
-3</p>
-<p>However, when the action pool looks like this:</p>
-<p>Attacks per turn: 4 Spells per turn: 3 General actions per turn:
-4</p>
-<p>Attack #4 and general action #4 become additional actions that can be
-placed in any tick. A player can now do:</p>
-<p>2 attacks in a tick 1 attack + 1 general action in a tick 2 general
-actions in a tick 1 attack, 1 spell in a tick 1 general action, 1 spell
-in a tick</p>
-<p>And when the action pool looks like this: Attack #9 becomes an action
-that can be played in a tick that already contains 2 actions.</p>
-<p>Attacks per turn: 9 Spells per turn: 3 General actions per turn:
-3</p>
-<p>The maximum number of actions per tick now becomes 3.</p>
-<p>A player can now do: 3 attacks in a tick 1 spell, 2 attacks 1 general
-action, 2 attacks</p>
-<p>And so on.</p>
+<h2 id="basic-concepts">Basic Concepts</h2>
+<ul>
+<li>Each turn consists of three time units called "ticks"</li>
+<li>Actions are divided into three categories: Attack, Spell, and
+General</li>
+<li>Characters have a certain number of actions per turn in each
+category</li>
+<li>The action system scales with character level, allowing for more
+complex turns</li>
+</ul>
+<h2 id="action-tiers">Action Tiers</h2>
+<p>Actions in each category are classified into tiers based on the
+number of actions available per turn:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tier</th>
+<th>Actions Required</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TIER1</td>
+<td>1-3</td>
+</tr>
+<tr class="even">
+<td>TIER2</td>
+<td>4-6</td>
+</tr>
+<tr class="odd">
+<td>TIER3</td>
+<td>7-9</td>
+</tr>
+<tr class="even">
+<td>TIER4</td>
+<td>10+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="action-board">Action Board</h2>
+<ul>
+<li>Each tick has an action board based on the highest tier available to
+the character</li>
+<li>The board determines how many actions can be taken in that tick</li>
+<li>Lower tier actions can fill higher tier slots, but not vice
+versa</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Highest Tier</th>
+<th>Action Board</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TIER1</td>
+<td>TIER1</td>
+</tr>
+<tr class="even">
+<td>TIER2</td>
+<td>TIER2-TIER1</td>
+</tr>
+<tr class="odd">
+<td>TIER3</td>
+<td>TIER3-TIER2-TIER1</td>
+</tr>
+<tr class="even">
+<td>TIER4</td>
+<td>TIER4-TIER3-TIER2-TIER1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-1-tier2-character">Example 1: TIER2 Character</h2>
+<p>Action economy per turn:</p>
+<ul>
+<li>ATTACK: 4 (TIER2)</li>
+<li>SPELL: 2 (TIER1)</li>
+<li>GENERAL: 3 (TIER1)</li>
+</ul>
+<p>This is how a character with a tier2 action economy can play his
+actions during a turn:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tick</th>
+<th>Action Board</th>
+<th>Actions Taken</th>
+<th>Remaining Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>TIER2-TIER1</td>
+<td>ATTACK-GENERAL</td>
+<td>A:3, S:2, G:2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>TIER2-TIER1</td>
+<td>ATTACK-GENERAL</td>
+<td>A:2, S:2, G:1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>TIER2-TIER1</td>
+<td>ATTACK-ATTACK</td>
+<td>A:0, S:2, G:1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-2-tier3-character">Example 2: TIER3 Character</h2>
+<p>Action economy per turn:</p>
+<ul>
+<li>ATTACK: 7 (TIER3)</li>
+<li>SPELL: 5 (TIER2)</li>
+<li>GENERAL: 4 (TIER2)</li>
+</ul>
+<p>This is how a character with a tier3 action economy can play his
+actions during a turn:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tick</th>
+<th>Action Board</th>
+<th>Actions Taken</th>
+<th>Remaining Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>TIER3-TIER2-TIER1</td>
+<td>ATTACK-ATTACK-ATTACK</td>
+<td>A:4, S:5, G:4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>TIER3-TIER2-TIER1</td>
+<td>ATTACK-ATTACK-ATTACK</td>
+<td>A:1, S:5, G:4</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>TIER3-TIER2-TIER1</td>
+<td>ATTACK-SPELL-GENERAL</td>
+<td>A:0, S:4, G:3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-rules">Key Rules</h2>
+<ol type="1">
+<li>A character's tier in each category is determined at the start of
+the turn and doesn't change during the turn.</li>
+<li>The highest tier among all categories determines the action board
+layout for each tick.</li>
+<li>Higher tier actions can be used in lower tier slots, but not vice
+versa.</li>
+<li>Unused actions do not carry over to the next turn.</li>
+</ol>
+<p>This system allows for strategic decision-making each tick while
+scaling effectively for higher-level characters, creating dynamic and
+unpredictable combat scenarios.</p>
 <h3 id="progression-of-attacks-and-spells">Progression of Attacks and
 Spells</h3>
 <ul>
