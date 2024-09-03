@@ -174,7 +174,9 @@ Difference Between Roleplay Mode and Combat Mode</a></li>
 <li><a href="#general-concepts" id="toc-general-concepts">General
 Concepts</a></li>
 <li><a href="#basic-action-pool" id="toc-basic-action-pool">Basic Action
-Pool</a>
+Pool</a></li>
+<li><a href="#advanced-action-pool"
+id="toc-advanced-action-pool">Advanced action pool</a>
 <ul>
 <li><a href="#progression-of-attacks-and-spells"
 id="toc-progression-of-attacks-and-spells">Progression of Attacks and
@@ -205,8 +207,6 @@ the archers</a>
 <li><a href="#turn-breakdown" id="toc-turn-breakdown">Turn
 Breakdown:</a></li>
 </ul></li>
-<li><a href="#scenario-the-heist" id="toc-scenario-the-heist">Scenario:
-The Heist</a></li>
 <li><a href="#scenario-deflecting-the-assassins-strike"
 id="toc-scenario-deflecting-the-assassins-strike">Scenario: Deflecting
 the Assassin's Strike</a>
@@ -226,6 +226,7 @@ Scene Unfolds:</a></li>
 </ul></li>
 </ul>
 </nav>
+<p><a href="../index.html">Back to Wiki</a></p>
 <h1 id="reactive-combat">Reactive Combat</h1>
 <h2 id="motivation-behind-reactive-combat">Motivation Behind Reactive
 Combat</h2>
@@ -325,6 +326,30 @@ the first tick, 3 in the second, and 2 in the last (total: 8 attacks) b)
 2 quickened spells (one in first tick, one in second) and 3 attacks in
 the last tick c) Drink a potion, attack 3 times, and cast a spell (using
 all 3 ticks)</p>
+<h2 id="advanced-action-pool">Advanced action pool</h2>
+<p>The action system is designed to scale, creating captivating combats
+between high level characters.</p>
+<p>When the action pool looks like this, with 3 actions per category, it
+means that in a given tick, only one category of action can be
+played.</p>
+<p>Attacks per turn: 3 Spells per turn: 3 General actions per turn:
+3</p>
+<p>However, when the action pool looks like this:</p>
+<p>Attacks per turn: 4 Spells per turn: 3 General actions per turn:
+4</p>
+<p>Attack #4 and general action #4 become additional actions that can be
+placed in any tick. A player can now do:</p>
+<p>2 attacks in a tick 1 attack + 1 general action in a tick 2 general
+actions in a tick 1 attack, 1 spell in a tick 1 general action, 1 spell
+in a tick</p>
+<p>And when the action pool looks like this: Attack #9 becomes an action
+that can be played in a tick that already contains 2 actions.</p>
+<p>Attacks per turn: 9 Spells per turn: 3 General actions per turn:
+3</p>
+<p>The maximum number of actions per tick now becomes 3.</p>
+<p>A player can now do: 3 attacks in a tick 1 spell, 2 attacks 1 general
+action, 2 attacks</p>
+<p>And so on.</p>
 <h3 id="progression-of-attacks-and-spells">Progression of Attacks and
 Spells</h3>
 <ul>
@@ -336,10 +361,12 @@ two attacks.</li>
 </ul>
 <h2 id="action-duration">Action Duration</h2>
 <ul>
-<li>Spells: Variable between 1, 2, or 3 time units</li>
+<li>Spells: Variable between 1, 2, or 3+ time units</li>
 <li>Regular attack: 1 time unit</li>
-<li>Special attack (such as a grapple): &gt;1 time unit</li>
+<li>Special attack (such as a grapple): 1+ time unit</li>
 <li>Drawing an item: 1 time unit</li>
+<li>Drawing an item from a super accessible location: 0 time unit (GM
+imposes a limit)</li>
 <li>Drinking a potion: 1 time unit</li>
 <li>Standard action spell: 2 ticks (first tick for channeling, second
 for release)</li>
@@ -349,8 +376,6 @@ for release)</li>
 Usually 1 tick</li>
 </ul>
 <h2 id="attacks">Attacks</h2>
-<p>[Note: The original document didn't provide specific information
-about attacks. I'll add a placeholder section here.]</p>
 <p>Attacks form a core part of combat actions. The number of attacks a
 character can perform increases with their level and Base Attack Bonus
 (BAB). Remember that when a character has more than 3 attacks per turn,
@@ -425,14 +450,17 @@ hunters but with average Reflex saves.</li>
 </ul>
 <h3 id="turn-breakdown">Turn Breakdown:</h3>
 <p><strong>Start of Combat:</strong></p>
+<p><strong>Time Unit 1:</strong></p>
 <ul>
-<li><p><strong>Time Unit 1:</strong></p>
-<ul>
-<li><strong>Sorcerer</strong>: Begins the turn, thinking of casting a
-protective spell but hasn't announced yet.</li>
 <li><strong>Archer 1 &amp; 2</strong>: Both decide to shoot at the
-sorcerer, not knowing his plan. They announce this action.</li>
-</ul></li>
+sorcerer. They announce this action.</li>
+<li><strong>Sorcerer</strong>: Announces that he's casting Quickened
+Wall of Stone (1 tick when quickened but consumes a lot more spell
+slots) to attempt to protect himself from the arrows.</li>
+</ul>
+<p>The GM asks for a Reflex showdown between the archers and the
+sorcerer to determine which action has priority.</p>
+<ul>
 <li><p><strong>Reflex Rolls for Action Priority:</strong></p>
 <ul>
 <li>Sorcerer rolls for Reflex: 1d20 + 15 = 28 (including his high
@@ -441,10 +469,7 @@ Dexterity and class bonuses)</li>
 <li>Archer 2 rolls for Reflex: 1d20 + 5 = 17</li>
 </ul></li>
 <li><p><strong>Outcome</strong>: Sorcerer wins the Reflex roll, allowing
-him to react to the archers' announcement.</p></li>
-<li><p><strong>Sorcerer's Action</strong>: Announces casting
-<strong>Quickened Wall of Stone</strong> (which takes 1 time unit due to
-being quickened, but uses more mana).</p></li>
+him to perform his chosen action with priority.</p></li>
 <li><p><strong>Time Unit 1 Resolution:</strong></p>
 <ul>
 <li>Sorcerer's <strong>Wall of Stone</strong> rises from the ground just
@@ -455,99 +480,28 @@ arrows thud harmlessly against the stone.</li>
 <p><strong>Time Unit 2:</strong></p>
 <ul>
 <li><p><strong>Sorcerer</strong>: Now safe behind his wall, decides to
-prepare a counterattack spell, perhaps a <strong>Fireball</strong> for
-the next tick.</p></li>
+prepare a counterattack spell, <strong>Fireball</strong> for the this
+tick. He starts the incantation.</p></li>
 <li><p><strong>Archer 1 &amp; 2</strong>: Realize their arrows were
 ineffective. They must decide whether to move to get a line of sight
-around the wall or wait for another opportunity.</p></li>
-<li><p><strong>Archer 1</strong>: Decides to move around the wall to get
-a shot, using his movement for this tick.</p></li>
-<li><p><strong>Archer 2</strong>: Chooses to ready an action to shoot if
-the sorcerer becomes visible.</p></li>
+around the wall or wait for another opportunity. Both archers decide to
+move around the wall to get a shot.</p></li>
 </ul>
 <p><strong>Time Unit 3:</strong></p>
-<ul>
-<li><strong>Sorcerer</strong>: Begins channeling
-<strong>Fireball</strong> (standard 2-tick spell, this being the first
-tick for channeling).</li>
-<li><strong>Archer 1</strong>: Is still moving, trying to flank the
-sorcerer but hasn't got a clear shot yet.</li>
-<li><strong>Archer 2</strong>: Waiting, sees no clear shot as the
-sorcerer remains behind the wall.</li>
-</ul>
-<p><strong>End of Turn:</strong></p>
-<ul>
-<li>The turn ends with the sorcerer halfway through casting his
-<strong>Fireball</strong>, and the archers repositioning or waiting. The
-next turn will start with the sorcerer potentially unleashing his spell
-if he maintains concentration, and the archers trying to find an angle
-or react to whatever comes next.</li>
-</ul>
-<h2 id="scenario-the-heist">Scenario: The Heist</h2>
-<p><strong>Setting</strong>: A grand museum during a gala event. The
-objective is to steal a valuable artifact from a secure display case
-without triggering the alarm.</p>
-<p><strong>Characters</strong>:</p>
-<ul>
-<li><strong>Thief</strong> - A rogue with exceptional Dexterity and high
-Reflex save.</li>
-<li><strong>Guard</strong> - A vigilant watchman with moderate
-Reflex.</li>
-<li><strong>Mage</strong> - An accomplice who can cast minor illusions
-to distract.</li>
-</ul>
-<p><strong>Time Unit 1:</strong></p>
-<ul>
-<li><p><strong>Thief</strong>: Begins to approach the artifact,
-intending to use a tool to disable the security system (a complex action
-that takes 2 time units).</p></li>
-<li><p><strong>Guard</strong>: Starts his routine patrol, not yet aware
-of the thief's intentions.</p></li>
-<li><p><strong>Mage</strong>: Observes from a distance, ready to cast an
-illusion if needed.</p></li>
-</ul>
-<p><strong>Time Unit 2:</strong></p>
-<ul>
-<li><p><strong>Thief</strong>: Continues working on the security system.
-Announces intent to pick the lock this tick.</p></li>
-<li><p><strong>Guard</strong>: Notices something off about the display
-case's shadow (not the thief directly, but something unusual).</p></li>
-<li><p><strong>Reflex Rolls for Reaction:</strong></p>
-<ul>
-<li>Thief rolls for Reflex: 1d20 + 18 = 32 (high Dexterity, rogue class
-bonus)</li>
-<li>Guard rolls for Reflex: 1d20 + 7 = 15 (average awareness)</li>
-</ul></li>
-<li><p><strong>Outcome</strong>: Thief wins, allowing her to react to
-the guard's suspicion.</p></li>
-<li><p><strong>Thief's Action</strong>: Quickly uses a smoke pellet to
-create a minor distraction, pretending it's part of the exhibit's
-special effects for the gala.</p></li>
-<li><p><strong>Mage</strong>: Seeing the need, casts a <strong>Minor
-Illusion</strong> of a guest "accidentally" knocking over a champagne
-tower nearby, creating noise and visual distraction.</p></li>
-</ul>
-<p><strong>Time Unit 3:</strong></p>
-<ul>
-<li><p><strong>Guard</strong>: Distracted by the illusion and the smoke,
-moves towards the sound, thinking there's a clumsy guest or a minor
-mishap.</p></li>
-<li><p><strong>Thief</strong>: With the guard's attention diverted, she
-completes disabling the security (second tick of the action), now ready
-to open the case.</p></li>
-<li><p><strong>Mage</strong>: Maintains the illusion, moving it slightly
-to keep the guard's attention away from the thief.</p></li>
-</ul>
-<p><strong>End of Sequence:</strong></p>
-<ul>
-<li><p><strong>Thief</strong>: Opens the case and swaps the artifact
-with a fake, all within the same tick due to her high skill level
-allowing for multiple precise actions in one time unit.</p></li>
-<li><p><strong>Guard</strong>: Still investigating the distraction,
-unaware that the theft has occurred.</p></li>
-<li><p><strong>Mage</strong>: Begins to move away from the scene, ready
-to dispel the illusion once safely out of sight.</p></li>
-</ul>
+<p>The archers now see the sorcerer, but they are surprised to see that
+he's almost done channeling a Fireball spell. They know the dangers of
+this spell. They quickly announce that they fire four arrows at the
+sorcerer.</p>
+<p>The sorcerer announces that he will continue channeling Fireball and
+when it's ready, attack the archers with it.</p>
+<p>The GM asks for a Reflex showdown. The sorcerer obtains the highest
+reflex score. He chooses to unleash his fireball at the last second,
+after the arrows have been loosed, and the powerful ball of flames
+reduces the arrows to dust and injures the archers, who quickly
+flee.</p>
+<p><em>Note</em>: The sorcerer could have chosen to hit the archers with
+the Fireball before they loosed their arrows. This kind of detail is up
+to the GM to arbiter.</p>
 <h2 id="scenario-deflecting-the-assassins-strike">Scenario: Deflecting
 the Assassin's Strike</h2>
 <p><img src="deflecting-strike.webp"
@@ -576,22 +530,20 @@ southeast corner of the square."</p>
 my shield, preparing to protect Lord Valorian if needed."</p>
 <p>GM: "Alright. As you focus, you suddenly spot a hooded figure
 reaching into their cloak. A glint of metal catches your eye – they're
-drawing a throwing knife! The assassin is about to throw. This will be a
-contest of Reflex saves. Remember, you get a 50% bonus for using your
-shield."</p>
+drawing a throwing knife! He throws the knife at Lord Valorian!</p>
+<p>Thorne's player: "I'll leap in front of Lord Valorian, raising my
+shield to intercept the knife!"</p>
 <p>GM rolls for the assassin: 1d20+14 = 27<br />
 Thorne's player rolls: 1d20+9 = 19, with 50% shield bonus becomes 28</p>
 <p>GM: "The assassin's arm blurs as they launch the knife with
 incredible speed. But Thorne, your heightened awareness and your shield
-at the ready allow you to react just as quickly. What do you do?"</p>
-<p>Thorne's player: "I'll leap in front of Lord Valorian, raising my
-shield to intercept the knife!"</p>
-<p>GM: "With a resounding clang, the knife strikes your shield dead
-center, the impact reverberating through your arm. Lord Valorian
-flinches at the sudden movement and noise but remains unharmed. The
-crowd erupts into chaos, screams filling the air. Despite the chaos,
-your eyes lock onto the assassin. He is trying to slip away through the
-panicking crowd, about 50 feet from you now."</p>
+at the ready allow you to react just as quickly. With a resounding
+clang, the knife strikes your shield dead center, the impact
+reverberating through your arm. Lord Valorian flinches at the sudden
+movement and noise but remains unharmed. The crowd erupts into chaos,
+screams filling the air. Despite the chaos, your eyes lock onto the
+assassin. He is trying to slip away through the panicking crowd, about
+50 feet from you now."</p>
 <p>Thorne's player: "I'll shout to my companions to protect Lord
 Valorian, then I'm going to pursue the assassin!"</p>
 <p>GM: "Alright! As your companions rush to secure Lord Valorian, you
@@ -615,8 +567,8 @@ moment. What do you both do?"</p>
 <p>Reynard's player: "I'm going to leap towards Malthus, sword drawn,
 ready to strike him down with everything I've got."</p>
 <p>Malthus's player: "Knowing I can't win in a direct fight, I'm going
-to flee. I reveal my rod of quicken and announce that I'm casting
-Quickened Dimension Door to escape."</p>
+to flee. I draw my Rod of Quicken and cast Quickened Dimension Door to
+escape."</p>
 <p>GM: "Alright, Reynard's charge and two sword attacks will take 1
 tick. Malthus, your Quickened Dimension Door also takes 1 tick. Let's
 roll for Reflex to see who acts first."</p>
@@ -638,10 +590,10 @@ for all."</p>
 <p>Reynard's player: "I'm attacking Malthus again, determined to finish
 him off this time."</p>
 <p>Malthus's player: "I'm going to try Quickened Dimension Door again.
-This time, I'm confident I can pull it off. Malthus says, 'You are
-strong, just like your father was. But you have a long way to go. The
-next time we meet, it won't be so easy.' Then I activate my rod of
-quicken and cast Quickened Dimension Door."</p>
+This time, I'm confident I can pull it off. My character Malthus says,
+'You are strong, just like your father was. But you have a long way to
+go. The next time we meet, it won't be so easy.' Then I activate my Rod
+of Quicken and cast Quickened Dimension Door."</p>
 <p>GM: "Excellent roleplaying! Let's roll for Reflex again."</p>
 <p>Malthus rolls: 1d20+11 = 30 (a critical roll!)<br />
 Reynard rolls: 1d20+13 = 28</p>
