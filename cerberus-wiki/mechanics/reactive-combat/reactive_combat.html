@@ -183,6 +183,8 @@ Concepts</a></li>
 id="toc-example-1-tier2-character">Example 1: tier2 Character</a></li>
 <li><a href="#example-2-tier3-character"
 id="toc-example-2-tier3-character">Example 2: tier3 Character</a></li>
+<li><a href="#example-3-tier4-character"
+id="toc-example-3-tier4-character">Example 3: tier4 Character</a></li>
 <li><a href="#key-rules" id="toc-key-rules">Key Rules</a>
 <ul>
 <li><a href="#progression-of-attacks-and-spells"
@@ -285,8 +287,9 @@ Mode, where players perform actions and engage in dialogue at various
 paces, from seconds to years in game time.</p>
 <p>However, we need a turn-based mode for situations where characters
 compete with other creatures, such as during combat. We'll call this
-Combat Mode. Here, each turn represents a specific amount of time,
-typically 6 to 10 seconds.</p>
+Combat Mode. Here, each turn represents a variable amount of time
+because if we give a turn a fixed number of seconds, in the late game
+turns start to make absolutely no sense.</p>
 <h2 id="introduction">Introduction</h2>
 <p>The reactive combat system is built on three key concepts:</p>
 <ol type="1">
@@ -302,7 +305,7 @@ precedence?</li>
 </ol>
 <h2 id="general-concepts">General Concepts</h2>
 <ol type="1">
-<li>A combat turn consists of 3 time units. Time is the smallest unit of
+<li>A combat turn consists of 3 time units. Tick is the smallest unit of
 measure within a turn.</li>
 <li>Characters regain used actions in the next turn.</li>
 <li>Actions lasting longer than 1 time unit can extend into the next
@@ -314,11 +317,12 @@ higher roll wins. If tied, reroll.</li>
 any event. It's improved by dexterity, experience, items, enchantments,
 and various feats.</li>
 <li>Initiative bonus: The character who announces their action first,
-risking being countered, gains a +25% or +5 bonus to their Reflex
-roll.</li>
-<li>Characters only roll Reflex when someone wants to act before them.
-This rule is crucial to allow for situations like a paladin blocking a
-barbarian's charge with their shield.</li>
+risking being countered, can gain a +25% or +5 bonus to their Reflex
+roll (GM's prerogative).</li>
+<li>Characters only roll Reflex when there is a priority situation that
+needs to be resolved. Rolling Reflexes for priority should only happen
+to decide the priority of two actions. Rolling should not be done prior
+to the actions being declared.</li>
 <li>Reflex Rolls are primarily based on the character's Dexterity stat
 and class. Some classes (e.g., Rogue) have bonuses for reacting.
 Conditional bonuses may apply when using a shield, certain spells,
@@ -328,8 +332,8 @@ modifier + class feats + class level bonus, etc.)</li>
 <li>Each turn consists of 3 time units (ticks), and characters have a
 pool of actions they can use within these ticks.</li>
 </ol>
-<p>In the next section, we'll cover the Basic Action Pool and more
-specific rules for combat actions.</p>
+<p>In the next section, we'll cover the Action Economy and more specific
+rules for combat actions.</p>
 <h2 id="action-economy">Action Economy</h2>
 <p>All human-like characters at level 1 start with the following basic
 action pool:</p>
@@ -341,7 +345,6 @@ crossbow, picking up an object): 3</li>
 </ul>
 <h2 id="basic-concepts">Basic Concepts</h2>
 <ul>
-<li>Each turn consists of three time units called "ticks"</li>
 <li>Actions are divided into three categories: Attack, Spell, and
 General</li>
 <li>Characters have a certain number of actions per turn in each
@@ -490,6 +493,44 @@ actions during a turn:</p>
 </tr>
 </tbody>
 </table>
+<h2 id="example-3-tier4-character">Example 3: tier4 Character</h2>
+<p>Action economy per turn:</p>
+<ul>
+<li>ATTACK: 10 (Tier4)</li>
+<li>SPELL: 8 (Tier3)</li>
+<li>GENERAL: 6 (Tier2)</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Tick</th>
+<th>Action Board</th>
+<th>Actions Taken</th>
+<th>Remaining Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>T4-T3-T2-T1</td>
+<td>Attack-Attack-Spell-General</td>
+<td>A:8, S:7, G:5</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>T4-T3-T2-T1</td>
+<td>Attack-Spell-Spell-Attack</td>
+<td>A:6, S:5, G:5</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>T4-T3-T2-T1</td>
+<td>Attack-Attack-Attack-General</td>
+<td>A:3, S:5, G:4</td>
+</tr>
+</tbody>
+</table>
+<p>Final remaining actions: A:3, S:5, G:4</p>
 <h2 id="key-rules">Key Rules</h2>
 <ol type="1">
 <li>A character's tier in each category is determined at the start of
@@ -510,7 +551,8 @@ Spells</h3>
 values of 5, 10, 15, 20, etc.</li>
 <li>When the number of attacks exceeds 3, one chosen time unit can have
 two attacks.</li>
-<li>All characters gain an additional spell at level 10.</li>
+<li>All characters gain an additional spell at level 10 and level
+20</li>
 </ul>
 <h2 id="action-duration">Action Duration</h2>
 <ul>
@@ -772,9 +814,10 @@ Cerberus Mage Council. Actions per turn:</p>
 <ul>
 <li>4 spells</li>
 <li>6 melee attacks</li>
-<li>4 general actions</li>
+<li>4 general actions Daviau has a Tier2 Action Economy</li>
 </ul></li>
-<li><p>Plutarch: Level 25 Paladin of Archon.</p></li>
+<li><p>Plutarch: Level 25 Paladin of Archon. Actions per turn:
+Unknown</p></li>
 </ol>
 <h2 id="the-duel-begins">The Duel Begins</h2>
 <p>Daviau: "I appreciate you accepting my invitation for this duel,
@@ -866,7 +909,68 @@ Destruction).</li>
 <li>Daviau Morin: 4 spells, 1 general action (total 5)</li>
 <li>Plutarch: 1 attack, 2 spells (total 3)</li>
 </ul>
-<p>This combat example illustrates how having a surplus of actions is
-highly advantageous in battles.</p>
+<p>Daviau's Action Board for the first turn:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tick</th>
+<th>Action Board</th>
+<th>Actions Taken</th>
+<th>Remaining Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>T2-T1</td>
+<td>Spell (Ice Elemental) - Spell (Dimension Door)</td>
+<td>S:2, A:6, G:4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>T2-T1</td>
+<td>Spell (Ice Elemental cont.) - General (Drink Potion)</td>
+<td>S:1, A:6, G:3</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>T2-T1</td>
+<td>Spell (Ice Elemental completion)</td>
+<td>S:0, A:6, G:3</td>
+</tr>
+</tbody>
+</table>
+<p>Plutarch's Action Board for the first turn. Plutarch does not
+maximize his action board.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tick</th>
+<th>Action Board</th>
+<th>Actions Taken</th>
+<th>Remaining Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>T2-T1</td>
+<td>Attack (Sword strike), Attack (Sword strike)</td>
+<td>S:4, A:5, G:4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>T2-T1</td>
+<td>Spell (Light of Destruction start)</td>
+<td>S:3, A:5, G:4</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>T2-T1</td>
+<td>Spell (Light of Destruction completion)</td>
+<td>S:2, A:5, G:4</td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>
