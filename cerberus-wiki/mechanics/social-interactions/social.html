@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>social</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#social-interactions-in-tabletop-rpgs"
+id="toc-social-interactions-in-tabletop-rpgs">Social Interactions in
+Tabletop RPGs</a>
+<ul>
+<li><a href="#motivation" id="toc-motivation">Motivation</a></li>
+<li><a href="#adjusting-social-interactions"
+id="toc-adjusting-social-interactions">Adjusting Social Interactions</a>
+<ul>
+<li><a href="#basic-principles" id="toc-basic-principles">Basic
+Principles</a></li>
+<li><a href="#adjustments-based-on-attributes"
+id="toc-adjustments-based-on-attributes">Adjustments Based on
+Attributes</a></li>
+<li><a href="#adjustments-based-on-background"
+id="toc-adjustments-based-on-background">Adjustments Based on
+Background</a></li>
+</ul></li>
+<li><a href="#adjustment-techniques"
+id="toc-adjustment-techniques">Adjustment Techniques</a></li>
+<li><a href="#tips-for-successful-implementation"
+id="toc-tips-for-successful-implementation">Tips for Successful
+Implementation</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="social-interactions-in-tabletop-rpgs">Social Interactions in
+Tabletop RPGs</h1>
+<h2 id="motivation">Motivation</h2>
+<p>This game adopts a different approach to handling social situations
+in terms of game mechanics. We believe that the emphasis should be on
+roleplaying above all, and that social skills (such as Diplomacy or
+Disguise Self) can be detrimental to roleplaying. This is because
+players might be tempted to do minimal roleplaying and then rely on
+skill checks. Consequently, social skills no longer exist in this RPG;
+they have been completely removed.</p>
+<p>However, this doesn't mean that all characters are equal in terms of
+their advantages in social situations. To understand this, let's
+consider a few examples:</p>
+<ul>
+<li><p>If a player is roleplaying a barbarian with a high strength
+score, and this barbarian is conversing with creatures that would be
+impressed by strength, the GM should adjust their dialogues accordingly
+to make the barbarian feel that they can be intimidating.</p></li>
+<li><p>If a player is roleplaying a sorcerer with a high charisma score,
+the GM should also adjust their dialogues to reflect the social ease
+that the sorcerer possesses due to their magnetic charisma.</p></li>
+</ul>
+<h2 id="adjusting-social-interactions">Adjusting Social
+Interactions</h2>
+<h3 id="basic-principles">Basic Principles</h3>
+<ol type="1">
+<li>Prioritize roleplaying over mechanics</li>
+<li>Adapt NPC reactions to character attributes</li>
+<li>Be consistent and fair in your adjustments</li>
+<li>Encourage player creativity and interpretation</li>
+</ol>
+<h3 id="adjustments-based-on-attributes">Adjustments Based on
+Attributes</h3>
+<h4 id="strength">Strength</h4>
+<ul>
+<li><strong>High</strong>: NPCs intimidated or impressed, respectful
+tone, requests for demonstrations of strength</li>
+<li><strong>Low</strong>: NPCs potentially condescending,
+underestimation of character's capabilities</li>
+</ul>
+<h4 id="dexterity">Dexterity</h4>
+<ul>
+<li><strong>High</strong>: Admiration for grace, invitations to
+demonstrate agility, trust for delicate tasks</li>
+<li><strong>Low</strong>: Concern in situations requiring manual
+precision</li>
+</ul>
+<h4 id="constitution">Constitution</h4>
+<ul>
+<li><strong>High</strong>: Respect for endurance, invitations to
+physical challenges, trust for demanding tasks</li>
+<li><strong>Low</strong>: Concern for character's health, offers of
+frequent breaks</li>
+</ul>
+<h4 id="intelligence">Intelligence</h4>
+<ul>
+<li><strong>High</strong>: Use of more complex vocabulary, requests for
+opinions on complicated subjects, quick recognition of skills</li>
+<li><strong>Low</strong>: Simplified explanations, increased patience,
+possibility of intellectual underestimation</li>
+</ul>
+<h4 id="wisdom">Wisdom</h4>
+<ul>
+<li><strong>High</strong>: Requests for advice, trust for moral
+judgments, recognition of great insight</li>
+<li><strong>Low</strong>: Distrust for important decisions, more
+frequent advice-giving, detailed explanation of situations</li>
+</ul>
+<h4 id="charisma">Charisma</h4>
+<ul>
+<li><strong>High</strong>: Immediate attention, friendly and open tone,
+propensity to trust quickly</li>
+<li><strong>Low</strong>: Need for more effort to convince, initial
+reactions more neutral or wary</li>
+</ul>
+<h3 id="adjustments-based-on-background">Adjustments Based on
+Background</h3>
+<h4 id="social-origin">Social Origin</h4>
+<ul>
+<li><strong>Noble</strong>: Respect for titles, expectations of refined
+behavior, easier access to circles of power</li>
+<li><strong>Humble</strong>: Connection with common people, potential
+mistrust from elites</li>
+</ul>
+<h4 id="profession">Profession</h4>
+<ul>
+<li><strong>Military</strong>: Respect from other warriors, direct
+language, appreciation of strategies</li>
+<li><strong>Religious</strong>: Reverence from the faithful, skepticism
+from non-believers, expectations of wisdom</li>
+<li><strong>Criminal</strong>: Connections in the underworld, mistrust
+from authorities, recognition of street codes</li>
+</ul>
+<h4 id="culture">Culture</h4>
+<ul>
+<li><strong>Foreign</strong>: Curiosity or mistrust depending on
+context, cultural misunderstandings, opportunities for mutual
+learning</li>
+<li><strong>Local</strong>: Knowledge of customs, easy connections,
+expectations of loyalty to the community</li>
+</ul>
+<h2 id="adjustment-techniques">Adjustment Techniques</h2>
+<ol type="1">
+<li><strong>Tone Modification</strong>: Adjust NPCs' tone of voice
+(respectful, wary, friendly, etc.)</li>
+<li><strong>Vocabulary Choice</strong>: Adapt the complexity and style
+of language used</li>
+<li><strong>Body Language</strong>: Describe NPCs' physical reactions
+(posture, gestures, facial expressions)</li>
+<li><strong>Confidence Level</strong>: Adjust the quantity and
+sensitivity of shared information</li>
+<li><strong>Offers and Requests</strong>: Modify opportunities offered
+or services requested based on the character</li>
+</ol>
+<h2 id="tips-for-successful-implementation">Tips for Successful
+Implementation</h2>
+<p>To successfully implement this system, it's crucial to prepare
+flexible NPCs capable of reacting in varied ways to different character
+attributes. Maintain consistency in your adjustments throughout the
+campaign to reinforce immersion and credibility in the game world.
+Clearly communicate to players the effects of their attributes on social
+interactions, thus encouraging them to leverage their strengths in
+roleplaying.</p>
+<p>Remain open to creative interpretations from players, as this can
+lead to memorable and unexpected gameplay moments. Finally, seek to
+balance advantages between characters to maintain engagement from all
+players, ensuring that everyone has the opportunity to shine in
+different social situations.</p>
+<p>Remember, the goal is to create a rich, immersive roleplaying
+experience where character attributes and backgrounds meaningfully
+impact social interactions, without relying on traditional social skill
+checks. This approach encourages players to fully embody their
+characters and make decisions based on their unique traits and
+experiences.</p>
+</body>
+</html>
