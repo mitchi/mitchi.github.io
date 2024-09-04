@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>lazywizard</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#lazy-wizard-epic-class"
+id="toc-lazy-wizard-epic-class">Lazy Wizard (Epic Class)</a>
+<ul>
+<li><a href="#class-features" id="toc-class-features">Class Features</a>
+<ul>
+<li><a href="#arcane-talent-ex" id="toc-arcane-talent-ex">Arcane Talent
+(Ex)</a></li>
+<li><a href="#arcane-combining-ex" id="toc-arcane-combining-ex">Arcane
+Combining (Ex)</a></li>
+<li><a href="#spell-absorption-ex" id="toc-spell-absorption-ex">Spell
+Absorption (Ex)</a></li>
+<li><a href="#stupid-in-other-areas-ex"
+id="toc-stupid-in-other-areas-ex">Stupid in Other Areas (Ex)</a></li>
+<li><a href="#true-talent-ex" id="toc-true-talent-ex">True Talent
+(Ex)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="lazy-wizard-epic-class">Lazy Wizard (Epic Class)</h1>
+<p><img src="lazywizard.jpg" alt="lazy wizard" /></p>
+<p>The lazy wizard is a free spirit. Lazy, innovative, creative, and
+non-conventional.</p>
+<ul>
+<li><strong>BAB</strong>: 3/4</li>
+<li><strong>Good Saves</strong>: Will, Reflex</li>
+<li><strong>Bad Save</strong>: Fortitude</li>
+<li><strong>Skill Ranks</strong>: 4 per level</li>
+<li><strong>Hit Dice</strong>: d8</li>
+</ul>
+<p><strong>Class Skills</strong>: Appraise (Int), Bluff (Cha), Craft
+(Int), Fly (Dex), Intimidate (Cha), Knowledge (arcana) (Int), Profession
+(Wis), Spellcraft (Int), Use Magic Device (Cha), and Diplomacy
+(Cha).</p>
+<h2 id="class-features">Class Features</h2>
+<p>The Lazy Wizard has the same class features as the Wizard (school,
+arcane bond, etc.). He can also learn the same discoveries.</p>
+<h3 id="arcane-talent-ex">Arcane Talent (Ex)</h3>
+<ul>
+<li>Cast any spell spontaneously after using it only once</li>
+<li>Add Charisma modifier to caster level</li>
+<li>Gain bonus spells for all levels equal to Charisma modifier</li>
+<li>Apply any metamagic feat spontaneously without increased casting
+time (uses higher level spell slot)</li>
+<li>Maintain any spell for a number of rounds equal to Charisma modifier
+without concentration</li>
+<li>Add Intelligence + Charisma modifiers as flat damage bonus to all
+spells</li>
+</ul>
+<h3 id="arcane-combining-ex">Arcane Combining (Ex)</h3>
+<p>At level 10, combine two spells spontaneously to create a metaspell.
+Choose two spells of different levels. Use this ability (Charisma
+modifier ÷ 3) times per day.</p>
+<h3 id="spell-absorption-ex">Spell Absorption (Ex)</h3>
+<p>At level 10, absorb spell power from objects and incoming spells. As
+a ready action, absorb an incoming spell by beating it in an opposed
+caster level check (1d20 + CL &gt; incoming spell's CL). Release
+absorbed spells later using your caster level and Intelligence for CL
+and DC.</p>
+<h3 id="stupid-in-other-areas-ex">Stupid in Other Areas (Ex)</h3>
+<ul>
+<li>Take a penalty to Craft and Spellcraft checks equal to level</li>
+<li>Take a penalty to any Profession check</li>
+</ul>
+<h3 id="true-talent-ex">True Talent (Ex)</h3>
+<p>At level 20:</p>
+<ul>
+<li>Add twice Charisma modifier to caster level</li>
+<li>Arcane Combining can mix spells of the same level</li>
+<li>Use Arcane Combining Charisma modifier times per day</li>
+</ul>
+</body>
+</html>
