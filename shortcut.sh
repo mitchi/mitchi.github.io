@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Change to your repository directory
-cd /path/to/your/repository
+cd /Users/edmondlachance/github/edmond-website/mitchi.github.io
 
 # Add all changes
 git add .
