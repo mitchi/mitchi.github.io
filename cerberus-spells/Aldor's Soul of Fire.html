@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Aldor's Soul of Fire</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<style>
+            /* Dark mode styles */
+            html.dark-mode,
+            body.dark-mode {
+                background-color: #1a1a1a;
+                color: #f1f1f1;
+            }
+
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+
+            /* Toggle button styles */
+            #dark-mode-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: #f1f1f1;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            body.dark-mode #dark-mode-toggle {
+                background-color: #4a4a4a;
+                color: #f1f1f1;
+            }
+
+            /* Dark mode styles */
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+        </style>
+</head>
+<body>
+<button id="dark-mode-toggle">Toggle Dark Mode</button>
+<p><a href="index.html">Spell Index</a></p>
+<hr />
+<h1 id="aldors-soul-of-fire">Aldor's Soul of Fire</h1>
+<p><em>An elemental body of fire with few weaknesses</em></p>
+<p><strong>Transmutation</strong><br />
+<strong>Damage type</strong>: Fire<br />
+<strong>Action</strong>: Standard<br />
+<strong>Components</strong>: V,S,M<br />
+<strong>Duration</strong>: minutes/level<br />
+<strong>Spell Lists</strong>: Arcane<br />
+<strong>Levels</strong>: 9<br />
+<strong>Target</strong>: Self</p>
+<p>Aldor's Soul of Fire is a powerful 9th-level transmutation spell
+designed by Aldor the Infernal. This enchantment transforms the Cerberus
+sorcerer's body into a mighty fire elemental for a short duration. The
+spell's potency surpasses typical spells of its level due to Aldor the
+Infernal's use of true words of power, accumulated through his unique
+connection to the fire realm as one of the elemental lords.</p>
+<h2 id="effects">Effects</h2>
+<p>Once transformed, the sorcerer gains numerous advantages:</p>
+<ol type="1">
+<li><p><strong>Supersonic Speed</strong></p>
+<ul>
+<li>Initial speed: 1,000 ft per caster level per tick</li>
+<li>Increases by 500 ft per caster level each tick</li>
+<li>Maximum speed: 10,000 ft per caster level per tick</li>
+</ul></li>
+<li><p><strong>Incineration Aura</strong></p>
+<ul>
+<li>Damage: Half the damage of the caster's highest-level Fireball spell
+per tick</li>
+<li>Radius: 5 ft per caster level</li>
+<li>Melts surroundings, evaporates water, reduces enemies to ash</li>
+</ul></li>
+<li><p><strong>Enhanced Spellcasting</strong></p>
+<ul>
+<li>All Fireball spells automatically cast with Quicken Spell</li>
+<li>+50% bonus to all Reflex saves for casting Fireball</li>
+</ul></li>
+<li><p><strong>Immunities</strong></p>
+<ul>
+<li>Immune to fire, poison, acid, and effects targeting Fortitude
+saves</li>
+</ul></li>
+<li><p><strong>Extra Spell</strong></p>
+<ul>
+<li>Gain one additional spell per turn</li>
+</ul></li>
+<li><p><strong>Hit Point Boost</strong></p></li>
+</ol>
+<ul>
+<li>+100 HP per caster level</li>
+</ul>
+<ol start="7" type="1">
+<li><p><strong>Shapeshifting</strong></p>
+<ul>
+<li>Can temporarily revert to human form as a free action</li>
+<li>Resuming elemental form takes 1 tick casting time</li>
+</ul></li>
+<li><p><strong>Combat Prowess</strong></p>
+<ul>
+<li>Base Attack Bonus (BAB) increases by 1 per caster level</li>
+<li>Unarmed and weapon attacks gain fire damage equal to 1/5 of Fireball
+damage</li>
+</ul></li>
+</ol>
+<script>
+            const darkModeToggle = document.getElementById("dark-mode-toggle");
+            const body = document.body;
+            const html = document.documentElement;
+
+            darkModeToggle.addEventListener("click", () => {
+                html.classList.toggle("dark-mode");
+                body.classList.toggle("dark-mode");
+                const isDarkMode = html.classList.contains("dark-mode");
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            });
+
+            // On load, apply saved theme
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                html.classList.add("dark-mode");
+                body.classList.add("dark-mode");
+            }
+        </script>
+</body>
+</html>
