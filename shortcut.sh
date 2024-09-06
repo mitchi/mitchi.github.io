@@ -12,5 +12,7 @@ git commit -m "Auto-commit $(date)"
 # Push to the default remote branch
 git push
 
+# Le shortcut est option shift g
+
 # Notify the user
 osascript -e 'display notification "Changes committed and pushed" with title "Git Auto-Push"'
