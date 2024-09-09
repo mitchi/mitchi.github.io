@@ -286,12 +286,13 @@ enchantment DC to the attack's DC:</p>
 </tbody>
 </table>
 <h3 id="12-physical-damage-reduction">1.2 Physical Damage Reduction</h3>
-<p>For physical attacks, compare the armor rating to the attack
-rating:</p>
+<p>For physical attacks, compare the armor class to the typical attack
+roll. The typical attack roll represents the average number one gets
+when using a d20. To calculate it, do 10 + attack roll bonus.</p>
 <table>
 <thead>
 <tr class="header">
-<th>Armor Rating vs Attack Rating</th>
+<th>Armor Class vs Typical Attack Roll</th>
 <th>Damage Reduction</th>
 </tr>
 </thead>
@@ -449,14 +450,17 @@ a physical combat scenario.</p>
 <li>Equipment: Longsword, Shield</li>
 <li>Reflex: 19</li>
 <li>Shield Attack Bonus: +4</li>
+<li>Typical attack roll: 22</li>
 </ul></li>
 <li>Bandit A: Tier 1 action economy (3 attacks per turn)
 <ul>
 <li>Reflex: 17</li>
+<li>Typical attack roll: 18</li>
 </ul></li>
 <li>Bandit B: Tier 1 action economy (3 attacks per turn)
 <ul>
 <li>Reflex: 18</li>
+<li>Typical attack roll: 18</li>
 </ul></li>
 </ul>
 <h4 id="turn-1">Turn 1</h4>
@@ -609,7 +613,7 @@ different armor and shield types.</p>
 turn)</p>
 <ul>
 <li>Equipment: Mithril Light Armor, Mithril Shield, Longbow</li>
-<li>Armor Rating: 25</li>
+<li>Armor Class: 25</li>
 <li>Shield DC: 28</li>
 <li>Reflex: 35</li>
 <li>Shield Bonus to Reflex: +15%</li>
@@ -619,14 +623,14 @@ turn)</p>
 turn)</p>
 <ul>
 <li>Equipment: Heavy Steel Armor, Greataxe</li>
-<li>Armor Rating: 30</li>
+<li>Armor Class: 30</li>
 <li>Melee Attack Bonus: +6</li>
 </ul></li>
 <li><p>Zulgha (Orc Shaman): Tier 2 action economy (4 spells per
 turn)</p>
 <ul>
 <li>Equipment: Medium Hide Armor, Staff</li>
-<li>Armor Rating: 20</li>
+<li>Armor Class: 20</li>
 <li>Spell DC: 30</li>
 <li>Lightning Bolt Damage: 200 per cast</li>
 </ul></li>
@@ -643,7 +647,8 @@ to defend against any incoming attacks."</li>
 </ul></li>
 <li><p><strong>Reflex Order</strong></p>
 <ul>
-<li>Aelindra: 35 + 15% (shield bonus) = 40.25</li>
+<li>Aelindra: 35 + 15% (shield bonus) = 40.25 with shield, 35 for
+everything else.</li>
 <li>Zulgha: 28</li>
 <li>Groknak: 25</li>
 </ul></li>
@@ -651,8 +656,8 @@ to defend against any incoming attacks."</li>
 <p>a. Aelindra's Arrow Attack:</p>
 <ul>
 <li>Attack Roll: 18 + 8 (bonus) = 26</li>
-<li>Groknak's Armor Rating: 30</li>
-<li>Damage Reduction: 60% (Armor Rating higher by 10-19%)</li>
+<li>Groknak's Armor Class: 30</li>
+<li>Damage Reduction: 60% (Armor Class higher by 10-19%)</li>
 <li>Base Damage: 40</li>
 <li>Final Damage: 40 * (1 - 0.60) = 16 damage to Groknak</li>
 </ul>
@@ -667,14 +672,13 @@ to defend against any incoming attacks."</li>
 <li>This falls in the "Within 10%" category</li>
 <li>Damage Reduction: 90%</li>
 </ul></li>
-<li>Base Damage: 200</li>
-<li>Final Damage: 200 * (1 - 0.90) = 20 lightning damage to
+<li>Base Damage: 100</li>
+<li>Final Damage: 100 * (1 - 0.90) = 10 lightning damage to
 Aelindra</li>
 </ul>
 <p>c. Groknak's Greataxe Attack:</p>
 <ul>
 <li>Attack Roll: 19 + 6 (bonus) = 25</li>
-<li>Aelindra's Mithril Light Armor Rating: 25</li>
 <li>Aelindra's Shield Defense:
 <ul>
 <li>Shield Attack Roll: 22 + 4 (Mithril bonus) = 26</li>
@@ -703,10 +707,10 @@ arrows)</li>
 <ul>
 <li>Attack Roll 1: 15 + 8 = 23</li>
 <li>Attack Roll 2: 20 + 8 = 28</li>
-<li>Zulgha's Armor Rating: 20</li>
-<li>Damage Reduction: 40% (Armor Rating lower by 1-10% for first
+<li>Zulgha's Armor Class: 20</li>
+<li>Damage Reduction: 40% (Armor Class lower by 1-10% for first
 attack)</li>
-<li>Damage Reduction: 30% (Armor Rating lower by 11-20% for second
+<li>Damage Reduction: 30% (Armor Class lower by 11-20% for second
 attack)</li>
 <li>Base Damage per Arrow: 35</li>
 <li>Final Damage: (35 * 0.6) + (35 * 0.7) = 21 + 24.5 = 45.5 total
@@ -731,12 +735,12 @@ Aelindra</li>
 <ul>
 <li>Attack Roll 1: 14 + 6 = 20</li>
 <li>Attack Roll 2: 22 + 6 = 28</li>
-<li>Aelindra's Mithril Light Armor Rating: 25</li>
+<li>Aelindra's Mithril Light Armor Class: 25</li>
 <li>Results:
 <ul>
 <li>First attack misses (20 &lt; 25)</li>
 <li>Second attack hits (28 &gt; 25)</li>
-<li>Damage Reduction: 50% (Armor Rating equal to Attack Rating)</li>
+<li>Damage Reduction: 50% (Armor Class equal to Attack Class)</li>
 <li>Base Damage: 70</li>
 <li>Final Damage: 70 * (1 - 0.50) = 35 slashing damage to Aelindra</li>
 </ul></li>
@@ -750,16 +754,5 @@ damage</li>
 <li>Groknak (Orc Warrior): Took 16 piercing damage (Tick 1)</li>
 <li>Zulgha (Orc Shaman): Took 45.5 piercing damage (Tick 2)</li>
 </ul>
-<p>This revised example now correctly showcases:</p>
-<ol type="1">
-<li>How choosing to attack with both actions (firing two arrows) leaves
-a character vulnerable to incoming attacks.</li>
-<li>The difference in damage reduction between using a shield (as in
-Tick 1) and relying solely on armor (as in Tick 2).</li>
-<li>How Mithril Light Armor provides some protection against magical
-attacks, but is significantly less effective than a shield.</li>
-<li>The risk-reward decision of forgoing defense for increased
-offense.</li>
-</ol>
 </body>
 </html>
