@@ -161,13 +161,603 @@
 <body>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#armor-system" id="toc-armor-system">Armor system</a></li>
+<li><a href="#armor-and-shield-mechanics"
+id="toc-armor-and-shield-mechanics">Armor and Shield Mechanics</a>
+<ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#1-armor-system" id="toc-1-armor-system">1. Armor
+System</a>
+<ul>
+<li><a href="#11-magical-damage-reduction"
+id="toc-11-magical-damage-reduction">1.1 Magical Damage
+Reduction</a></li>
+<li><a href="#12-physical-damage-reduction"
+id="toc-12-physical-damage-reduction">1.2 Physical Damage
+Reduction</a></li>
+<li><a href="#13-armor-types-and-materials"
+id="toc-13-armor-types-and-materials">1.3 Armor Types and
+Materials</a></li>
+</ul></li>
+<li><a href="#2-shield-system" id="toc-2-shield-system">2. Shield
+System</a>
+<ul>
+<li><a href="#21-general-shield-rules"
+id="toc-21-general-shield-rules">2.1 General Shield Rules</a></li>
+<li><a href="#22-magical-attack-defense"
+id="toc-22-magical-attack-defense">2.2 Magical Attack Defense</a></li>
+<li><a href="#23-physical-attack-defense"
+id="toc-23-physical-attack-defense">2.3 Physical Attack Defense</a></li>
+<li><a href="#24-special-shield-materials"
+id="toc-24-special-shield-materials">2.4 Special Shield
+Materials</a></li>
+</ul></li>
+<li><a href="#3-interaction-with-other-systems"
+id="toc-3-interaction-with-other-systems">3. Interaction with Other
+Systems</a></li>
+<li><a href="#4-combat-examples" id="toc-4-combat-examples">4. Combat
+Examples</a>
+<ul>
+<li><a href="#41-knight-vs-bandits" id="toc-41-knight-vs-bandits">4.1
+Knight vs Bandits</a></li>
+<li><a href="#42-paladin-vs-sorcerer"
+id="toc-42-paladin-vs-sorcerer">4.2 Paladin vs Sorcerer</a></li>
+<li><a href="#43-mixed-combat-elven-ranger-vs-orc-shaman-and-warrior"
+id="toc-43-mixed-combat-elven-ranger-vs-orc-shaman-and-warrior">4.3
+Mixed Combat: Elven Ranger vs Orc Shaman and Warrior</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
-<p><a href="http://edmondlachance.com/cerberus-wiki">Back to
-wiki</a></p>
-<h1 id="armor-system">Armor system</h1>
-<p><a href="http://edmondlachance.com/cerberus-wiki">Back to
-wiki</a></p>
+<h1 id="armor-and-shield-mechanics">Armor and Shield Mechanics</h1>
+<h2 id="introduction">Introduction</h2>
+<p>In role-playing games, determining how characters and creatures
+absorb damage is crucial for creating an engaging and balanced combat
+system. Traditional systems like D&amp;D and Pathfinder use a fixed
+Armor Class (AC) value, including variants like touch AC and flat-footed
+AC. Attacks that meet or exceed these values succeed, while those below
+fail entirely.</p>
+<p>However, this approach has two main drawbacks:</p>
+<ol type="1">
+<li>It lacks a damage reduction mechanic, resulting in an all-or-nothing
+outcome for attacks.</li>
+<li>It doesn't adequately support magical damage reduction, limiting
+narrative possibilities such as a knight dramatically shielding an
+orphan from a dragon's fiery breath.</li>
+</ol>
+<p>To address these issues, we propose a new system that allows armor to
+provide both complete protection and graduated damage reduction for both
+physical and magical attacks.</p>
+<h2 id="1-armor-system">1. Armor System</h2>
+<h3 id="11-magical-damage-reduction">1.1 Magical Damage Reduction</h3>
+<p>For magical attacks (e.g., fireballs), compare the armor's
+enchantment DC to the attack's DC:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Armor DC vs Attack DC</th>
+<th>Damage Reduction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Higher by 50%+</td>
+<td>100%</td>
+</tr>
+<tr class="even">
+<td>Higher by 40-49%</td>
+<td>90%</td>
+</tr>
+<tr class="odd">
+<td>Higher by 30-39%</td>
+<td>80%</td>
+</tr>
+<tr class="even">
+<td>Higher by 20-29%</td>
+<td>70%</td>
+</tr>
+<tr class="odd">
+<td>Higher by 10-19%</td>
+<td>60%</td>
+</tr>
+<tr class="even">
+<td>Equal or higher by 0-9%</td>
+<td>50%</td>
+</tr>
+<tr class="odd">
+<td>Lower by 1-10%</td>
+<td>40%</td>
+</tr>
+<tr class="even">
+<td>Lower by 11-20%</td>
+<td>30%</td>
+</tr>
+<tr class="odd">
+<td>Lower by 21-30%</td>
+<td>20%</td>
+</tr>
+<tr class="even">
+<td>Lower by 31-40%</td>
+<td>10%</td>
+</tr>
+<tr class="odd">
+<td>Lower by 41%+</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-physical-damage-reduction">1.2 Physical Damage Reduction</h3>
+<p>For physical attacks, compare the armor rating to the attack
+rating:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Armor Rating vs Attack Rating</th>
+<th>Damage Reduction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Higher by 50%+</td>
+<td>100%</td>
+</tr>
+<tr class="even">
+<td>Higher by 40-49%</td>
+<td>90%</td>
+</tr>
+<tr class="odd">
+<td>Higher by 30-39%</td>
+<td>80%</td>
+</tr>
+<tr class="even">
+<td>Higher by 20-29%</td>
+<td>70%</td>
+</tr>
+<tr class="odd">
+<td>Higher by 10-19%</td>
+<td>60%</td>
+</tr>
+<tr class="even">
+<td>Equal or higher by 0-9%</td>
+<td>50%</td>
+</tr>
+<tr class="odd">
+<td>Lower by 1-10%</td>
+<td>40%</td>
+</tr>
+<tr class="even">
+<td>Lower by 11-20%</td>
+<td>30%</td>
+</tr>
+<tr class="odd">
+<td>Lower by 21-30%</td>
+<td>20%</td>
+</tr>
+<tr class="even">
+<td>Lower by 31-40%</td>
+<td>10%</td>
+</tr>
+<tr class="odd">
+<td>Lower by 41%+</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-armor-types-and-materials">1.3 Armor Types and Materials</h3>
+<h4 id="armor-size">Armor Size</h4>
+<ul>
+<li>Heavy Armor: No change to damage reduction</li>
+<li>Medium Armor: All damage reduction values -5%</li>
+<li>Light Armor: All damage reduction values -10%</li>
+</ul>
+<h4 id="special-materials">Special Materials</h4>
+<ul>
+<li>Adamantine Armor:
+<ul>
+<li>Magical: Increase damage reduction of all categories by 10%</li>
+<li>Physical: Increase damage reduction of all categories by 10%</li>
+</ul></li>
+<li>Mithril Armor:
+<ul>
+<li>Magical: Increase damage reduction of all categories by 5%, increase
+Reflex save by 10%</li>
+<li>Physical: Increase damage reduction of all categories by 5%,
+increase Reflex save by 10%</li>
+</ul></li>
+</ul>
+<h2 id="2-shield-system">2. Shield System</h2>
+<h3 id="21-general-shield-rules">2.1 General Shield Rules</h3>
+<ul>
+<li>Can defend against up to twice the number of physical attacks as the
+wielder's number of attacks</li>
+<li>Requires a successful Reflex save to use</li>
+<li>Provides both a Reflex save bonus and an attack roll bonus</li>
+</ul>
+<h3 id="22-magical-attack-defense">2.2 Magical Attack Defense</h3>
+<p>For magical shields defending against magical or supernatural
+attacks:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Shield DC vs Spell DC</th>
+<th>Damage Reduction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Higher or equal</td>
+<td>100%</td>
+</tr>
+<tr class="even">
+<td>Within 10%</td>
+<td>90%</td>
+</tr>
+<tr class="odd">
+<td>Within 20%</td>
+<td>80%</td>
+</tr>
+<tr class="even">
+<td>Within 30%</td>
+<td>70%</td>
+</tr>
+<tr class="odd">
+<td>Within 40%</td>
+<td>60%</td>
+</tr>
+<tr class="even">
+<td>Within 50%</td>
+<td>50%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-physical-attack-defense">2.3 Physical Attack Defense</h3>
+<ul>
+<li>Shield's attack roll must equal or beat the incoming attack roll for
+a complete block</li>
+<li>Can defend against twice the number of physical attacks as the
+wielder's number of attacks</li>
+</ul>
+<h3 id="24-special-shield-materials">2.4 Special Shield Materials</h3>
+<ul>
+<li>Adamantine Shield:
+<ul>
+<li>Magical: +10% damage reduction to every category</li>
+<li>Physical: +10% bonus to the attack roll</li>
+</ul></li>
+<li>Mithril Shield:
+<ul>
+<li>Magical and Physical: +10% Reflex Save, +5% damage reduction, +1
+attack blocked</li>
+<li>Physical: Additional +10% bonus attack roll</li>
+</ul></li>
+</ul>
+<h2 id="3-interaction-with-other-systems">3. Interaction with Other
+Systems</h2>
+<ul>
+<li>Barriers: If a personal barrier surrounds the skin, the shield
+reduces damage first. For larger barriers (e.g., 5ft radius), the
+barrier absorbs damage before the shield.</li>
+</ul>
+<h2 id="4-combat-examples">4. Combat Examples</h2>
+<h3 id="41-knight-vs-bandits">4.1 Knight vs Bandits</h3>
+<p>This example demonstrates how the armor and shield mechanics work in
+a physical combat scenario.</p>
+<h4 id="characters">Characters</h4>
+<ul>
+<li>Knight Tristan: Tier 2 action economy (5 attacks per turn)
+<ul>
+<li>Equipment: Longsword, Shield</li>
+<li>Reflex: 19</li>
+<li>Shield Attack Bonus: +4</li>
+</ul></li>
+<li>Bandit A: Tier 1 action economy (3 attacks per turn)
+<ul>
+<li>Reflex: 17</li>
+</ul></li>
+<li>Bandit B: Tier 1 action economy (3 attacks per turn)
+<ul>
+<li>Reflex: 18</li>
+</ul></li>
+</ul>
+<h4 id="turn-1">Turn 1</h4>
+<h5 id="tick-1">Tick 1</h5>
+<ol type="1">
+<li><p><strong>Declarations</strong></p>
+<ul>
+<li>Bandits A &amp; B: "We rush Knight Tristan."</li>
+<li>Knight Tristan: "I'll try to block their attacks and counterattack
+Bandit A."</li>
+</ul></li>
+<li><p><strong>Reflex Order</strong></p>
+<ul>
+<li>Tristan (19) &gt; Bandit B (18) &gt; Bandit A (17)</li>
+</ul></li>
+<li><p><strong>Actions</strong></p>
+<ul>
+<li>Tristan's Shield Defense:
+<ul>
+<li>Shield Attack Roll: 18 + 4 (bonus) = 22</li>
+</ul></li>
+<li>Bandit Attacks:
+<ul>
+<li>Bandit A: 20</li>
+<li>Bandit B: 19</li>
+</ul></li>
+<li>Results:
+<ul>
+<li>Tristan blocks both attacks (22 &gt; 20 and 19)</li>
+</ul></li>
+<li>Tristan's Counterattack:
+<ul>
+<li>Attack Roll: 17 (hits Bandit A)</li>
+<li>Damage: 10</li>
+</ul></li>
+</ul></li>
+</ol>
+<h5 id="tick-2">Tick 2</h5>
+<ol type="1">
+<li><p><strong>Reflex Order</strong></p>
+<ul>
+<li>Bandit A (21) &gt; Bandit B (20) &gt; Tristan (15)</li>
+</ul></li>
+<li><p><strong>Actions</strong></p>
+<ul>
+<li>Bandit Attacks:
+<ul>
+<li>Bandit A: 25</li>
+<li>Bandit B: 21</li>
+</ul></li>
+<li>Tristan's Shield Defense:
+<ul>
+<li>Shield Attack Roll: 15 + 4 (bonus) = 19</li>
+</ul></li>
+<li>Results:
+<ul>
+<li>Both bandit attacks hit (25 &gt; 19, 21 &gt; 19)</li>
+<li>Tristan takes 6 damage from Bandit A and 8 damage from Bandit B</li>
+</ul></li>
+<li>Tristan's Counterattack:
+<ul>
+<li>Attack Roll: 24 (Critical threat)</li>
+<li>Confirmation Roll: 22 (Critical hit confirmed)</li>
+<li>Damage: 20 (Bandit A falls)</li>
+</ul></li>
+</ul></li>
+</ol>
+<h5 id="tick-3">Tick 3</h5>
+<ol type="1">
+<li><p><strong>Declarations</strong></p>
+<ul>
+<li>Bandit B: "I flee this combat."</li>
+<li>Knight Tristan: "I can't chase, I'm too slow."</li>
+</ul></li>
+<li><p><strong>Outcome</strong></p>
+<ul>
+<li>Combat ends with Bandit A defeated and Bandit B escaping</li>
+</ul></li>
+</ol>
+<h3 id="42-paladin-vs-sorcerer">4.2 Paladin vs Sorcerer</h3>
+<p>This example demonstrates how the armor and shield mechanics work in
+a magical combat scenario.</p>
+<h4 id="characters-1">Characters</h4>
+<ul>
+<li>Plutarch (Paladin): Tier 3 action economy for attacks
+<ul>
+<li>Equipment: Magical Shield</li>
+<li>Reflex: 38</li>
+<li>Shield Bonus to Reflex: +25%</li>
+<li>Shield DC: 30</li>
+</ul></li>
+<li>Daviau Morin (High Sorcerer): Tier 2 action economy for spells
+<ul>
+<li>Reflex: 40</li>
+<li>Spell: Quickened Fireball (can cast twice in one tick)</li>
+<li>Fireball DC: 35</li>
+<li>Fireball Damage: 500 per cast</li>
+</ul></li>
+</ul>
+<h4 id="turn-1-1">Turn 1</h4>
+<h5 id="tick-1-1">Tick 1</h5>
+<ol type="1">
+<li><p><strong>Declarations</strong></p>
+<ul>
+<li>Daviau: "Two Quickened Fireballs on the Paladin."</li>
+<li>Plutarch: "I'll block both Fireball spells with one shield
+action."</li>
+</ul></li>
+<li><p><strong>Reflex Order</strong></p>
+<ul>
+<li>Plutarch: 38 + 25% (shield bonus) = 47.5</li>
+<li>Daviau: 40 + 10% (GM bonus for acting first) = 44</li>
+<li>Result: Plutarch acts first</li>
+</ul></li>
+<li><p><strong>Actions</strong></p>
+<ul>
+<li><p>Daviau's Fireball Attacks:</p>
+<ul>
+<li>Spell DC: 35 for each Fireball</li>
+<li>Total potential damage: 500 × 2 = 1000</li>
+</ul></li>
+<li><p>Plutarch's Shield Defense:</p>
+<ul>
+<li>Shield DC: 30</li>
+<li>Comparison: Shield DC (30) vs Spell DC (35)
+<ul>
+<li>Shield DC is about 14.3% lower than Spell DC</li>
+<li>This falls in the "Within 20%" category</li>
+<li>Damage Reduction: 80%</li>
+</ul></li>
+</ul></li>
+<li><p>Results:</p>
+<ul>
+<li>Damage after reduction: 1000 × (1 - 0.80) = 200</li>
+<li>Plutarch takes 200 fire damage</li>
+</ul>
+<p>[Previous content remains unchanged]</p></li>
+</ul></li>
+</ol>
+<h3 id="43-mixed-combat-elven-ranger-vs-orc-shaman-and-warrior">4.3
+Mixed Combat: Elven Ranger vs Orc Shaman and Warrior</h3>
+<p><img src="ranger-orcs2.jpeg" alt="elven ranger vs orcs" /></p>
+<p>This example demonstrates how the armor and shield mechanics work in
+a scenario involving both physical and magical attacks, as well as
+different armor and shield types.</p>
+<h4 id="characters-2">Characters</h4>
+<ul>
+<li><p>Aelindra (Elven Ranger): Tier 2 action economy (4 attacks per
+turn)</p>
+<ul>
+<li>Equipment: Mithril Light Armor, Mithril Shield, Longbow</li>
+<li>Armor Rating: 25</li>
+<li>Shield DC: 28</li>
+<li>Reflex: 35</li>
+<li>Shield Bonus to Reflex: +15%</li>
+<li>Ranged Attack Bonus: +8</li>
+</ul></li>
+<li><p>Groknak (Orc Warrior): Tier 2 action economy (4 attacks per
+turn)</p>
+<ul>
+<li>Equipment: Heavy Steel Armor, Greataxe</li>
+<li>Armor Rating: 30</li>
+<li>Melee Attack Bonus: +6</li>
+</ul></li>
+<li><p>Zulgha (Orc Shaman): Tier 2 action economy (4 spells per
+turn)</p>
+<ul>
+<li>Equipment: Medium Hide Armor, Staff</li>
+<li>Armor Rating: 20</li>
+<li>Spell DC: 30</li>
+<li>Lightning Bolt Damage: 200 per cast</li>
+</ul></li>
+</ul>
+<h4 id="turn-1-2">Turn 1</h4>
+<h5 id="tick-1-2">Tick 1</h5>
+<ol type="1">
+<li><p><strong>Declarations</strong></p>
+<ul>
+<li>Aelindra: "I'll shoot an arrow at the Orc Warrior and use my shield
+to defend against any incoming attacks."</li>
+<li>Groknak: "I'll charge and attack the Elf with my greataxe."</li>
+<li>Zulgha: "I'll cast Lightning Bolt at the Elf."</li>
+</ul></li>
+<li><p><strong>Reflex Order</strong></p>
+<ul>
+<li>Aelindra: 35 + 15% (shield bonus) = 40.25</li>
+<li>Zulgha: 28</li>
+<li>Groknak: 25</li>
+</ul></li>
+<li><p><strong>Actions</strong></p>
+<p>a. Aelindra's Arrow Attack:</p>
+<ul>
+<li>Attack Roll: 18 + 8 (bonus) = 26</li>
+<li>Groknak's Armor Rating: 30</li>
+<li>Damage Reduction: 60% (Armor Rating higher by 10-19%)</li>
+<li>Base Damage: 40</li>
+<li>Final Damage: 40 * (1 - 0.60) = 16 damage to Groknak</li>
+</ul>
+<p>b. Zulgha's Lightning Bolt:</p>
+<ul>
+<li>Spell DC: 30</li>
+<li>Aelindra's Shield Defense:
+<ul>
+<li>Shield DC: 28</li>
+<li>Comparison: Shield DC (28) vs Spell DC (30)</li>
+<li>Shield DC is about 6.7% lower than Spell DC</li>
+<li>This falls in the "Within 10%" category</li>
+<li>Damage Reduction: 90%</li>
+</ul></li>
+<li>Base Damage: 200</li>
+<li>Final Damage: 200 * (1 - 0.90) = 20 lightning damage to
+Aelindra</li>
+</ul>
+<p>c. Groknak's Greataxe Attack:</p>
+<ul>
+<li>Attack Roll: 19 + 6 (bonus) = 25</li>
+<li>Aelindra's Mithril Light Armor Rating: 25</li>
+<li>Aelindra's Shield Defense:
+<ul>
+<li>Shield Attack Roll: 22 + 4 (Mithril bonus) = 26</li>
+</ul></li>
+<li>Result: Aelindra successfully blocks the attack (26 &gt; 25)</li>
+</ul></li>
+</ol>
+<h5 id="tick-2-1">Tick 2</h5>
+<ol type="1">
+<li><p><strong>Declarations</strong></p>
+<ul>
+<li>Aelindra: "I'll fire two arrows at the Shaman this time."</li>
+<li>Groknak: "I'll continue my assault on the Elf with two axe
+swings."</li>
+<li>Zulgha: "I'll cast another Lightning Bolt at the Elf."</li>
+</ul></li>
+<li><p><strong>Reflex Order</strong></p>
+<ul>
+<li>Aelindra: 35 (no shield bonus this tick due to firing two
+arrows)</li>
+<li>Zulgha: 32</li>
+<li>Groknak: 28</li>
+</ul></li>
+<li><p><strong>Actions</strong></p>
+<p>a. Aelindra's Arrow Attacks:</p>
+<ul>
+<li>Attack Roll 1: 15 + 8 = 23</li>
+<li>Attack Roll 2: 20 + 8 = 28</li>
+<li>Zulgha's Armor Rating: 20</li>
+<li>Damage Reduction: 40% (Armor Rating lower by 1-10% for first
+attack)</li>
+<li>Damage Reduction: 30% (Armor Rating lower by 11-20% for second
+attack)</li>
+<li>Base Damage per Arrow: 35</li>
+<li>Final Damage: (35 * 0.6) + (35 * 0.7) = 21 + 24.5 = 45.5 total
+damage to Zulgha</li>
+</ul>
+<p>b. Zulgha's Lightning Bolt:</p>
+<ul>
+<li>Spell DC: 30</li>
+<li>Aelindra's Mithril Light Armor:
+<ul>
+<li>Armor DC: 25 (base) + 5% (Mithril bonus) = 26.25</li>
+<li>Comparison: Armor DC (26.25) vs Spell DC (30)</li>
+<li>Armor DC is about 12.5% lower than Spell DC</li>
+<li>This falls in the "Lower by 11-20%" category</li>
+<li>Damage Reduction: 30%</li>
+</ul></li>
+<li>Base Damage: 200</li>
+<li>Final Damage: 200 * (1 - 0.30) = 140 lightning damage to
+Aelindra</li>
+</ul>
+<p>c. Groknak's Greataxe Attacks:</p>
+<ul>
+<li>Attack Roll 1: 14 + 6 = 20</li>
+<li>Attack Roll 2: 22 + 6 = 28</li>
+<li>Aelindra's Mithril Light Armor Rating: 25</li>
+<li>Results:
+<ul>
+<li>First attack misses (20 &lt; 25)</li>
+<li>Second attack hits (28 &gt; 25)</li>
+<li>Damage Reduction: 50% (Armor Rating equal to Attack Rating)</li>
+<li>Base Damage: 70</li>
+<li>Final Damage: 70 * (1 - 0.50) = 35 slashing damage to Aelindra</li>
+</ul></li>
+</ul></li>
+</ol>
+<h4 id="end-of-turn-1-summary">End of Turn 1 Summary:</h4>
+<ul>
+<li>Aelindra (Elven Ranger): Took 20 lightning damage (Tick 1) + 140
+lightning damage (Tick 2) + 35 slashing damage (Tick 2) = 195 total
+damage</li>
+<li>Groknak (Orc Warrior): Took 16 piercing damage (Tick 1)</li>
+<li>Zulgha (Orc Shaman): Took 45.5 piercing damage (Tick 2)</li>
+</ul>
+<p>This revised example now correctly showcases:</p>
+<ol type="1">
+<li>How choosing to attack with both actions (firing two arrows) leaves
+a character vulnerable to incoming attacks.</li>
+<li>The difference in damage reduction between using a shield (as in
+Tick 1) and relying solely on armor (as in Tick 2).</li>
+<li>How Mithril Light Armor provides some protection against magical
+attacks, but is significantly less effective than a shield.</li>
+<li>The risk-reward decision of forgoing defense for increased
+offense.</li>
+</ol>
 </body>
 </html>
