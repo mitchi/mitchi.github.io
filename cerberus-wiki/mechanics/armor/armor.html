@@ -230,7 +230,10 @@ physical and magical attacks.</p>
 <h2 id="1-armor-system">1. Armor System</h2>
 <h3 id="11-magical-damage-reduction">1.1 Magical Damage Reduction</h3>
 <p>For magical attacks (e.g., fireballs), compare the armor's
-enchantment DC to the attack's DC:</p>
+enchantment DC to the attack's DC. The armor enchantment DC represents
+the power of the enchantment spell that was used to enchant the armor.
+The attack DC represents the power of the incoming spell that the armor
+has to mitigate.</p>
 <table>
 <thead>
 <tr class="header">
@@ -286,9 +289,8 @@ enchantment DC to the attack's DC:</p>
 </tbody>
 </table>
 <h3 id="12-physical-damage-reduction">1.2 Physical Damage Reduction</h3>
-<p>For physical attacks, compare the armor class to the attack roll. The
-attack roll represents the average number one gets when using a d20. To
-calculate it, do 10 + attack roll bonus.</p>
+<p>For physical attacks, compare the armor class to the incoming attack
+roll.</p>
 <table>
 <thead>
 <tr class="header">
@@ -345,33 +347,67 @@ calculate it, do 10 + attack roll bonus.</p>
 </table>
 <h3 id="13-armor-types-and-materials">1.3 Armor Types and Materials</h3>
 <h4 id="armor-size">Armor Size</h4>
-<ul>
-<li>Heavy Armor: No change to damage reduction</li>
-<li>Medium Armor: All damage reduction values -5%</li>
-<li>Light Armor: All damage reduction values -10%</li>
-</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Size</th>
+<th>Damage Reduction</th>
+<th>Reflex Save</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Heavy</td>
+<td>No change</td>
+<td>-10%</td>
+</tr>
+<tr class="even">
+<td>Medium</td>
+<td>-5%</td>
+<td>-5%</td>
+</tr>
+<tr class="odd">
+<td>Light</td>
+<td>-10%</td>
+<td>No change</td>
+</tr>
+</tbody>
+</table>
 <h4 id="special-materials">Special Materials</h4>
-<ul>
-<li>Adamantine Armor:
-<ul>
-<li>Magical: Increase damage reduction of all categories by 10%</li>
-<li>Physical: Increase damage reduction of all categories by 10%</li>
-</ul></li>
-<li>Mithril Armor:
-<ul>
-<li>Magical: Increase damage reduction of all categories by 5%, increase
-Reflex save by 10%</li>
-<li>Physical: Increase damage reduction of all categories by 5%,
-increase Reflex save by 10%</li>
-</ul></li>
-<li>Dragonhide Armor:
-<ul>
-<li>Magical: Increase damage reduction of all categories by 5%, and
-gives an elemental reduction of 20% (depending on the type of dragon
-from which the dragonhide was made)</li>
-<li>Physical: Increase damage reduction by 5%</li>
-</ul></li>
-</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Material</th>
+<th>Damage Reduction</th>
+<th>Reflex Save</th>
+<th>Additional Effects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Adamantine</td>
+<td>+10%</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>Mithril</td>
+<td>+5%</td>
+<td>+10%</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>Dragonhide</td>
+<td>+5%</td>
+<td>-</td>
+<td>+20% Elemental reduction (magical only)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="notes">Notes:</h4>
+<p>Elemental reduction for Dragonhide armor depends on the type of
+dragon from which the hide was made and only applies to magical
+versions.</p>
 <h2 id="2-shield-system">2. Shield System</h2>
 <p>Shields, and in particular magical shields are better than armor at
 protecting a character against damage. However, to do so, they require
