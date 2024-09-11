@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Enchant</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<style>
+            /* Dark mode styles */
+            html.dark-mode,
+            body.dark-mode {
+                background-color: #1a1a1a;
+                color: #f1f1f1;
+            }
+
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+
+            /* Toggle button styles */
+            #dark-mode-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: #f1f1f1;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            body.dark-mode #dark-mode-toggle {
+                background-color: #4a4a4a;
+                color: #f1f1f1;
+            }
+
+            /* Dark mode styles */
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+        </style>
+</head>
+<body>
+<button id="dark-mode-toggle">Toggle Dark Mode</button>
+<p><a href="index.html">Spell Index</a></p>
+<hr />
+<h1 id="enchant">Enchant</h1>
+<p><em>Enchant a weapon, armor or shield</em></p>
+<p><strong>Enchantment</strong><br />
+<strong>Action</strong>: Standard<br />
+<strong>Components</strong>: V,S,M<br />
+<strong>Duration</strong>: minutes/level<br />
+<strong>Spell Lists</strong>: Arcane,Divine<br />
+<strong>Levels</strong>: 1,3,5,7,9,10<br />
+<strong>Range</strong>: close</p>
+<p>Enchant is a versatile spell that temporarily imbues weapons, armor,
+and shields with magical power. When cast on weapons, it enhances both
+attack rolls and damage rolls equally. For armor and shields, it
+improves their protective capabilities. Only one Enchant spell may be
+active on a given weapon.</p>
+<p>Scaling: The spell's effects scale with the level at which it is
+cast, as shown in the table below:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Spell Level</th>
+<th>Bonus</th>
+<th>Number of Objects Enchanted</th>
+<th>Elemental Attunement</th>
+<th>Special Effects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>+3</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>+6</td>
+<td>2</td>
+<td>Available</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>+12</td>
+<td>3</td>
+<td>Available</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>+24</td>
+<td>4</td>
+<td>Available</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>+48</td>
+<td>5</td>
+<td>Available</td>
+<td>1 (replaces EA)</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>+96</td>
+<td>6</td>
+<td>Available</td>
+<td>1 (replaces EA)</td>
+</tr>
+</tbody>
+</table>
+<p>Note: For weapons, the bonus applies to both attack and damage rolls.
+For armor and shields, it applies to AC.</p>
+<h2 id="elemental-attunement">Elemental Attunement:</h2>
+<p>Starting at 3rd level, the caster may imbue items with an elemental
+affinity. This attunement is subject to the following rules:</p>
+<ol type="1">
+<li>The caster must know an elemental spell of a level lower than the
+Enchant spell being cast.</li>
+<li>The elemental types include, but are not limited to: fire, cold,
+lightning, acid, thunder, and poison.</li>
+<li>The effects of the attunement are based on the lower-level elemental
+spell known by the caster.</li>
+</ol>
+<p>For Weapons:</p>
+<ul>
+<li>The attuned weapon deals additional damage equal to the damage dice
+of the corresponding elemental spell. For instance, if one wants an acid
+sword with 3rd-level Enchant, he also requires level 1 Acid Splash.</li>
+<li>Any special effects associated with the elemental spell (e.g.,
+reduced saving throws) also apply to the weapon's attacks.</li>
+</ul>
+<p>For Armor and Shields:</p>
+<ul>
+<li>The item gains a defensive ability based on the elemental spell's
+effects.</li>
+<li>The item gains an elemental resistance as well</li>
+</ul>
+<p>Special Effects: At 9th level and above, the enchanted item gains one
+special effect that reflects the caster's magical specialty, as
+determined by the GM. This effect replaces the Elemental Attunement
+feature.</p>
+<h2 id="permanent-enchantment">Permanent Enchantment</h2>
+<p>The caster may pay gold to emprison the magic and create a magical
+item. This table may be used as a reference, but GMs should carefully
+manage crafting.</p>
+<p>Material Component Costs: | Spell Level | Gold pieces |
+|-------------|------------------| | 1 | 5,000 | | 3 | 10,000 | | 5 |
+25,000 | | 7 | 100,000 | | 9 | 200,000 | | 10 | 1,000,000 |</p>
+<script>
+            const darkModeToggle = document.getElementById("dark-mode-toggle");
+            const body = document.body;
+            const html = document.documentElement;
+
+            darkModeToggle.addEventListener("click", () => {
+                html.classList.toggle("dark-mode");
+                body.classList.toggle("dark-mode");
+                const isDarkMode = html.classList.contains("dark-mode");
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            });
+
+            // On load, apply saved theme
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                html.classList.add("dark-mode");
+                body.classList.add("dark-mode");
+            }
+        </script>
+</body>
+</html>
