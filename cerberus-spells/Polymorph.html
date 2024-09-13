@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Polymorph</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<style>
+            /* Dark mode styles */
+            html.dark-mode,
+            body.dark-mode {
+                background-color: #1a1a1a;
+                color: #f1f1f1;
+            }
+
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+
+            /* Toggle button styles */
+            #dark-mode-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: #f1f1f1;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            body.dark-mode #dark-mode-toggle {
+                background-color: #4a4a4a;
+                color: #f1f1f1;
+            }
+
+            /* Dark mode styles */
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+        </style>
+</head>
+<body>
+<button id="dark-mode-toggle">Toggle Dark Mode</button>
+<p><a href="index.html">Spell Index</a></p>
+<hr />
+<h1 id="polymorph">Polymorph</h1>
+<p><em>Transform into an animal, insect, magical beast or
+monster</em></p>
+<p><strong>Transmutation</strong><br />
+<strong>Action</strong>: Standard<br />
+<strong>Components</strong>: V,S,M<br />
+<strong>Duration</strong>: See text<br />
+<strong>Spell Lists</strong>: Alchemy,Arcane<br />
+<strong>Levels</strong>: 3,5,7,9,10</p>
+<h2 id="introduction">Introduction</h2>
+<p>Polymorph is a powerful and versatile transmutation spell that allows
+the sorcerer to adopt the form and abilities of a creature they know and
+have studied. Recognized as one of the most powerful transmutation
+spells, it is also considered one of the most dangerous for the caster.
+Indeed, when the sorcerer transforms, they inherit not only the
+strengths of the chosen creature but also its vulnerabilities. For
+example, a sorcerer transformed into a mouse could find themselves in
+great danger when faced with a cat. This is why wise practitioners use
+Polymorph strategically, judiciously choosing forms that minimize risks
+while maximizing tactical advantages.</p>
+<h2 id="duration-and-end-of-transformation">Duration and End of
+Transformation</h2>
+<p>When casting Polymorph, the sorcerer must specify the duration of
+their transformation. This duration can vary considerably, ranging from
+a few combat turns to several hours. The complexity of the process of
+returning to the original form depends on the level of mastery of the
+spell. Basic versions of Polymorph require about two minutes for
+detransformation, while advanced versions allow for an almost
+instantaneous return, taking only a single tick.</p>
+<h2 id="effects-of-transformation">Effects of Transformation</h2>
+<p>Once transformed, the sorcerer temporarily loses access to their
+equipment and usual magical abilities. However, they retain their
+intelligence and consciousness while acquiring all the abilities,
+powers, and physical characteristics of the creature whose form they
+have taken. For example, by transforming into a troll, the sorcerer will
+benefit from its extraordinary regeneration abilities. In dragon form,
+they can use its devastating breath, while transformed into a wolf, they
+will enjoy a keen sense of smell and increased speed.</p>
+<p>When the transformed sorcerer is targeted by a spell, they use the
+reflexes of their current form to try to escape it. If the spell affects
+them despite this, mental effects are resisted using the sorcerer's
+willpower, while physical effects are countered using the creature's
+endurance.</p>
+<p>During the spell's duration, the sorcerer's original body is put into
+stasis. Aging is suspended, and no natural or magical recovery occurs on
+the original body. Consequently, Cerberus sorcerers cannot recover their
+spells by spending time in a transformed form. Similarly, damage or
+healing suffered in transformed form only affects the creature's body
+and not the sorcerer's original body.</p>
+<h2 id="changing-form-during-the-spell">Changing Form During the
+Spell</h2>
+<p>Advanced versions of Polymorph offer the possibility of changing form
+several times during the spell's duration. This ability usually requires
+a period of concentration, whose duration is specified by the spell,
+allowing the sorcerer to pass from one form to another without having to
+recast the spell.</p>
+<h2 id="interaction-with-dispel-magic-and-detect-magic">Interaction with
+Dispel Magic and Detect Magic</h2>
+<p>Polymorph, the creation of genius Gérard Alois, is distinguished by
+its resistance to usual counterspells. To dispel the transmutation
+magic, a Dispel Magic spell must overcome a difficulty threshold
+increased by 25% (during the caster's level roll). Similarly, the
+detection of Polymorph by Detect Magic is made more complex, with a 25%
+penalty applied to the detection roll (DC check).</p>
+<h2 id="learning-new-transformations">Learning New Transformations</h2>
+<p>A sorcerer mastering Polymorph at a sufficient level can learn to
+transform into new creatures. This process requires an in-depth study of
+the morphology and capabilities of the target creature. The duration of
+this learning, particularly for rare magical creatures, is left to the
+Game Master's (GM) discretion.</p>
+<h2 id="transforming-other-creatures">Transforming Other Creatures</h2>
+<p>Advanced versions of Polymorph allow for transforming creatures other
+than the caster. If the target is willing, the transformation occurs
+normally, although the transformed creature cannot change form itself.
+However, it can return to its original form under the same conditions as
+the caster.</p>
+<p>To transform a hostile creature, it must fail a Will save opposed to
+the spell's DC, with a 25% penalty reflecting the increased difficulty
+of transforming an unwilling subject.</p>
+<h2 id="advantages-and-disadvantages">Advantages and Disadvantages</h2>
+<h3 id="advantages-of-polymorph">Advantages of Polymorph</h3>
+<ul>
+<li>Significantly longer duration than classic summoning spells
+(hours/level vs. rounds/level)</li>
+<li>Potential increase in resistance to attacks and toxins under certain
+forms</li>
+<li>Natural camouflage of the magical aura, making detection more
+difficult than a simple illusion</li>
+<li>Increased resistance to magical dispelling (25% more difficult)</li>
+<li>Access to unique capabilities without equivalent in conventional
+magic</li>
+<li>Power of acquired abilities increasing with the caster's level</li>
+<li>Possibility of multiple form changes during combat, offering
+tactical flexibility and increased protection (damage affecting only the
+current form)</li>
+<li>Creature characteristics evolving with the spell level and caster's
+power</li>
+</ul>
+<h3 id="disadvantages">Disadvantages</h3>
+<ul>
+<li>Potentially increased vulnerability in certain situations (e.g.,
+transformation into prey faced with a predator)</li>
+<li>Inability to use magical equipment or usual spells in transformed
+form</li>
+<li>Potential complications in communicating with allies</li>
+<li>No recovery for the original body during transformation</li>
+</ul>
+<h2 id="comparative-table-of-polymorph-levels">Comparative Table of
+Polymorph Levels</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Characteristic</th>
+<th>Level 3</th>
+<th>Level 5</th>
+<th>Level 7</th>
+<th>Level 9</th>
+<th>Level 10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Maximum duration</td>
+<td>hours/level</td>
+<td>hours/level</td>
+<td>days/level</td>
+<td>days/level</td>
+<td>Permanent</td>
+</tr>
+<tr class="even">
+<td>Number of transformations</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>Return to initial form</td>
+<td>1 minute</td>
+<td>2 turns</td>
+<td>1 turn</td>
+<td>1 tick</td>
+<td>1 tick</td>
+</tr>
+<tr class="even">
+<td>Transformation change speed</td>
+<td>3 ticks</td>
+<td>3 ticks</td>
+<td>3 ticks</td>
+<td>2 ticks</td>
+<td>1 tick</td>
+</tr>
+<tr class="odd">
+<td>Communication</td>
+<td>Natural organs of the creature</td>
+<td>Oral with original voice</td>
+<td>Oral or Psychic (30 ft)</td>
+<td>Oral or Psychic (200 ft)</td>
+<td>Oral or Psychic (∞ allies, 1000 ft enemies)</td>
+</tr>
+<tr class="even">
+<td>Max. size of creatures</td>
+<td>Medium</td>
+<td>Large</td>
+<td>Huge</td>
+<td>Gargantuan</td>
+<td>Colossal</td>
+</tr>
+<tr class="odd">
+<td>Target</td>
+<td>Self</td>
+<td>Self, Ally</td>
+<td>Self, Ally, Enemy</td>
+<td>Self, Ally, Enemy</td>
+<td>Self, Ally, Enemy</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples-of-creatures-by-polymorph-level">Examples of Creatures
+by Polymorph Level</h2>
+<h3 id="level-3">Level 3</h3>
+<ul>
+<li>Human (without magical powers)</li>
+<li>Black Wolf of Cerberus</li>
+<li>Dog</li>
+<li>Cat</li>
+<li>Standard animals of medium size or less (duck, owl, fly)</li>
+</ul>
+<h3 id="level-5">Level 5</h3>
+<ul>
+<li>Human, Elf, Drow, Dwarf</li>
+<li>White Wolf of Brazzant</li>
+<li>Ogre</li>
+<li>Giant of Cerberus (Small)</li>
+<li>Hill Troll</li>
+<li>Griffin</li>
+<li>Owlbear of Cerberus</li>
+<li>Horse of Cerberus</li>
+<li>Large creatures</li>
+</ul>
+<h3 id="level-7">Level 7</h3>
+<ul>
+<li>Huge Giant of Cerberus</li>
+<li>Mountain Troll</li>
+<li>Small-sized Dragon</li>
+<li>Dark Young</li>
+<li>Huge creatures</li>
+</ul>
+<h3 id="level-9">Level 9</h3>
+<ul>
+<li>Dragon Wyrm</li>
+<li>Minotaur</li>
+<li>Basilisk</li>
+<li>Colossal Worm</li>
+<li>Gargantuan creatures</li>
+</ul>
+<h3 id="level-10">Level 10</h3>
+<ul>
+<li>Colossal+ Giant</li>
+<li>Beholder</li>
+<li>Great Wyrm Dragon</li>
+<li>Sand Troll</li>
+<li>Aboleth</li>
+<li>Colossal creatures</li>
+</ul>
+<script>
+            const darkModeToggle = document.getElementById("dark-mode-toggle");
+            const body = document.body;
+            const html = document.documentElement;
+
+            darkModeToggle.addEventListener("click", () => {
+                html.classList.toggle("dark-mode");
+                body.classList.toggle("dark-mode");
+                const isDarkMode = html.classList.contains("dark-mode");
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            });
+
+            // On load, apply saved theme
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                html.classList.add("dark-mode");
+                body.classList.add("dark-mode");
+            }
+        </script>
+</body>
+</html>
