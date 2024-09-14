@@ -7,19 +7,23 @@
 <style>
 body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
 ul { list-style-type: none; padding-left: 20px; }
+.folder { color: #0066cc; font-weight: bold; }
+.folder::before { content: '📁 '; }
+.file { color: #006600; }
+.file::before { content: '📄 '; }
 </style>
 </head>
 <body>
 <h1>Index of /beastiary</h1>
 <ul>
-<li><a href='../index.html'>..</a> (Parent Directory)</li>
-<li><a href='Black Wolf of Cerberus/index.html'><strong>Black Wolf of Cerberus/</strong></a></li>
+<li><a href='../index.html' class='folder'>..</a> (Parent Directory)</li>
+<li><a href='Black Wolf of Cerberus/index.html' class='folder'>Black Wolf of Cerberus</a></li>
 <ul>
-  <li><a href='Black Wolf of Cerberus/Black wolf of Cerberus.html'>Black wolf of Cerberus</a></li>
+  <li><a href='Black Wolf of Cerberus/Black wolf of Cerberus.html' class='file'>Black wolf of Cerberus</a></li>
 </ul>
-<li><a href='White Wolf of Brazzant/index.html'><strong>White Wolf of Brazzant/</strong></a></li>
+<li><a href='White Wolf of Brazzant/index.html' class='folder'>White Wolf of Brazzant</a></li>
 <ul>
-  <li><a href='White Wolf of Brazzant/whitewolf.html'>whitewolf</a></li>
+  <li><a href='White Wolf of Brazzant/whitewolf.html' class='file'>whitewolf</a></li>
 </ul>
 </ul>
 </body>

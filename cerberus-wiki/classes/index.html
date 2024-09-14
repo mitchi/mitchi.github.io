@@ -7,20 +7,24 @@
 <style>
 body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
 ul { list-style-type: none; padding-left: 20px; }
+.folder { color: #0066cc; font-weight: bold; }
+.folder::before { content: '📁 '; }
+.file { color: #006600; }
+.file::before { content: '📄 '; }
 </style>
 </head>
 <body>
 <h1>Index of /classes</h1>
 <ul>
-<li><a href='../index.html'>..</a> (Parent Directory)</li>
-<li><a href='barbarian/index.html'><strong>barbarian/</strong></a></li>
+<li><a href='../index.html' class='folder'>..</a> (Parent Directory)</li>
+<li><a href='barbarian/index.html' class='folder'>barbarian</a></li>
 <ul>
 </ul>
-<li><a href='lazy wizard/index.html'><strong>lazy wizard/</strong></a></li>
+<li><a href='lazy wizard/index.html' class='folder'>lazy wizard</a></li>
 <ul>
-  <li><a href='lazy wizard/lazywizard.html'>lazywizard</a></li>
+  <li><a href='lazy wizard/lazywizard.html' class='file'>lazywizard</a></li>
 </ul>
-<li><a href='rogue/index.html'><strong>rogue/</strong></a></li>
+<li><a href='rogue/index.html' class='folder'>rogue</a></li>
 <ul>
 </ul>
 </ul>

@@ -7,29 +7,33 @@
 <style>
 body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
 ul { list-style-type: none; padding-left: 20px; }
+.folder { color: #0066cc; font-weight: bold; }
+.folder::before { content: '📁 '; }
+.file { color: #006600; }
+.file::before { content: '📄 '; }
 </style>
 </head>
 <body>
 <h1>Index of /mechanics</h1>
 <ul>
-<li><a href='../index.html'>..</a> (Parent Directory)</li>
-<li><a href='armor/index.html'><strong>armor/</strong></a></li>
+<li><a href='../index.html' class='folder'>..</a> (Parent Directory)</li>
+<li><a href='armor/index.html' class='folder'>armor</a></li>
 <ul>
-  <li><a href='armor/armor.html'>armor</a></li>
+  <li><a href='armor/armor.html' class='file'>armor</a></li>
 </ul>
-<li><a href='reactive-combat/index.html'><strong>reactive-combat/</strong></a></li>
+<li><a href='reactive-combat/index.html' class='folder'>reactive-combat</a></li>
 <ul>
-  <li><a href='reactive-combat/reactive_combat.html'>reactive_combat</a></li>
+  <li><a href='reactive-combat/reactive_combat.html' class='file'>reactive_combat</a></li>
 </ul>
-<li><a href='social-interactions/index.html'><strong>social-interactions/</strong></a></li>
+<li><a href='social-interactions/index.html' class='folder'>social-interactions</a></li>
 <ul>
-  <li><a href='social-interactions/social.html'>social</a></li>
+  <li><a href='social-interactions/social.html' class='file'>social</a></li>
 </ul>
-<li><a href='spellcasting/index.html'><strong>spellcasting/</strong></a></li>
+<li><a href='spellcasting/index.html' class='folder'>spellcasting</a></li>
 <ul>
-  <li><a href='spellcasting/spellcasting.html'>spellcasting</a></li>
+  <li><a href='spellcasting/spellcasting.html' class='file'>spellcasting</a></li>
 </ul>
-<li><a href='stealth/index.html'><strong>stealth/</strong></a></li>
+<li><a href='stealth/index.html' class='folder'>stealth</a></li>
 <ul>
 </ul>
 </ul>
