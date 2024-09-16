@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Invisibility</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<style>
+            /* Dark mode styles */
+            html.dark-mode,
+            body.dark-mode {
+                background-color: #1a1a1a;
+                color: #f1f1f1;
+            }
+
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+
+            /* Toggle button styles */
+            #dark-mode-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: #f1f1f1;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            body.dark-mode #dark-mode-toggle {
+                background-color: #4a4a4a;
+                color: #f1f1f1;
+            }
+
+            /* Dark mode styles */
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+        </style>
+</head>
+<body>
+<button id="dark-mode-toggle">Toggle Dark Mode</button>
+<p><a href="index.html">Spell Index</a></p>
+<hr />
+<h1 id="invisibility">Invisibility</h1>
+<p><em>Embrace the shadows. Become a ghost among the living</em></p>
+<p><strong>Illusion</strong><br />
+<strong>Action</strong>: Standard<br />
+<strong>Components</strong>: V,S,M<br />
+<strong>Duration</strong>: See text<br />
+<strong>Spell Lists</strong>: Arcane<br />
+<strong>Levels</strong>: 2,4,6,8,10</p>
+<p>The Invisibility spell is a powerful incantation that allows the
+caster to render an object or a willing creature invisible. This magic
+goes beyond mere visual concealment; it envelops its target in a
+mystical veil that blurs its presence in the physical world.</p>
+<p>When cast, the target gradually fades from view, its outlines
+becoming hazy before disappearing completely. The conferred invisibility
+is more than just visual absence. It also muffles sounds produced by the
+target and even masks its scent, making detection by conventional means
+extremely difficult.</p>
+<p>When the invisible creature remains motionless for one round or more,
+it gains an additional +2 bonus to the spell's DC, further enhancing its
+concealment. Also, critical successes (natural 20) are not possible with
+this spell.</p>
+<p>Countering the Invisibility spell requires exceptional awareness:</p>
+<ol type="1">
+<li><p>Visual Detection: Opponents with a clear line of sight to an
+invisible creature are granted an automatic Will Save. On a successful
+save, the invisible creature becomes fully visible to that character,
+negating all benefits of the spell for them.</p></li>
+<li><p>Sound-based Detection: If the invisible creature is wearing
+heavy, normally noisy armor that's only silent due to the spell's
+effects, opponents within earshot are granted a Will Save. Success
+allows the GM to indicate the general direction of the sound.</p></li>
+<li><p>Scent-based Detection: If the invisible creature has a distinct
+odor that would typically be noticeable, nearby opponents with a keen
+sense of smell are granted a Will Save. Success allows the GM to hint at
+the general area where the scent originates.</p></li>
+</ol>
+<p>For both sound and scent-based detection, a successful Will Save not
+only provides location information but also fully negates the
+invisibility effect for that character, rendering the creature visible,
+audible, and odorous to them.</p>
+<p>An invisible creature that successfully executes a stealth attack can
+strike their target's weak points with deadly precision, inflicting
+automatic critical hits with weapons and spells requiring an attack
+roll.</p>
+<p>The Invisibility spell has limitations:</p>
+<ul>
+<li>The invisibility dissipates when the beneficiary takes an offensive
+action, such as attacking or casting a direct attack spell.</li>
+<li>The number of attacks that can be made before invisibility fades
+depends on the power of the spell cast (see Scaling table).</li>
+<li>Specific magical means or creatures with extraordinary senses may
+still detect the invisible entity.</li>
+<li>Environmental interactions (e.g., footprints in snow, ripples in
+water) can betray the presence of an invisible creature.</li>
+</ul>
+<h2 id="scaling">Scaling</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Range</th>
+<th>Duration</th>
+<th>DC Bonus</th>
+<th>Attacks before losing invisibility</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>Touch</td>
+<td>minutes/level</td>
+<td>+2</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Close</td>
+<td>hours/level</td>
+<td>+4</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Close</td>
+<td>hours/level</td>
+<td>+8</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Close</td>
+<td>days/level</td>
+<td>+16</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>Medium</td>
+<td>Permanent</td>
+<td>+32</td>
+<td>No limit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<ol type="1">
+<li><p>A wizard drinks a DC 20 invisibility potion and attempts to slip
+past two alert guards. As he walks between them, both guards are granted
+automatic Will Saves due to the wizard being within their line of
+sight.</p>
+<p>Guard 1 rolls an 18, falling short of the DC 20. Guard 2 rolls a 19,
+also failing to beat the DC.</p>
+<p>Result: Both guards fail their Will Saves. They remain oblivious to
+the wizard's presence, allowing him to pass by undetected. The wizard
+maintains his invisibility and continues on his way, leaving two
+confused guards wondering why they felt an odd sensation of something
+passing between them.</p></li>
+<li><p>Hours later, the same wizard returns, having indulged in three
+bottles of the lord's finest wines. The invisibility spell (still at DC
+20) is now actively working to mask not just his appearance, but also
+the potent aroma of expensive alcohol.</p>
+<p>As the wizard approaches, both guards are again granted Will Saves,
+this time primarily based on the scent of wine that the spell is
+struggling to conceal.</p>
+<p>Guard 1 rolls a 19, failing the save. Guard 2 rolls a 21, succeeding
+against the DC 20.</p>
+<p>Result: Guard 1 remains unaware of the wizard's presence. However,
+Guard 2 not only detects the smell of fine wine but the successful save
+also completely breaks the invisibility spell's effect on him. He turns
+around to see the familiar figure of the now-visible wizard.</p>
+<p>"Oh no," the guard exclaims, recognizing the inebriated spellcaster,
+"Aztor's been at the lord's wines again!"</p>
+<p>The wizard, visible only to Guard 2, realizes his cover is blown but
+still appears invisible to Guard 1 and anyone else who hasn't succeeded
+on a Will Save against his invisibility.</p></li>
+</ol>
+<script>
+            const darkModeToggle = document.getElementById("dark-mode-toggle");
+            const body = document.body;
+            const html = document.documentElement;
+
+            darkModeToggle.addEventListener("click", () => {
+                html.classList.toggle("dark-mode");
+                body.classList.toggle("dark-mode");
+                const isDarkMode = html.classList.contains("dark-mode");
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            });
+
+            // On load, apply saved theme
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                html.classList.add("dark-mode");
+                body.classList.add("dark-mode");
+            }
+        </script>
+</body>
+</html>
