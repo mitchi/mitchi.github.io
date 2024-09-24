@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Charm</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<style>
+            /* Dark mode styles */
+            html.dark-mode,
+            body.dark-mode {
+                background-color: #1a1a1a;
+                color: #f1f1f1;
+            }
+
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+
+            /* Toggle button styles */
+            #dark-mode-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px;
+                background-color: #f1f1f1;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            body.dark-mode #dark-mode-toggle {
+                background-color: #4a4a4a;
+                color: #f1f1f1;
+            }
+
+            /* Dark mode styles */
+            body.dark-mode a {
+                color: #add8e6;
+            }
+
+            body.dark-mode a:visited {
+                color: #d8bfd8;
+            }
+
+            body.dark-mode blockquote {
+                border-left-color: #4a4a4a;
+                color: #b0b0b0;
+            }
+        </style>
+</head>
+<body>
+<button id="dark-mode-toggle">Toggle Dark Mode</button>
+<p><a href="index.html">Spell Index</a></p>
+<hr />
+<h1 id="charm">Charm</h1>
+<p><em>Charm a creature, so that it becomes friendly towards you and
+your group</em></p>
+<p><strong>Enchantment</strong><br />
+<strong>Action</strong>: Standard<br />
+<strong>Components</strong>: V,S,M<br />
+<strong>Duration</strong>: See text<br />
+<strong>Spell Lists</strong>: Arcane,Divine,Nature,Psychic<br />
+<strong>Levels</strong>: 1,3</p>
+<p>Charm allows the caster to influence a creature's perception, causing
+it to view the caster and their allies as friendly, provided the target
+fails a Will saving throw. This spell must be cast before the target has
+formed a solid opinion of the caster or their party. If successful, the
+affected creature perceives the caster’s actions and requests in a
+favorable light, even if they are not entirely aligned with the
+creature's interests.</p>
+<p>The charmed creature remains in control of its actions and will not
+obey commands that would result in self-harm or fundamentally violate
+its nature. However, it will strive to assist the caster in
+non-threatening ways and view their intentions as benevolent. If the
+creature witnesses any form of betrayal or significantly displeasing
+behavior from those it has been charmed by, it will become hostile. Any
+future attempts to charm this creature automatically fail.</p>
+<p>When cast at a higher level (3rd), the spell’s power increases,
+allowing it to affect multiple creatures at once. The number of targets
+is determined by the caster's Intelligence modifier.</p>
+<p>The GM may adjust the difficulty of the Will saving throw (+5%, +10%,
++15%) if the situation is particularly delicate or challenging.</p>
+<hr />
+<h3 id="scaling">Scaling</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Level</strong></th>
+<th><strong>Targets</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Duration</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1 creature</td>
+<td>Close</td>
+<td>Hours/level</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>1 creature per Intelligence modifier</td>
+<td>Close</td>
+<td>Days/level</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples-of-benevolence">Examples of Benevolence</h3>
+<ol type="1">
+<li><p>The Generous Merchant: A party member uses Charm on a merchant
+who initially seemed wary of strangers. Under the spell's effect, the
+merchant now perceives the party as kind-hearted travelers. He offers
+them a place to rest in his shop's backroom and shares information about
+local events, believing he's helping out good people. He might even
+offer a small discount on his wares, thinking he's supporting a worthy
+cause.</p></li>
+<li><p>The Suspicious Guard: When confronted by a guard who's skeptical
+of the party's presence in a restricted area, a spellcaster uses Charm.
+The guard, now under the spell's influence, sees the party as
+well-intentioned visitors who must have a good reason for being there.
+Instead of immediately arresting them, she offers to escort them to a
+safer area, genuinely concerned for their well-being. She might even
+provide helpful advice about navigating the city's laws and customs,
+believing she's assisting respectable individuals.</p></li>
+</ol>
+<script>
+            const darkModeToggle = document.getElementById("dark-mode-toggle");
+            const body = document.body;
+            const html = document.documentElement;
+
+            darkModeToggle.addEventListener("click", () => {
+                html.classList.toggle("dark-mode");
+                body.classList.toggle("dark-mode");
+                const isDarkMode = html.classList.contains("dark-mode");
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            });
+
+            // On load, apply saved theme
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                html.classList.add("dark-mode");
+                body.classList.add("dark-mode");
+            }
+        </script>
+</body>
+</html>
