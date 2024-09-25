@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Magic Sensor</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<style>
+        /* Dark mode styles */
+        html.dark-mode,
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode a {
+            color: #add8e6;
+        }
+
+        body.dark-mode a:visited {
+            color: #d8bfd8;
+        }
+
+        body.dark-mode blockquote {
+            border-left-color: #4a4a4a;
+            color: #b0b0b0;
+        }
+
+        /* Toggle button styles */
+        #dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        body.dark-mode #dark-mode-toggle {
+            background-color: #4a4a4a;
+            color: #f1f1f1;
+        }
+
+        /* Updated table styles */
+        table {
+            margin: 1em 0;
+            border-collapse: collapse;
+            width: 100%;
+            overflow-x: auto;
+            display: block;
+            font-variant-numeric: lining-nums tabular-nums;
+        }
+
+        table caption {
+            margin-bottom: 0.75em;
+        }
+
+        thead {
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        body.dark-mode thead {
+            border-bottom-color: #f1f1f1;
+        }
+
+        tbody {
+            margin-top: 0.5em;
+        }
+
+        th,
+        td {
+            border: 1px solid #1a1a1a;
+            padding: 0.25em 0.5em;
+        }
+
+        body.dark-mode th,
+        body.dark-mode td {
+            border-color: #f1f1f1;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        body.dark-mode th {
+            background-color: #2a2a2a;
+        }
+
+        /* Even and odd row styles */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        body.dark-mode tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        body.dark-mode tr:nth-child(odd) {
+            background-color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+<button id="dark-mode-toggle">Toggle Dark Mode</button>
+<p><a href="index.html">Spell Index</a></p>
+<hr />
+<h1 id="magic-sensor">Magic Sensor</h1>
+<p><em>Surveillance and alarms</em></p>
+<p><strong>Divination</strong><br />
+<strong>Action</strong>: Standard<br />
+<strong>Components</strong>: V,S,M<br />
+<strong>Duration</strong>: See text<br />
+<strong>Spell Lists</strong>: Arcane,Divine<br />
+<strong>Levels</strong>: 1,3,5,7</p>
+<p>The caster conjures a magical sensor that is a replica of their own
+sensory organs, possessing the same visual, auditory, and olfactory
+capabilities as the caster. This magical sensor aids in gathering
+information about entire areas and possesses additional enhanced
+capabilities including tactile feedback and specialized detection
+abilities.</p>
+<p>If the sensor is used to observe an illusion or an invisible
+creature, the caster viewing through it must make a Will saving throw to
+see through the deception.</p>
+<h2 id="spell-levels">Spell Levels</h2>
+<h3 id="level-1">Level 1</h3>
+<ul>
+<li><strong>Effect</strong>: Creates a stationary physical sensor that
+can rotate 360 degrees.</li>
+<li><strong>Sensory Link</strong>: The caster can switch their senses to
+those of the sensor by concentrating.</li>
+<li><strong>Base Capabilities</strong>: Replicates the caster's own
+visual, auditory, and olfactory senses.</li>
+<li><strong>Enhanced Capabilities</strong>:
+<ul>
+<li>Can see through smoke and detect heat signatures.</li>
+<li>Can function underwater and detect currents or water sources.</li>
+</ul></li>
+<li><strong>Tactile Feedback</strong>: Can feel textures and
+temperatures through the magical sensor.</li>
+<li><strong>Sensory Filter</strong>: Can filter specific stimuli (1
+filter per point of Intelligence).</li>
+<li><strong>Duration</strong>: Days equal to caster level</li>
+<li><strong>Casting Range</strong>: Close (30 ft + 5 ft per caster
+level)</li>
+<li><strong>Durability</strong>: 5 hp per level, 0 AC</li>
+</ul>
+<h3 id="level-3">Level 3</h3>
+<ul>
+<li><strong>Effect</strong>: Creates an invisible sensor that can move
+at a speed of 5 ft per tick.</li>
+<li><strong>Multiple Sensors</strong>: Can observe through multiple
+sensors simultaneously (1 sensor per point of Intelligence).</li>
+<li><strong>Enhanced Capabilities</strong>: All Level 1 capabilities,
+plus:
+<ul>
+<li>Can detect vibrations through solid surfaces, sensing movement.</li>
+</ul></li>
+<li><strong>Detect Magic</strong>: Can cast Detect Magic through the
+sensor.</li>
+<li><strong>Communication</strong>: Allows two-way communication through
+the sensor.</li>
+<li><strong>Duration</strong>: Days equal to caster level</li>
+<li><strong>Casting Range</strong>: Medium (100 ft + 10 ft per caster
+level)</li>
+<li><strong>Durability</strong>: 10 hp per level, 20 AC</li>
+<li><strong>Alarm Capability</strong>: Sensory Filters can send a sound
+alarm to the caster when specific conditions are met. Alarms can be
+programmed with multiple conditions, such as:
+<ul>
+<li>Send an alarm when:
+<ul>
+<li>A creature of size Large has entered the surveillance zone.</li>
+<li>The creature looks like an Owlbear.</li>
+<li>The creature smells like an Owlbear.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="level-5">Level 5</h3>
+<ul>
+<li><strong>Effect</strong>: Creates an invisible sensor that can move
+at a speed of 30 ft per tick.</li>
+<li><strong>Enhanced Observation</strong>: Can observe through multiple
+sensors simultaneously without concentration, at any time during the day
+(1 sensor per point of Intelligence).</li>
+<li><strong>Enhanced Capabilities</strong>: All previous
+capabilities.</li>
+<li><strong>Recording Capability</strong>: Can record observations for
+later review. Outputting recorded memories to a stone costs 10gp per
+magic sensor in enchantment costs.</li>
+<li><strong>Duration</strong>: Days equal to caster level</li>
+<li><strong>Casting Range</strong>: Long (400 ft + 40 ft per caster
+level)</li>
+<li><strong>Durability</strong>: 20 hp per level, 40 AC</li>
+<li><strong>Enhanced Alarm</strong>: Sensory Filters can send a mental
+alarm to the caster or a designated friend of the caster when specific
+conditions are met.</li>
+</ul>
+<h3 id="level-7">Level 7</h3>
+<ul>
+<li><strong>Effect</strong>: Creates an invisible sensor that can move
+at a speed of 60 ft per tick.</li>
+<li><strong>Enhanced Observation</strong>: Can observe through multiple
+sensors simultaneously without concentration, at any time during the day
+(2 sensors per point of Intelligence).</li>
+<li><strong>Enhanced Capabilities</strong>: All previous capabilities,
+plus:
+<ul>
+<li>Permanent Detect Magic: Each sensor has a permanent Detect Magic
+spell active.</li>
+<li>Advanced Alarm System: Sensor Filters can send mental alarms based
+on complex magical conditions.</li>
+</ul></li>
+<li><strong>Alarm Examples</strong>: Send an alarm when:
+<ul>
+<li>A creature of size medium has appeared.</li>
+<li>It looks human.</li>
+<li>Detect Magic indicates that the creature has a strong magical aura,
+similar to the caster's.</li>
+</ul></li>
+<li><strong>Recording Capability</strong>: Can record observations for
+later review. Outputting recorded memories to a stone costs 5gp per
+magic sensor in enchantment costs (reduced from Level 5).</li>
+<li><strong>Duration</strong>: Weeks equal to caster level</li>
+<li><strong>Casting Range</strong>: Extreme (1 mile + 100 ft per caster
+level)</li>
+<li><strong>Durability</strong>: 40 hp per level, 60 AC</li>
+</ul>
+<h2 id="countering-magic-sensors">Countering Magic Sensors</h2>
+<ul>
+<li><strong>Level 1 Sensors</strong>: Being visible, they can be
+directly attacked and destroyed.</li>
+<li><strong>Level 3 and 5 Sensors</strong>: Being invisible, creatures
+must first succeed on a Will save against the spell's DC to perceive the
+sensor. Once perceived, the sensor can be attacked.</li>
+<li><strong>All Levels</strong>: Dispel magic and similar abjuration
+spells can counter the sensors, requiring an appropriate caster level
+check.</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<h3 id="sensory-filter-example">Sensory Filter Example</h3>
+<p>A wizard with a +3 Intelligence modifier casts a Level 1 Magic
+Sensor. With 3 sensory filters available, they could:</p>
+<ol type="1">
+<li>Filter out background noise to focus on a specific
+conversation.</li>
+<li>Isolate a particular scent to track a creature.</li>
+<li>Focus visual perception on movement, ignoring stationary
+objects.</li>
+</ol>
+<p>This allows the wizard to gather precise information in complex
+environments.</p>
+<h3 id="sensor-placement-example">Sensor Placement Example</h3>
+<p>A rogue casts a Level 1 Magic Sensor and wants to observe a guarded
+room. After casting, they carefully throw the lightweight sensor through
+a small window. The sensor, being durable and light, survives the throw
+and lands inside the room, providing a perfect vantage point for
+reconnaissance.</p>
+<script>
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const body = document.body;
+        const html = document.documentElement;
+
+        darkModeToggle.addEventListener("click", () => {
+            html.classList.toggle("dark-mode");
+            body.classList.toggle("dark-mode");
+            const isDarkMode = html.classList.contains("dark-mode");
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+        });
+
+        // On load, apply saved theme
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+            html.classList.add("dark-mode");
+            body.classList.add("dark-mode");
+        }
+    </script>
+</body>
+</html>
