@@ -158,57 +158,90 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 <style>
-            /* Dark mode styles */
-            html.dark-mode,
-            body.dark-mode {
-                background-color: #1a1a1a;
-                color: #f1f1f1;
-            }
+        /* Dark mode styles */
+        html.dark-mode,
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
 
-            body.dark-mode a {
-                color: #add8e6;
-            }
+        body.dark-mode a {
+            color: #add8e6;
+        }
 
-            body.dark-mode a:visited {
-                color: #d8bfd8;
-            }
+        body.dark-mode a:visited {
+            color: #d8bfd8;
+        }
 
-            body.dark-mode blockquote {
-                border-left-color: #4a4a4a;
-                color: #b0b0b0;
-            }
+        body.dark-mode blockquote {
+            border-left-color: #4a4a4a;
+            color: #b0b0b0;
+        }
 
-            /* Toggle button styles */
-            #dark-mode-toggle {
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                padding: 10px;
-                background-color: #f1f1f1;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
+        /* Toggle button styles */
+        #dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-            body.dark-mode #dark-mode-toggle {
-                background-color: #4a4a4a;
-                color: #f1f1f1;
-            }
+        body.dark-mode #dark-mode-toggle {
+            background-color: #4a4a4a;
+            color: #f1f1f1;
+        }
 
-            /* Dark mode styles */
-            body.dark-mode a {
-                color: #add8e6;
-            }
+        /* Dark mode styles */
+        body.dark-mode a {
+            color: #add8e6;
+        }
 
-            body.dark-mode a:visited {
-                color: #d8bfd8;
-            }
+        body.dark-mode a:visited {
+            color: #d8bfd8;
+        }
 
-            body.dark-mode blockquote {
-                border-left-color: #4a4a4a;
-                color: #b0b0b0;
-            }
-        </style>
+        body.dark-mode blockquote {
+            border-left-color: #4a4a4a;
+            color: #b0b0b0;
+        }
+
+        /* Updated table styles */
+        table {
+            margin: 1em 0;
+            border-collapse: collapse;
+            width: 100%;
+            overflow-x: auto;
+            display: block;
+            font-variant-numeric: lining-nums tabular-nums;
+        }
+
+        table caption {
+            margin-bottom: 0.75em;
+        }
+
+        thead {
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        tbody {
+            margin-top: 0.5em;
+        }
+
+        th,
+        td {
+            border: 1px solid #1a1a1a;
+            padding: 0.25em 0.5em;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 <button id="dark-mode-toggle">Toggle Dark Mode</button>
@@ -228,23 +261,23 @@ itself with a heavy baggage. The new soul can also be angry, tormented
 and sad, but the end result is that both souls will now be more stable.
 Soul Fragment weakens the wearer after the spell is complete.</p>
 <script>
-            const darkModeToggle = document.getElementById("dark-mode-toggle");
-            const body = document.body;
-            const html = document.documentElement;
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const body = document.body;
+        const html = document.documentElement;
 
-            darkModeToggle.addEventListener("click", () => {
-                html.classList.toggle("dark-mode");
-                body.classList.toggle("dark-mode");
-                const isDarkMode = html.classList.contains("dark-mode");
-                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-            });
+        darkModeToggle.addEventListener("click", () => {
+            html.classList.toggle("dark-mode");
+            body.classList.toggle("dark-mode");
+            const isDarkMode = html.classList.contains("dark-mode");
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+        });
 
-            // On load, apply saved theme
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark") {
-                html.classList.add("dark-mode");
-                body.classList.add("dark-mode");
-            }
-        </script>
+        // On load, apply saved theme
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+            html.classList.add("dark-mode");
+            body.classList.add("dark-mode");
+        }
+    </script>
 </body>
 </html>
