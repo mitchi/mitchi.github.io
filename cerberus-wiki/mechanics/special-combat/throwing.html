@@ -195,6 +195,9 @@ Throwing, and Falling Damage for Creatures of All Sizes</a>
 <ul>
 <li><a href="#falling-damage" id="toc-falling-damage">Falling Damage</a>
 <ul>
+<li><a href="#terrain-modifiers-for-falling-damage"
+id="toc-terrain-modifiers-for-falling-damage">Terrain Modifiers for
+Falling Damage</a></li>
 <li><a href="#additional-consideration"
 id="toc-additional-consideration">Additional Consideration:</a></li>
 </ul></li>
@@ -212,8 +215,15 @@ id="toc-throwing-distance-calculation">Throwing Distance Calculation</a>
 <li><a href="#formula" id="toc-formula">Formula:</a></li>
 <li><a href="#throwing-distance-table"
 id="toc-throwing-distance-table">Throwing Distance Table:</a></li>
-<li><a href="#practical-example" id="toc-practical-example">Practical
-Example:</a></li>
+</ul></li>
+<li><a href="#examples" id="toc-examples">Examples</a>
+<ul>
+<li><a href="#a-barbarian-and-his-hobbit-friend-cross-a-chasm"
+id="toc-a-barbarian-and-his-hobbit-friend-cross-a-chasm">A barbarian and
+his hobbit friend cross a chasm</a></li>
+<li><a href="#dragon-drops-large-creature"
+id="toc-dragon-drops-large-creature">Dragon Drops Large
+Creature</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -265,6 +275,71 @@ thresholds for what is possible.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="terrain-modifiers-for-falling-damage">Terrain Modifiers for
+Falling Damage</h3>
+<table>
+<thead>
+<tr>
+<th>Terrain Type</th>
+<th>Damage Modifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grass</td>
+<td>100%</td>
+<td>Standard damage</td>
+</tr>
+<tr>
+<td>Snow</td>
+<td>25%</td>
+<td>Soft, cushioning surface</td>
+</tr>
+<tr>
+<td>Sand</td>
+<td>50%</td>
+<td>Partially absorbs impact</td>
+</tr>
+<tr>
+<td>Water</td>
+<td>50% (beyond)</td>
+<td></td>
+</tr>
+<tr>
+<td>Rocky</td>
+<td>125%</td>
+<td>Hard, uneven surface increases damage</td>
+</tr>
+<tr>
+<td>Wooden Floor</td>
+<td>100%</td>
+<td>Standard damage, may break through</td>
+</tr>
+<tr>
+<td>Stone Floor</td>
+<td>110%</td>
+<td>Slightly harder than standard</td>
+</tr>
+<tr>
+<td>Metal Surface</td>
+<td>120%</td>
+<td>Very hard surface, increases damage</td>
+</tr>
+<tr>
+<td>Mud</td>
+<td>75%</td>
+<td>Soft but can be dangerously deep</td>
+</tr>
+<tr>
+<td>Thick Vegetation</td>
+<td>80%</td>
+<td>Branches and leaves provide some cushioning</td>
+</tr>
+</tbody>
+</table>
+<p>Note: The DM may adjust these modifiers based on specific
+circumstances or environmental factors.</p>
 <h3 id="additional-consideration">Additional Consideration:</h3>
 <p>For thrown objects, if gravity increases velocity, the Dungeon Master
 (DM) may apply an additional 25% damage, at their discretion.</p>
@@ -447,10 +522,41 @@ Colossal = 6).</li>
 </tr>
 </tbody>
 </table>
-<h3 id="practical-example">Practical Example:</h3>
+<h2 id="examples">Examples</h2>
+<h3 id="a-barbarian-and-his-hobbit-friend-cross-a-chasm">A barbarian and
+his hobbit friend cross a chasm</h3>
 <p>A barbarian with Strength 10 can throw a Small creature 135 feet,
 enough to help an ally cross a chasm by attaching a rope. A character
 with Strength 90 can throw a Colossal creature 22.5 feet—perfect for
 hurling massive threats in battle!</p>
+<h3 id="dragon-drops-large-creature">Dragon Drops Large Creature</h3>
+<p>A Dragon with STR 30 grabs a Large creature, takes altitude with it,
+and then releases it. The creature falls 50 feet and lands on normal
+grass terrain.</p>
+<ol type="1">
+<li><p>Handling the Large creature:</p>
+<ul>
+<li>STR 30 is sufficient to manipulate a Large creature (requires STR
+11-20).</li>
+</ul></li>
+<li><p>Falling damage calculation:</p>
+<ul>
+<li>Large creatures take 2d12 damage per 5ft of falling.</li>
+<li>50ft fall = 10 * 2d12 = 20d12 damage.</li>
+</ul></li>
+<li><p>Rolling for damage:</p>
+<ul>
+<li>Let's say the DM rolls 20d12 and gets a total of 130 points of
+damage.</li>
+</ul></li>
+<li><p>Terrain modifier:</p>
+<ul>
+<li>The creature lands on normal grass, which has a 100% damage
+modifier.</li>
+<li>Final damage: 130 * 100% = 130 points of damage.</li>
+</ul></li>
+</ol>
+<p>Conclusion: The Large creature takes 130 points of falling damage
+from being dropped 50 feet onto grass by the Dragon with STR 30.</p>
 </body>
 </html>
