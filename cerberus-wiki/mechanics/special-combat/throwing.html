@@ -165,6 +165,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <script defer=""
   src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
@@ -188,7 +252,17 @@
 <body>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#hypothèses-" id="toc-hypothèses-">Hypothèses :</a></li>
+<li><a href="#manipulation-de-grandes-créatures-et-objets"
+id="toc-manipulation-de-grandes-créatures-et-objets">Manipulation de
+grandes créatures et objets</a>
+<ul>
+<li><a href="#catégories-de-force-et-capacités-correspondantes"
+id="toc-catégories-de-force-et-capacités-correspondantes">Catégories de
+Force et capacités correspondantes</a></li>
+<li><a href="#exemples" id="toc-exemples">Exemples</a>
+<ul>
+<li><a href="#lignes-directives-" id="toc-lignes-directives-">Lignes
+directives :</a></li>
 <li><a href="#base-de-la-formule-" id="toc-base-de-la-formule-">Base de
 la formule :</a></li>
 <li><a href="#proposition-de-formule-"
@@ -196,15 +270,73 @@ id="toc-proposition-de-formule-">Proposition de formule :</a></li>
 <li><a href="#exemple-avec-str-100-et-une-créature-colossale-"
 id="toc-exemple-avec-str-100-et-une-créature-colossale-">Exemple avec
 STR 100 et une créature Colossale :</a></li>
-<li><a href="#ajustement-du-facteur-k-"
-id="toc-ajustement-du-facteur-k-">Ajustement du facteur$ k$ :</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
+<h1 id="manipulation-de-grandes-créatures-et-objets">Manipulation de
+grandes créatures et objets</h1>
+<p>Un personnage avec un score de Force donné peut généralement
+manipuler des créatures et des objets de grande taille, voire les
+lancer. Pousser des créatures est une catégorie plus facile que les
+manipuler ou les lancer.</p>
+<h2 id="catégories-de-force-et-capacités-correspondantes">Catégories de
+Force et capacités correspondantes</h2>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Score de Force</th>
+<th>Taille maximale manipulable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1-5</td>
+<td>Petite</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6-10</td>
+<td>Moyenne</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11-20</td>
+<td>Grande</td>
+</tr>
+<tr>
+<td>4</td>
+<td>21-40</td>
+<td>Énorme</td>
+</tr>
+<tr>
+<td>5</td>
+<td>41-80</td>
+<td>Gargantuesque</td>
+</tr>
+<tr>
+<td>6</td>
+<td>81-160</td>
+<td>Colossale</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exemples">Exemples</h2>
+<ul>
+<li>Force 1-5 : peut pousser une créature moyenne, mais seulement lancer
+une petite créature.</li>
+<li>Force 6-10 : peut manipuler et lancer une créature moyenne.</li>
+<li>Force 70 : peut pousser une créature colossale, mais pas la
+lancer.</li>
+<li>Force 90 : peut pousser et lancer une créature colossale.</li>
+</ul>
 <p>Pour créer une formule qui permet de calculer la distance de
 lancement d'une créature ou d'un objet selon la force (STR) et la taille
 de la créature, nous devons prendre en compte plusieurs facteurs. Voici
-une approche basée sur les informations que tu as fournies :</p>
-<h3 id="hypothèses-">Hypothèses :</h3>
+l'approche choisie :</p>
+<h3 id="lignes-directives-">Lignes directives :</h3>
 <ul>
 <li>Plus la créature est grande, plus il est difficile de la
 lancer.</li>
@@ -230,17 +362,24 @@ chaque catégorie de taille :</p>
 <h4 id="formule-générale-">Formule générale :</h4>
 <p><span class="math display">
 D = k \times \left( \frac{S - S_{\text{min}}}{C} \right)
-</span> où : -<span class="math inline">D</span> est la distance en
-pieds (feet), -<span class="math inline">k</span> est un facteur
-d'ajustement, représentant la capacité de lancer (ce facteur peut être
-ajusté selon les règles ou l'équilibre du jeu ; une valeur par défaut
-pourrait être 10 par exemple), -<span class="math inline">S</span> est
-la force du personnage, -$ S_{\text{min}}$ est la force minimale requise
-pour lancer une créature de taille$ C<span class="math inline">,
--</span> C$ est la catégorie de taille de la créature (par exemple,
-Colossal = 6).</p>
-<h4 id="exemples-de-valeurs-pour-s_textmin-et-c-">Exemples de valeurs
-pour$ S_{\text{min}}$ et$ C$ :</h4>
+</span> où :</p>
+<ul>
+<li><span class="math inline">D</span> est la distance en pieds
+(feet),</li>
+<li><span class="math inline">k</span> est un facteur d'ajustement,
+représentant la capacité de lancer (ce facteur peut être ajusté selon
+les règles ou l'équilibre du jeu ; une valeur par défaut pourrait être
+10 par exemple),</li>
+<li><span class="math inline">S</span> est la force du personnage,</li>
+<li><span class="math inline">S_{\text{min}}</span> est la force
+minimale requise pour lancer une créature de taille <span
+class="math inline">C</span>,</li>
+<li><span class="math inline">C</span> est la catégorie de taille de la
+créature (par exemple, Colossal = 6).</li>
+</ul>
+<h4 id="exemples-de-valeurs-pour-s_textmin-et-c">Exemples de valeurs
+pour <span class="math inline">S_{\text{min}}</span> et <span
+class="math inline">C</span>:</h4>
 <ul>
 <li>Pour une créature <strong>Small</strong> :<span
 class="math inline">C = 1</span>,<span
@@ -249,39 +388,66 @@ class="math inline">S_{\text{min}} = 1</span></li>
 class="math inline">C = 2</span>,<span
 class="math inline">S_{\text{min}} = 6</span></li>
 <li>Pour une créature <strong>Large</strong> :<span
-class="math inline">C = 3</span>,$ S_{\text{min}} = 11$</li>
-<li>Pour une créature <strong>Huge</strong> :$ C = 4<span
-class="math inline">,</span> S_{\text{min}} = 21$</li>
-<li>Pour une créature <strong>Gargantuan</strong> :$ C = 5<span
-class="math inline">,</span> S_{\text{min}} = 41$</li>
-<li>Pour une créature <strong>Colossal</strong> :$ C = 6<span
-class="math inline">,</span> S_{\text{min}} = 81$</li>
+class="math inline">C = 3</span>,<span
+class="math inline">S_{\text{min}} = 11</span></li>
+<li>Pour une créature <strong>Huge</strong> :<span class="math inline">C
+= 4</span>,<span class="math inline">S_{\text{min}} = 21</span></li>
+<li>Pour une créature <strong>Gargantuan</strong> :<span
+class="math inline">C = 5</span>,<span
+class="math inline">S_{\text{min}} = 41</span></li>
+<li>Pour une créature <strong>Colossal</strong> :<span
+class="math inline">C = 6</span>,<span
+class="math inline">S_{\text{min}} = 81</span></li>
 </ul>
 <h3 id="exemple-avec-str-100-et-une-créature-colossale-">Exemple avec
 STR 100 et une créature Colossale :</h3>
-<p>Dans cet exemple, la créature est de catégorie Colossale, donc$ C =
-6$ et$ S_{\text{min}} = 81$.</p>
+<p>Dans cet exemple, la créature est de catégorie Colossale, donc <span
+class="math inline">C = 6</span> et <span
+class="math inline">S_{\text{min}} = 81</span>.</p>
 <p><span class="math display">
 D = 10 \times \left( \frac{100 - 81}{6} \right) = 10 \times \left(
 \frac{19}{6} \right) = 10 \times 3.17 \approx 31.7 \, \text{feet}
 </span></p>
 <p>Ainsi, un personnage avec une force de 100 pourrait lancer une
 créature colossale à environ 32 pieds.</p>
-<h3 id="ajustement-du-facteur-k-">Ajustement du facteur$ k$ :</h3>
-<p>Le facteur$ k$ peut être ajusté selon l'équilibre du jeu. Par
-exemple, si tu souhaites que les distances de lancement soient plus ou
-moins importantes, tu peux modifier cette constante.</p>
-<p><span class="math inline">a^2 + b^2 = c^2</span></p>
-<p><span class="math inline">v(t) = v_0 + \frac{1}{2}at^2</span></p>
-<p><span class="math inline">\gamma = \frac{1}{\sqrt{1 -
-v^2/c^2}}</span></p>
-<p><span class="math inline">\exists x \forall y (Rxy \equiv
-Ryx)</span></p>
-<p><span class="math inline">p \wedge q \models p</span></p>
-<p><span class="math inline">\Box\diamond p\equiv\diamond p</span></p>
-<p><span class="math inline">\int_{0}^{1} x dx = \left[ \frac{1}{2}x^2
-\right]_{0}^{1} = \frac{1}{2}</span></p>
-<p><span class="math inline">e^x = \sum_{n=0}^\infty \frac{x^n}{n!} =
-\lim_{n\rightarrow\infty} (1+x/n)^n</span></p>
+<p>Voici un code python qui implémente le calcul rapidement.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculer_distance_lancement(force, taille_creature, k<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Calcule la distance en pieds qu&#39;un personnage peut lancer une créature ou un objet.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    :param force: Force du personnage (S)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    :param taille_creature: Catégorie de taille de la créature (C) [1: Small, 2: Medium, 3: Large, etc.]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    :param k: Facteur d&#39;ajustement (par défaut 10)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    :return: Distance en pieds</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Définitions des seuils minimaux de force pour chaque catégorie de taille</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    seuils_minimaux <span class="op">=</span> {</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span>: <span class="dv">1</span>,   <span class="co"># Small</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span>: <span class="dv">6</span>,   <span class="co"># Medium</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="dv">3</span>: <span class="dv">11</span>,  <span class="co"># Large</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="dv">4</span>: <span class="dv">21</span>,  <span class="co"># Huge</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="dv">5</span>: <span class="dv">41</span>,  <span class="co"># Gargantuan</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="dv">6</span>: <span class="dv">81</span>   <span class="co"># Colossal</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Obtenir le seuil minimal correspondant à la taille de la créature</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    S_min <span class="op">=</span> seuils_minimaux.get(taille_creature, <span class="va">None</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Si la taille est invalide ou si la force est insuffisante pour cette taille</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> S_min <span class="kw">is</span> <span class="va">None</span> <span class="kw">or</span> force <span class="op">&lt;</span> S_min:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;Force insuffisante pour lancer cette créature.&quot;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcul de la distance</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    distance <span class="op">=</span> k <span class="op">*</span> (force <span class="op">-</span> S_min) <span class="op">/</span> taille_creature</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(distance, <span class="dv">2</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemple de calcul avec STR 100 et une créature Colossale (taille 6)</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>force <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>taille_creature <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculer_distance_lancement(force, taille_creature))</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
 </body>
 </html>
