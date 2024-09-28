@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>throwing</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#hypothèses-" id="toc-hypothèses-">Hypothèses :</a></li>
+<li><a href="#base-de-la-formule-" id="toc-base-de-la-formule-">Base de
+la formule :</a></li>
+<li><a href="#proposition-de-formule-"
+id="toc-proposition-de-formule-">Proposition de formule :</a></li>
+<li><a href="#exemple-avec-str-100-et-une-créature-colossale-"
+id="toc-exemple-avec-str-100-et-une-créature-colossale-">Exemple avec
+STR 100 et une créature Colossale :</a></li>
+<li><a href="#ajustement-du-facteur-k-"
+id="toc-ajustement-du-facteur-k-">Ajustement du facteur$ k$ :</a></li>
+</ul>
+</nav>
+<p>Pour créer une formule qui permet de calculer la distance de
+lancement d'une créature ou d'un objet selon la force (STR) et la taille
+de la créature, nous devons prendre en compte plusieurs facteurs. Voici
+une approche basée sur les informations que tu as fournies :</p>
+<h3 id="hypothèses-">Hypothèses :</h3>
+<ul>
+<li>Plus la créature est grande, plus il est difficile de la
+lancer.</li>
+<li>Plus la force du personnage est élevée, plus il peut lancer la
+créature loin.</li>
+<li>Il existe un seuil de force minimal pour pouvoir lancer une créature
+de taille spécifique (par exemple, STR 81 est nécessaire pour une
+créature Colossale).</li>
+</ul>
+<h3 id="base-de-la-formule-">Base de la formule :</h3>
+<ul>
+<li>La distance de lancement sera inversément proportionnelle à la
+taille de la créature.</li>
+<li>La distance augmentera proportionnellement à la force du personnage
+au-delà du seuil minimal requis pour lancer la créature.</li>
+</ul>
+<h3 id="proposition-de-formule-">Proposition de formule :</h3>
+<p>Nous définissons d'abord la "catégorie de taille" de la créature, que
+nous notons <span class="math inline">C</span>. Ensuite, nous utilisons
+la force du personnage notée <span class="math inline">S</span> et un
+seuil minimal <span class="math inline">S_{\text{min}}</span> pour
+chaque catégorie de taille :</p>
+<h4 id="formule-générale-">Formule générale :</h4>
+<p><span class="math display">
+D = k \times \left( \frac{S - S_{\text{min}}}{C} \right)
+</span> où : -<span class="math inline">D</span> est la distance en
+pieds (feet), -<span class="math inline">k</span> est un facteur
+d'ajustement, représentant la capacité de lancer (ce facteur peut être
+ajusté selon les règles ou l'équilibre du jeu ; une valeur par défaut
+pourrait être 10 par exemple), -<span class="math inline">S</span> est
+la force du personnage, -$ S_{\text{min}}$ est la force minimale requise
+pour lancer une créature de taille$ C<span class="math inline">,
+-</span> C$ est la catégorie de taille de la créature (par exemple,
+Colossal = 6).</p>
+<h4 id="exemples-de-valeurs-pour-s_textmin-et-c-">Exemples de valeurs
+pour$ S_{\text{min}}$ et$ C$ :</h4>
+<ul>
+<li>Pour une créature <strong>Small</strong> :<span
+class="math inline">C = 1</span>,<span
+class="math inline">S_{\text{min}} = 1</span></li>
+<li>Pour une créature <strong>Medium</strong> :<span
+class="math inline">C = 2</span>,<span
+class="math inline">S_{\text{min}} = 6</span></li>
+<li>Pour une créature <strong>Large</strong> :<span
+class="math inline">C = 3</span>,$ S_{\text{min}} = 11$</li>
+<li>Pour une créature <strong>Huge</strong> :$ C = 4<span
+class="math inline">,</span> S_{\text{min}} = 21$</li>
+<li>Pour une créature <strong>Gargantuan</strong> :$ C = 5<span
+class="math inline">,</span> S_{\text{min}} = 41$</li>
+<li>Pour une créature <strong>Colossal</strong> :$ C = 6<span
+class="math inline">,</span> S_{\text{min}} = 81$</li>
+</ul>
+<h3 id="exemple-avec-str-100-et-une-créature-colossale-">Exemple avec
+STR 100 et une créature Colossale :</h3>
+<p>Dans cet exemple, la créature est de catégorie Colossale, donc$ C =
+6$ et$ S_{\text{min}} = 81$.</p>
+<p><span class="math display">
+D = 10 \times \left( \frac{100 - 81}{6} \right) = 10 \times \left(
+\frac{19}{6} \right) = 10 \times 3.17 \approx 31.7 \, \text{feet}
+</span></p>
+<p>Ainsi, un personnage avec une force de 100 pourrait lancer une
+créature colossale à environ 32 pieds.</p>
+<h3 id="ajustement-du-facteur-k-">Ajustement du facteur$ k$ :</h3>
+<p>Le facteur$ k$ peut être ajusté selon l'équilibre du jeu. Par
+exemple, si tu souhaites que les distances de lancement soient plus ou
+moins importantes, tu peux modifier cette constante.</p>
+<p><span class="math inline">a^2 + b^2 = c^2</span></p>
+<p><span class="math inline">v(t) = v_0 + \frac{1}{2}at^2</span></p>
+<p><span class="math inline">\gamma = \frac{1}{\sqrt{1 -
+v^2/c^2}}</span></p>
+<p><span class="math inline">\exists x \forall y (Rxy \equiv
+Ryx)</span></p>
+<p><span class="math inline">p \wedge q \models p</span></p>
+<p><span class="math inline">\Box\diamond p\equiv\diamond p</span></p>
+<p><span class="math inline">\int_{0}^{1} x dx = \left[ \frac{1}{2}x^2
+\right]_{0}^{1} = \frac{1}{2}</span></p>
+<p><span class="math inline">e^x = \sum_{n=0}^\infty \frac{x^n}{n!} =
+\lim_{n\rightarrow\infty} (1+x/n)^n</span></p>
+</body>
+</html>
