@@ -7,9 +7,6 @@
   <title>level_school_index</title>
   <style>
     html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
@@ -28,13 +25,16 @@
     @media (max-width: 600px) {
       body {
         font-size: 0.9em;
-        padding: 1em;
+        padding: 12px;
       }
       h1 {
         font-size: 1.8em;
       }
     }
     @media print {
+      html {
+        background-color: white;
+      }
       body {
         background-color: transparent;
         color: black;
@@ -58,6 +58,10 @@
       color: #1a1a1a;
     }
     img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
       max-width: 100%;
     }
     h1, h2, h3, h4, h5, h6 {
@@ -84,9 +88,10 @@
       color: #606060;
     }
     code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
+      hyphens: manual;
     }
     pre {
       margin: 1em 0;
@@ -148,15 +153,20 @@
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 <style>
         /* Dark mode styles */
         html.dark-mode,
@@ -273,12 +283,12 @@ href="#level-3">3</a>|<a href="#level-4">4</a>|<a
 href="#level-5">5</a>|<a href="#level-6">6</a>|<a
 href="#level-7">7</a>|<a href="#level-8">8</a>|<a
 href="#level-9">9</a>|<a href="#level-10">10</a><br />
-<strong>Total number of unique spells</strong>: 217<br />
+<strong>Total number of unique spells</strong>: 218<br />
 <strong>Total number of spells (includes scaled spells)</strong>:
-420</p>
+426</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th><strong>Spell Level</strong></th>
 <th>1</th>
 <th>2</th>
@@ -293,18 +303,18 @@ href="#level-9">9</a>|<a href="#level-10">10</a><br />
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><strong>Count</strong></td>
-<td>33</td>
+<td>34</td>
 <td>20</td>
-<td>38</td>
-<td>36</td>
-<td>48</td>
 <td>39</td>
-<td>51</td>
+<td>36</td>
+<td>49</td>
+<td>39</td>
+<td>52</td>
 <td>30</td>
-<td>66</td>
-<td>59</td>
+<td>67</td>
+<td>60</td>
 </tr>
 </tbody>
 </table>
@@ -346,6 +356,7 @@ href="#level-9">9</a>|<a href="#level-10">10</a><br />
 <h3 id="transmutation">Transmutation</h3>
 <p><a href="Air%20Walk.html">Air Walk</a><br />
 <a href="Cleaning.html">Cleaning</a><br />
+<a href="Dangerous%20Potions.html">Dangerous Potions</a><br />
 <a href="Fish%20Lung.html">Fish Lung</a><br />
 <a href="Speed.html">Speed</a><br />
 <a href="Walk%20on%20Water.html">Walk on Water</a><br />
@@ -422,6 +433,7 @@ Elemental</a><br />
 <a href="Animate%20Weapon.html">Animate Weapon</a><br />
 <a href="Cat%20Paw.html">Cat Paw</a><br />
 <a href="Come%20to%20nose.html">Come to nose</a><br />
+<a href="Dangerous%20Potions.html">Dangerous Potions</a><br />
 <a href="Elusive%20Nature.html">Elusive Nature</a><br />
 <a href="Fly.html">Fly</a><br />
 <a href="Haste.html">Haste</a><br />
@@ -527,6 +539,7 @@ l'influence</a></p>
 <h3 id="transmutation-4">Transmutation</h3>
 <p><a href="Air%20Walk.html">Air Walk</a><br />
 <a href="Body%20Automaton.html">Body Automaton</a><br />
+<a href="Dangerous%20Potions.html">Dangerous Potions</a><br />
 <a href="Descente%20de%20Feu.html">Descente de Feu</a><br />
 <a href="Fly.html">Fly</a><br />
 <a href="Polymorph.html">Polymorph</a><br />
@@ -641,7 +654,8 @@ master</a><br />
 <a href="Negative%20Energy%20Burst.html">Negative Energy Burst</a><br />
 <a href="Restoration.html">Restoration</a></p>
 <h3 id="transmutation-6">Transmutation</h3>
-<p><a href="Fly.html">Fly</a><br />
+<p><a href="Dangerous%20Potions.html">Dangerous Potions</a><br />
+<a href="Fly.html">Fly</a><br />
 <a href="Gravity%20Crush.html">Gravity Crush</a><br />
 <a href="Mouton.html">Mouton</a><br />
 <a href="Polymorph.html">Polymorph</a><br />
@@ -754,6 +768,7 @@ vérités</a><br />
 <p><a href="Aldor&#39;s%20Soul%20of%20Fire.html">Aldor's Soul of
 Fire</a><br />
 <a href="Alois%20Timestop.html">Alois Timestop</a><br />
+<a href="Dangerous%20Potions.html">Dangerous Potions</a><br />
 <a href="Derni%C3%A8re%20gloire.html">Dernière gloire</a><br />
 <a href="Divine%20Warrior.html">Divine Warrior</a><br />
 <a href="Droit%20Divin.html">Droit Divin</a><br />
@@ -836,6 +851,7 @@ Elemental</a><br />
 <a href="Soul%20Reunion.html">Soul Reunion</a></p>
 <h3 id="transmutation-9">Transmutation</h3>
 <p><a href="Arcane%20Body.html">Arcane Body</a><br />
+<a href="Dangerous%20Potions.html">Dangerous Potions</a><br />
 <a href="Elusive%20Nature.html">Elusive Nature</a><br />
 <a href="Epic%20Levitate.html">Epic Levitate</a><br />
 <a href="Eternal%20Timestop.html">Eternal Timestop</a><br />
@@ -848,24 +864,6 @@ Elemental</a><br />
 Dragon</a></p>
 <h3 id="universal-2">Universal</h3>
 <p><a href="Circle%20Spell.html">Circle Spell</a></p>
-<script>
-        const darkModeToggle = document.getElementById("dark-mode-toggle");
-        const body = document.body;
-        const html = document.documentElement;
-
-        darkModeToggle.addEventListener("click", () => {
-            html.classList.toggle("dark-mode");
-            body.classList.toggle("dark-mode");
-            const isDarkMode = html.classList.contains("dark-mode");
-            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-        });
-
-        // On load, apply saved theme
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme === "dark") {
-            html.classList.add("dark-mode");
-            body.classList.add("dark-mode");
-        }
-    </script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
