@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>alchemy</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#potions-dangereuses" id="toc-potions-dangereuses">Potions
+dangereuses</a>
+<ul>
+<li><a href="#potion-de-force" id="toc-potion-de-force">Potion de
+force</a></li>
+<li><a href="#potion-de-dextérité" id="toc-potion-de-dextérité">Potion
+de Dextérité</a></li>
+<li><a href="#potion-dintelligence" id="toc-potion-dintelligence">Potion
+d'intelligence</a></li>
+<li><a href="#potion-de-charisme" id="toc-potion-de-charisme">Potion de
+charisme</a></li>
+<li><a href="#potion-de-vitesse" id="toc-potion-de-vitesse">Potion de
+vitesse</a></li>
+<li><a href="#potion-de-saut" id="toc-potion-de-saut">Potion de
+saut</a></li>
+<li><a href="#potion-dattaques" id="toc-potion-dattaques">Potion
+d'attaques</a></li>
+<li><a href="#potion-de-sort-supplémentaire"
+id="toc-potion-de-sort-supplémentaire">Potion de sort
+supplémentaire</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="potions-dangereuses">Potions dangereuses</h1>
+<p>Sort d'alchimie</p>
+<p>(Voir le sort Dangerous Potions)</p>
+<p>Les alchimistes peuvent préparer des potions ou huiles toxiques pour
+le corps, mais qui, si supportées, amènent un excellent avantage. Tout
+comme les poisons, ces potions nécessitent souvent un ingrédient
+principal rare pour produire l'effet initial. Ensuite, pour augmenter
+l'effet de la potion, les alchimistes de Cerberus complexifient le
+processus en mêlant habilement leur mana à tout le processus. Plus la
+mana de l'alchimiste est puissante, et plus son processus est complexe,
+plus les effets de la potion sont importants. Les potions suivantes, qui
+augmentent la force, la dextérité, l'intelligence et le charisme,
+nécessitent toutes un ingrédient principal. Le GM décidera, pour chaque
+potion, quel est cet ingrédient, ce qui lui permettra de garder un
+certain contrôle sur l'utilisation de ces potions par les joueurs. En
+utilisant des ingrédients provenant de créatures rares par exemple.</p>
+<h3 id="potion-de-force">Potion de force</h3>
+<p>Durée: heure/level</p>
+<p>Cette potion, confectionnée à partir d'herbes spéciales, joue sur le
+système hormonal, multipliant la production et les effets. Le sujet qui
+boit cette potion, homme ou femme, voit une augmentation de sa force
+incroyable, avec l'effet doublant lorsque la potion est bue
+régulièrement.</p>
+<p>Si la créature qui boit la potion ne réussit pas son jet de
+Fortitude, elle subit les mêmes effets, mais en négatif, pour la même
+durée.</p>
+<p>Jet de Fortitude Requis</p>
+<p>Level 1. Force +4. Fortitude Save Requis DC 20 Level 3. Force +8.
+Fortitude Save Requis DC 25 Level 5. Force +16. Fortitude Save Requis DC
+30 Level 7. Force +32. Fortitude Save Requis DC 35 Level 9. Force +64.
+Fortitude Save Requis DC 40 Level 10. Force +128. Fortitude Save Requis
+DC 50</p>
+<h3 id="potion-de-dextérité">Potion de Dextérité</h3>
+<p>Durée: heure/level</p>
+<p>Cette potion, confectionnée à partir d'herbes spéciales, joue sur le
+système nerveux et le rythme cardiaque du sujet. Le sujet qui boit cette
+potion, homme ou femme, voit une augmentation de sa dextérité assez
+drastique. En contrepartie, le sujet subit des effets extrêmement
+néfastes.</p>
+<p>Si la créature qui boit la potion ne réussit pas son jet de
+Fortitude, elle subit les mêmes effets, mais en négatif, pour la même
+durée.</p>
+<p>Jet de Fortitude Requis</p>
+<p>Level 1. Dextérité +4. WIS/CHA/INT -2 Fortitude Save Requis DC 20
+Level 3. Dextérité +8. WIS/CHA/INT -4 Fortitude Save Requis DC 25 Level
+5. Dextérité +16. WIS/CHA/INT -6 Fortitude Save Requis DC 30 Level 7.
+Dextérité +32. WIS/CHA/INT -8 Fortitude Save Requis DC 35 Level 9.
+Dextérité +64. WIS/CHA/INT -10 Fortitude Save Requis DC 40 Level 10.
+Dextérité +128. WIS/CHA/INT -10 Fortitude Save Requis DC 50</p>
+<h3 id="potion-dintelligence">Potion d'intelligence</h3>
+<p>Durée: heure/level</p>
+<p>Cette potion augmente la concentration du personnage qui la boit, ce
+qui a comme effet d'augmentation l'intelligence. En contrepartie, cette
+concentration accrue fait en sorte que le personnage perd
+progressivement sa vue d'ensemble. Bien entendu, la potion est toxique
+si la constitution du corps ne la supporte pas, et diminue
+l'intelligence de la même quantité si cette dernière est mal
+supportée.</p>
+<p>Si le jet de Fortitude échoue, le personnage subit tous les effets en
+négatif.</p>
+<p>Level 1. INT +2. WIS -2. Fortitude Save Requis DC 20 Level 3. INT +4.
+WIS -4. Fortitude Save Requis DC 25 Level 5. INT +6. WIS -6. Fortitude
+Save Requis DC 30 Level 7. INT +8. WIS -8. Fortitude Save Requis DC 35
+Level 9. INT +10. WIS -10. Fortitude Save Requis DC 40 Level 10. INT
++14. WIS - 10. Fortitude Save Requis DC 50</p>
+<h3 id="potion-de-charisme">Potion de charisme</h3>
+<p>Durée: heure/level</p>
+<p>Cette potion augmente le confort et l'assurance du personnage.
+L'augmentation du charisme est immédiate. En contrepartie, le personnage
+devient moins intéressé par les efforts intellectuels complexes,
+préférant prendre des raccourcis pour résoudre ses problèmes.</p>
+<p>Si le jet de Fortitude échoue, le personnage subit tous les effets en
+négatif.</p>
+<p>Level 1. CHA +2. INT -2. Fortitude Save Requis DC 20 Level 3. CHA +4.
+INT -4. Fortitude Save Requis DC 25 Level 5. CHA +6. INT -6. Fortitude
+Save Requis DC 30 Level 7. CHA +8. INT -8. Fortitude Save Requis DC 35
+Level 9. CHA +10. INT -10. Fortitude Save Requis DC 40 Level 10. CHA
++14. INT - 10. Fortitude Save Requis DC 50</p>
+<p>TODO</p>
+<h3 id="potion-de-vitesse">Potion de vitesse</h3>
+<h3 id="potion-de-saut">Potion de saut</h3>
+<h3 id="potion-dattaques">Potion d'attaques</h3>
+<h3 id="potion-de-sort-supplémentaire">Potion de sort
+supplémentaire</h3>
+</body>
+</html>
