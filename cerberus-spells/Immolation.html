@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Défense Coûteuse</title>
+  <title>Immolation</title>
   <style>
     html {
       color: #1a1a1a;
@@ -273,27 +273,54 @@
 <button id="dark-mode-toggle">Toggle Dark Mode</button>
 <p><a href="index.html">Spell Index</a></p>
 <hr />
-<h1 id="défense-coûteuse">Défense Coûteuse</h1>
+<h1 id="immolation">Immolation</h1>
+<p><em>Burn to defend</em></p>
 <p><strong>Evocation</strong><br />
-<strong>Action</strong>: Swift<br />
-<strong>Duration</strong>: rounds/level. Can be toggled off using
-another swift action<br />
+<strong>Damage type</strong>: Fire<br />
+<strong>Action</strong>: Swift (1 tick)<br />
+<strong>Components</strong>: V<br />
+<strong>Duration</strong>: Concentration<br />
 <strong>Spell Lists</strong>: Arcane<br />
-<strong>Levels</strong>: 5</p>
-<p>The Wizard quickly reacts to a possibly unknown enemy by converting
-magical power into fire. However, his body is burned down in the
-process. External fire resistances do not work with this spell. Only
-natural fire resistances work. Also, no metamagic feats can be applied
-to this spell.</p>
-<p>The amount of magical power released is uncontrolled and dangerous.
-The damage to the caster and all creatures within 5ft is calculated as
-follows: <em>1d16 fire damage per caster level</em>.</p>
-<p>The spellcaster can attempt to control the caster level used to
-launch this spell (before any rolls take place). For every ability point
-in intelligence, the spellcaster can remove a caster level from the
-spell. Therefore, a 20 intelligence mage can remove 5 caster levels.</p>
-<p>This spell is always cast at a minimum caster level of 9. Creatures
-within 30ft take half damage.</p>
+<strong>Levels</strong>: 2,4,6,8</p>
+<p><em>Immolation</em> instantly engulfs the caster in flames, turning
+their body into a living torch. The spell is cast quickly but is
+dangerous to maintain. At the start of each tick, the caster has a 25%
+chance of failing to withstand the pain, ending the effect. The caster
+also takes a percentage of the damage, which decreases as the spell
+level increases, while the area of effect expands. Barriers do not
+reduce this damage.</p>
+<h3 id="scaling-details">Scaling Details</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Spell Level</th>
+<th style="text-align: center;">Self-Damage</th>
+<th style="text-align: center;">Area of Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">50%</td>
+<td style="text-align: center;">10 ft</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">40%</td>
+<td style="text-align: center;">20 ft</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: center;">40 ft</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: center;">80 ft</td>
+</tr>
+</tbody>
+</table>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
