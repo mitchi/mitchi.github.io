@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Summon</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+        /* Dark mode styles */
+        html.dark-mode,
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode a {
+            color: #add8e6;
+        }
+
+        body.dark-mode a:visited {
+            color: #d8bfd8;
+        }
+
+        body.dark-mode blockquote {
+            border-left-color: #4a4a4a;
+            color: #b0b0b0;
+        }
+
+        /* Toggle button styles */
+        #dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        body.dark-mode #dark-mode-toggle {
+            background-color: #4a4a4a;
+            color: #f1f1f1;
+        }
+
+        /* Updated table styles */
+        table {
+            margin: 1em 0;
+            border-collapse: collapse;
+            width: 100%;
+            overflow-x: auto;
+            display: block;
+            font-variant-numeric: lining-nums tabular-nums;
+        }
+
+        table caption {
+            margin-bottom: 0.75em;
+        }
+
+        thead {
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        body.dark-mode thead {
+            border-bottom-color: #f1f1f1;
+        }
+
+        tbody {
+            margin-top: 0.5em;
+        }
+
+        th,
+        td {
+            border: 1px solid #1a1a1a;
+            padding: 0.25em 0.5em;
+        }
+
+        body.dark-mode th,
+        body.dark-mode td {
+            border-color: #f1f1f1;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        body.dark-mode th {
+            background-color: #2a2a2a;
+        }
+
+        /* Even and odd row styles */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        body.dark-mode tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        body.dark-mode tr:nth-child(odd) {
+            background-color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+<button id="dark-mode-toggle">Toggle Dark Mode</button>
+<p><a href="index.html">Spell Index</a></p>
+<hr />
+<h1 id="summon">Summon</h1>
+<p><em>Create a creature to help you</em></p>
+<p><strong>Conjuration</strong><br />
+<strong>Action</strong>: Full<br />
+<strong>Components</strong>: V,S,M<br />
+<strong>Duration</strong>: See text<br />
+<strong>Spell Lists</strong>: Arcane, Divine<br />
+<strong>Levels</strong>: 2,4,6,8,10</p>
+<p>The Summon spell is a cornerstone of a sorcerer's arcane arsenal,
+allowing them to create a creature made entirely of magic to serve as an
+ally or combatant. Mastering this spell and learning to summon new types
+of creatures is a long and difficult process. Because Summon can create
+a vast array of beings, the Game Master should oversee the caster's
+progress, emphasizing the importance of specialization. For example, a
+sorcerer who specializes in summoning Giants will not automatically know
+how to create water elementals; doing so would require significant
+dedicated study.</p>
+<p>The Summon spell allows the sorcerer to create animals, giants,
+elementals, and dragons. To summon a creature, the caster must use a
+sufficiently high level of the spell and consult the creature’s wiki
+template. The creature’s statistics are determined by two key variables:
+the caster's level and the level of the spell being used. When a
+summoned creature has special abilities or saves, its template specifies
+how its DC relates to the caster’s own Spell DC. For instance, an air
+elemental's Reflex save might be higher than the base DC, while a
+venomous snake's poison DC could also be enhanced.</p>
+<p>Casting a Summon spell is a lengthy process, typically taking three
+ticks. The caster can dismiss the summoned creature at any time as a
+swift action, requiring only a single tick.</p>
+<p>The primary challenge of this spell lies in communicating with the
+summoned creature. This limitation prevents Summon from being strictly
+superior to Polymorph. At lower levels, communication is difficult,
+relying on voice commands with a limited number of understood orders. At
+higher levels, this bond evolves into telepathic and eventually global
+communication, allowing the caster to command the creature even across
+great distances or from other planes of existence.</p>
+<p>For long-duration summons (starting at days/level), the caster must
+infuse the creature with fresh mana daily to maintain it. This requires
+no action but consumes one of the caster's spell slots for each
+maintained summon. To make a summon permanent, the caster must pay a
+considerable cost in gold, determined by the GM.</p>
+<p>A summon is vulnerable to abjuration spells used to destroy it,
+spells that disrupt the communication between it and the sorcerer, and
+illusions that could be used to trick it with false orders. A summon
+that has been made permanent with gold is not vulnerable to abjuration
+attempts.</p>
+<p>Upon creation, the summon recognizes its master, is loyal, and knows
+its first order. Normally, communication is instantaneous and requires
+no action. However, if the sorcerer is unable to reach their summon (due
+to magical interference, for example), they can concentrate for two
+ticks to issue a new order. The summon's ability to follow complex
+orders effectively depends on the intelligence of the creature it is
+based on.</p>
+<p>If a summon has completed all its orders, it defaults to a standing,
+unending command: protect its master. However, if its master is missing
+or dead, the summon becomes free and acts as a real creature would, with
+its own desires. For example, a dragon made permanent with gold who
+witnesses its master's death regains its free will. If that dragon is
+later convinced its master has returned, it might resume its service or
+might wait for a magical command.</p>
+<p>The summon possesses the intelligence, languages, and basic knowledge
+of the creature it copies. The longer a summon exists, the more
+intelligent and useful it can become, capable of executing more complex
+plans.</p>
+<p>Beginning at level 4, the caster can swap places with their summoned
+creature once during the spell's duration. The maximum range of this
+position exchange is determined by the closest equivalent teleportation
+spell of a lower level. (e.g., If Summon is cast at level 4, the swap
+distance would equal that of a level 2 Teleport spell).</p>
+<p>When a summoned creature is destroyed, it disappears in a cloud of
+particles. However, if the summon was made permanent with gold, it
+leaves behind a true physical corpse.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Characteristic</th>
+<th style="text-align: left;">Level 2</th>
+<th style="text-align: left;">Level 4</th>
+<th style="text-align: left;">Level 6</th>
+<th style="text-align: left;">Level 8</th>
+<th style="text-align: left;">Level 10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Maximum Duration</strong></td>
+<td style="text-align: left;">minutes/level</td>
+<td style="text-align: left;">hours/level</td>
+<td style="text-align: left;">days/level</td>
+<td style="text-align: left;">weeks/level</td>
+<td style="text-align: left;">Permanent</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cast Range</strong></td>
+<td style="text-align: left;">close</td>
+<td style="text-align: left;">close</td>
+<td style="text-align: left;">medium</td>
+<td style="text-align: left;">long</td>
+<td style="text-align: left;">global</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cast Time</strong></td>
+<td style="text-align: left;">3 ticks</td>
+<td style="text-align: left;">3 ticks</td>
+<td style="text-align: left;">3 ticks</td>
+<td style="text-align: left;">3 ticks</td>
+<td style="text-align: left;">1 tick</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Communication</strong></td>
+<td style="text-align: left;">Natural organs of the creature</td>
+<td style="text-align: left;">Oral with caster's voice</td>
+<td style="text-align: left;">Oral or Psychic (30 ft)</td>
+<td style="text-align: left;">Oral or Psychic (200 ft)</td>
+<td style="text-align: left;">Oral or Psychic (∞ allies, 1000 ft
+enemies)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Max. Creature Size</strong></td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">Large</td>
+<td style="text-align: left;">Huge</td>
+<td style="text-align: left;">Gargantuan</td>
+<td style="text-align: left;">Colossal</td>
+</tr>
+</tbody>
+</table>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
