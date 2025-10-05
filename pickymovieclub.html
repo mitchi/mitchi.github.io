@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Edmond La Chance" />
+  <title>The Algorithm I Buried. The Picky Movie Club Algorithm : A General-Purpose Pattern for Finding Conflicts</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">The Algorithm I Buried. The Picky Movie Club Algorithm
+: A General-Purpose Pattern for Finding Conflicts</h1>
+<p class="author">Edmond La Chance</p>
+<p class="date">Oct 5th 2025</p>
+</header>
+<p>A few years ago, when I was a computer science researcher, I designed
+a simple, elegant algorithm to solve a specific problem in my field. I
+published it, left research for other adventures, and thought little of
+it. But I’ve come to realize that the solution I built is not a niche
+tool for one problem, but a powerful, general-purpose pattern applicable
+to dozens of domains.</p>
+<p>I had accidentally buried a powerful idea in a niche paper. Today, I
+want to dig it up and share it properly.</p>
+<p>This is the story of that algorithm, how it works, and how a simple
+mental model—the Picky Movie Club—unlocks its potential to solve
+problems from event scheduling to detecting merge conflicts in code.</p>
+<h3 id="the-original-sin-the-n²-problem">The Original Sin: The N²
+Problem</h3>
+<p>Many computational problems, from the trivial to the profound, boil
+down to finding conflicts. Does this meeting clash with another? Do
+these two code changes contradict each other? Can this Sudoku cell be a
+‘5’?</p>
+<p>The naive way to answer these questions is to build a “conflict
+graph.” You take every item in your set and compare it to every other
+item, drawing a line between them if they conflict. For a set of
+<code>N</code> items, this requires roughly <code>N²</code> comparisons.
+This brute-force approach works for small numbers, but it quickly
+becomes a computational nightmare as <code>N</code> grows.</p>
+<p>My original work required building just such a graph for millions of
+items. An <code>N²</code> solution worked but… I wanted something
+faster.</p>
+<h3 id="the-parable-of-the-picky-movie-club">The Parable of the Picky
+Movie Club</h3>
+<p>Back in the day, I was best friends with Cedric, an AI PhD student
+from France who was extremely intelligent and eccentric, and he told me
+many times that he did not like to meet new people unless he absolutely
+had to.</p>
+<p>Imagination and story telling have always been a powerful way for me
+to think. And so I began to create a story in my head… of what Cedric
+would do if he wanted to avoid people. The Picky Movie Club Parable was
+born.</p>
+<p>Let me introduce you to Cedric, a movie fan, and the “Database” movie
+club he belongs to.</p>
+<p>Every year, the Database movie club organizes an event for its
+members to socialize and talk about the movies they have watched. For
+every film category (horror, action, drama, romance), there are a number
+of selected films. Every member is asked to add their ID (a unique
+integer) to the list of their favorite film in that category. If a
+member does not have a favorite film in the category, the member is
+asked to add their ID to the “undecided” list.</p>
+<p>So, if Cedric likes the movie <em>The Matrix</em> in the category
+“Action” he adds his member ID to <em>The Matrix</em>’s list. Cedric
+repeats this process for several categories. He can skip a category if
+he has no firm opinion on the best movie.</p>
+<p>Cedric is very choosy, and he does not like to spend his time
+discussing movie details with people who disagree with his choices. He
+wants to avoid awkward conversations. If between him and one other
+person there is a disagreement on even a single movie category, Cedric
+does not want to converse with them. But he doesn’t mind speaking to
+someone who either always agrees with his choices or is undecided.</p>
+<p>Last year, at the Database movie club event, Cedric was unprepared,
+and had to speak to every other member to find the ones he likes. That
+was awful, and he’s not doing that again.</p>
+<p>This year, he has a new approach. To avoid starting conversations
+with these uninteresting members, Cedric creates a list of the people he
+has to avoid. To make this list, Cedric calculates a “conflict list” for
+<em>every category</em> by doing the following:</p>
+<ol type="1">
+<li>He grabs the list of members who like his favorite movie in that
+category.</li>
+<li>He grabs the list of members who were undecided in that
+category.</li>
+<li>He performs the union of these two lists. This gives him a “safe
+list” of everyone he <em>doesn’t</em> have a conflict with for that
+category.</li>
+<li>He then takes the club’s complete membership roster and subtracts
+his ‘safe list’. The people who remain are, by definition, the ones who
+chose a different movie. This is his ‘conflict list’ for just that one
+category.</li>
+</ol>
+<p>Finally, by merging (taking the union of) the conflict lists from all
+the categories he has an opinion on, Cedric creates his final list of
+all the members he should avoid at the party. The genius of his plan is
+that he never had to ask a single person about their movie choices. He
+used the club’s lists as a shortcut, finding all his conflicts without a
+single awkward conversation.</p>
+<p>Cedric’s final “avoid” list is the complete adjacency list for his
+node in the conflict graph.</p>
+<h3 id="the-general-algorithm-beyond-the-story">The General Algorithm:
+Beyond the Story</h3>
+<p>Cedric’s logic is clever, but it’s a specific instance of a more
+general pattern. The real algorithm has two “pluggable” pieces: a
+<strong>Lookup Rule</strong> and an <strong>Aggregation
+Rule</strong>.</p>
+<p>Here is the generalized pseudocode:</p>
+<pre><code>Algorithm: Generalized Attribute-Conflict Finder
+
+Input:
+  - entity: The item we&#39;re finding conflicts for.
+  - database: An index mapping (attribute, value) -&gt; {item IDs}.
+  - lookup_function: A rule to find potential conflicts for ONE attribute.
+  - aggregation_function: A rule to combine potential conflicts into a final list.
+
+Output:
+  - finalConflictList: The set of all truly conflicting item IDs.
+
+1. potentialConflictSets = []
+2. For each attribute in our entity:
+3.    conflicts = lookup_function(attribute, entity.value, database)
+4.    conflicts.remove(entity.id) // Don&#39;t conflict with yourself
+5.    potentialConflictSets.add(conflicts)
+6.
+7. finalConflictList = aggregation_function(potentialConflictSets)
+8. return finalConflictList</code></pre>
+<blockquote>
+<h3 id="a-quick-look-at-complexity">A Quick Look at Complexity</h3>
+<p>The power of this algorithm comes from its time complexity. Let’s
+assume we have <code>N</code> entities, and each has <code>k</code>
+attributes.</p>
+<ul>
+<li><p><strong>The Naive Approach (<code>O(N² * k)</code>):</strong> You
+form <code>N * (N-1) / 2</code> pairs of entities (roughly
+<code>N²</code>). For each pair, you might have to compare up to
+<code>k</code> attributes to see if they conflict.</p></li>
+<li><p><strong>The Database Approach:</strong></p></li>
+<li><p><strong>Step 1: Building the Database (One-time cost):</strong>
+We iterate through all <code>N</code> entities and for each, we make
+<code>k</code> insertions into our database. Assuming our database is a
+hash map, this setup cost is <code>O(N * k)</code>.</p></li>
+<li><p><strong>Step 2: Finding Conflicts:</strong> To build the full
+graph, we run our algorithm for all <code>N</code> entities. For each
+entity, we loop through its <code>k</code> attributes. Each lookup is a
+fast hash map operation, followed by a set operation. The total time is
+therefore proportional to <code>N * k</code>.</p></li>
+</ul>
+<p>The final complexity is dominated by these two steps, both
+<code>O(N * k)</code>. This is a monumental improvement over
+<code>O(N²)</code>, especially when <code>N</code> is large.</p>
+</blockquote>
+<p>The magic is that by swapping out the <code>lookup</code> and
+<code>aggregation</code> functions, we can solve vastly different
+problems. Let’s see it in action.</p>
+<hr />
+<h3 id="example-1-university-class-scheduling">Example 1: University
+Class Scheduling</h3>
+<p>Our first stop is a university’s scheduling office. We need to build
+a conflict graph for all classes to help find a valid schedule.</p>
+<p><strong>The Scenario:</strong> We have five classes to schedule<br />
+* <strong>E1:</strong> CS101 Lecture (Time: <code>Mon 9am</code>, Room:
+<code>101</code>)<br />
+* <strong>E2:</strong> Team Standup (Time: <code>Mon 9am</code>, Room:
+<code>204</code>)<br />
+* <strong>E3:</strong> Marketing Sync (Time: <code>Mon 10am</code>,
+Room: <code>101</code>)<br />
+* <strong>E4:</strong> Physics Lab (Time: <code>Mon 9am</code>, Room:
+<code>101</code>)<br />
+* <strong>E5:</strong> CEO 1-on-1 (Time: <code>Tue 9am</code>, Room:
+<code>300</code>)</p>
+<p><strong>Defining the Terms:</strong><br />
+* <strong>Entities:</strong> The classes (E1, E2, …).<br />
+* <strong>Attributes:</strong> <code>Time</code> and
+<code>Room</code>.<br />
+* <strong>Conflict Rule:</strong> A true conflict occurs if two events
+want the same <code>Time</code> <strong>AND</strong> the same
+<code>Room</code>.</p>
+<p><strong>Step 1: The Database (The One-Time Setup)</strong> We index
+all five events into two lookup tables:<br />
+<code>db_Time</code>:<br />
+* <code>'Mon 9am'</code>: <code>{1, 2, 4}</code><br />
+* <code>'Mon 10am'</code>: <code>{3}</code><br />
+* <code>'Tue 9am'</code>: <code>{5}</code></p>
+<p><code>db_Room</code>:<br />
+* <code>'101'</code>: <code>{1, 3, 4}</code><br />
+* <code>'204'</code>: <code>{2}</code><br />
+* <code>'300'</code>: <code>{5}</code></p>
+<p><strong>Step 2: The Rules (Plugging into the Framework)</strong></p>
+<p><strong>Lookup Rule:</strong> We need to find other events with the
+<em>same</em> attribute value. We’ll call this
+<code>find_same_request</code>.<br />
+<strong>Aggregation Rule:</strong> A conflict must exist across
+<em>all</em> attributes. We must use <strong>INTERSECTION</strong>.</p>
+<p><strong>Step 3: The Walkthrough (Finding conflicts for E1:
+CS101)</strong><br />
+Our target entity (our Cedric) is E1, which is
+<code>(Time: Mon 9am, Room: 101)</code>.</p>
+<ul>
+<li><strong>Analyze the <code>Time</code> Attribute:</strong>
+<ul>
+<li>We use <code>find_same_request</code> for
+<code>Time = 'Mon 9am'</code>.</li>
+<li>The database returns <code>{1, 2, 4}</code>.</li>
+<li>We remove E1’s own ID, leaving <code>{2, 4}</code>.</li>
+<li><em>Potential Conflicts on Time: <code>{E2, E4}</code>.</em></li>
+</ul></li>
+<li><strong>Analyze the <code>Room</code> Attribute:</strong>
+<ul>
+<li>We use <code>find_same_request</code> for
+<code>Room = '101'</code>.</li>
+<li>The database returns <code>{1, 3, 4}</code>.</li>
+<li>We remove E1’s own ID, leaving <code>{3, 4}</code>.</li>
+<li><em>Potential Conflicts on Room: <code>{E3, E4}</code>.</em></li>
+</ul></li>
+<li><strong>Aggregate the Results:</strong>
+<ul>
+<li>We apply the <strong>INTERSECTION</strong> rule to our potential
+conflict sets.</li>
+<li><code>Intersection({2, 4}, {3, 4})</code> gives us
+<code>{4}</code>.</li>
+</ul></li>
+</ul>
+<p><strong>The Result:</strong> The algorithm correctly identifies that
+<strong>E4 (Physics Lab)</strong> is the one and only conflict for E1.
+It did this without ever needing to compare E1 to E5, proving its
+efficiency.</p>
+<hr />
+<h3 id="example-2-version-control-merge-conflicts">Example 2: Version
+Control Merge Conflicts</h3>
+<p>Next, let’s tackle a problem familiar to every developer: detecting
+merge conflicts.</p>
+<p><strong>The Scenario:</strong> A <code>config.yml</code> file is
+changed on two different branches, <code>feature-A</code> and
+<code>feature-B</code>. We need to check for conflicts when merging
+<code>feature-B</code> into <code>feature-A</code>.</p>
+<p><strong>Changes on <code>feature-A</code>:</strong><br />
+* <strong>A1:</strong> <code>config.yml</code>, Line 1 -&gt;
+<code>version: 1.1</code><br />
+* <strong>A2:</strong> <code>config.yml</code>, Line 3 -&gt;
+<code>beta_feature: true</code></p>
+<p><strong>Changes on <code>feature-B</code>:</strong><br />
+* <strong>B1:</strong> <code>config.yml</code>, Line 1 -&gt;
+<code>version: 2.0-beta</code><br />
+* <strong>B2:</strong> <code>config.yml</code>, Line 2 -&gt;
+<code>mode: development</code></p>
+<p><strong>Defining the Terms:</strong><br />
+* <strong>Entities:</strong> Individual line changes (A1, B1,
+etc.).<br />
+* <strong>Attributes:</strong> The location, a
+<code>(file, line_number)</code> pair.<br />
+* <strong>Values:</strong> The new content of the line.<br />
+* <strong>Conflict Rule:</strong> A conflict occurs if two changes
+affect the <strong>SAME</strong> line but have
+<strong>DIFFERENT</strong> content.</p>
+<p><strong>Step 1: The Database (Index <code>feature-A</code>’s
+changes)</strong><br />
+<code>db_Changes</code>:<br />
+* <code>('config.yml', 1)</code>:
+<code>{ content: "version: 1.1", commit: "A1" }</code><br />
+* <code>('config.yml', 3)</code>:
+<code>{ content: "beta_feature: true", commit:  "A2" }</code></p>
+<p><strong>Step 2: The Rules (The Original Picky Movie Club
+Logic)</strong><br />
+* <strong>Lookup Rule:</strong> For a given line, find changes with
+<strong>DIFFERENT</strong> content. We’ll call this
+<code>find_different_value</code>.<br />
+* <strong>Aggregation Rule:</strong> A conflict on <strong>ANY</strong>
+line is enough to cause a merge conflict. We use
+<strong>UNION</strong>.</p>
+<p><strong>Step 3: The Walkthrough (Checking <code>feature-B</code>’s
+changes)</strong></p>
+<ul>
+<li><strong>Checking B1:
+<code>(config.yml, line 1, "version: 2.0-beta")</code></strong>
+<ul>
+<li>We look up its attribute <code>('config.yml', 1)</code> in the
+database.</li>
+<li>We find the change from commit A1.</li>
+<li>We apply <code>find_different_value</code>: Is
+<code>"version: 2.0-beta"</code> different from
+<code>"version: 1.1"</code>? Yes.</li>
+<li><em>Conflict found: B1 conflicts with A1.</em></li>
+</ul></li>
+<li><strong>Checking B2:
+<code>(config.yml, line 2, "mode: development")</code></strong>
+<ul>
+<li>We look up its attribute <code>('config.yml', 2)</code> in the
+database.</li>
+<li>The database has no entry for this key. No changes were made to line
+2 on <code>feature-A</code>.</li>
+<li><em>No conflict found.</em></li>
+</ul></li>
+</ul>
+<p><strong>The Result:</strong> The algorithm correctly flags the
+conflict on line 1 and passes line 2. Because the aggregation rule is
+<strong>UNION</strong>, the moment the first conflict is found, the
+entire merge can be flagged as a failure.</p>
+<hr />
+<h3 id="example-3-solving-sudoku">Example 3: Solving Sudoku</h3>
+<p>At its heart, solving a Sudoku puzzle is a Constraint Satisfaction
+Problem (CSP). We need to assign a value (1-9) to each variable (cell)
+subject to a set of constraints (no repeated numbers in any row, column,
+or 3x3 box). Many advanced Sudoku solvers work by reasoning over these
+constraints. Our algorithm is the perfect tool for the first, critical
+step: building a “constraint graph” that explicitly maps out every
+single possible conflict.</p>
+<p><strong>The Scenario:</strong> We’re building a constraint graph for
+a 4x4 Mini Sudoku grid.</p>
+<p><strong>Defining the Terms:</strong><br />
+* <strong>Entities:</strong> All possible <em>assignments</em> of a
+number to a cell (e.g., “Assign Value=3 to Cell=(0,0)”). There are 64
+such possibilities.<br />
+* <strong>Attributes:</strong> The constraint groups an assignment
+belongs to: its <code>Row</code>, <code>Column</code>, and
+<code>Box</code>.<br />
+* <strong>Conflict Rule:</strong> Two assignments conflict if they have
+the <strong>SAME</strong> value in the <strong>SAME</strong> group (Row,
+Col, OR Box).</p>
+<p><strong>Step 1: The Database (Index all 64 possible
+assignments)</strong><br />
+A sample of the database would look like this:<br />
+<code>db_Assignments</code>:<br />
+* <code>('Row-0', 3)</code>:
+<code>{ID for (Val=3, Cell=(0,0)), ID for (Val=3, Cell=(0,1)), ...}</code><br />
+* <code>('Col-0', 3)</code>:
+<code>{ID for (Val=3, Cell=(0,0)), ID for (Val=3, Cell=(1,0)), ...}</code><br />
+* <code>('Box-0', 3)</code>:
+<code>{ID for (Val=3, Cell=(0,0)), ID for (Val=3, Cell=(0,1)), ...}</code></p>
+<p><strong>Step 2: The Rules (A Mix-and-Match)</strong><br />
+* <strong>Lookup Rule:</strong> We need to find other assignments in the
+same group with the <strong>SAME</strong> value. This is
+<code>find_same_request</code> from our scheduling example.<br />
+* <strong>Aggregation Rule:</strong> A conflict in <strong>ANY</strong>
+of the groups is sufficient. We use <strong>UNION</strong> from our
+version control example.</p>
+<p><strong>Step 3: The Walkthrough (Finding conflicts for “Assign 3 to
+Cell (0,0)”)</strong><br />
+Let’s call our target entity A1. It belongs to <code>Row-0</code>,
+<code>Col-0</code>, and <code>Box-0</code>.</p>
+<ul>
+<li><strong>Analyze <code>Row-0</code> Constraint:</strong>
+<ul>
+<li>We look up <code>('Row-0', 3)</code> in the database.<br />
+</li>
+<li>This gives us all assignments of <code>3</code> to any cell in the
+first row.<br />
+</li>
+<li><em>Potential Conflicts on Row-0:
+<code>{Assign 3 to (0,1), Assign 3 to (0,2), ...}</code></em></li>
+</ul></li>
+<li><strong>Analyze <code>Col-0</code> Constraint:</strong>
+<ul>
+<li>We look up <code>('Col-0', 3)</code>.<br />
+</li>
+<li>This gives us all assignments of <code>3</code> to any cell in the
+first column.<br />
+</li>
+<li><em>Potential Conflicts on Col-0:
+<code>{Assign 3 to (1,0), Assign 3 to (2,0), ...}</code></em></li>
+</ul></li>
+<li><strong>Analyze <code>Box-0</code> Constraint:</strong>
+<ul>
+<li>We look up <code>('Box-0', 3)</code>.<br />
+</li>
+<li>This gives us all assignments of <code>3</code> to any other cell in
+the top-left 2x2 box.<br />
+</li>
+<li><em>Potential Conflicts on Box-0:
+<code>{Assign 3 to (0,1), Assign 3 to (1,0), Assign 3 to (1,1)}</code></em></li>
+</ul></li>
+<li><strong>Aggregate the Results:</strong>
+<ul>
+<li>We apply the <strong>UNION</strong> rule to these three sets.</li>
+</ul></li>
+</ul>
+<p><strong>The Result:</strong> The final conflict list for “Assign 3 to
+Cell (0,0)” is the complete set of all other assignments of the number 3
+within its row, column, and box. By building this graph for all 64
+possibilities, a solver has a complete map of the problem’s constraints,
+allowing it to find a solution far more intelligently than blind
+guesswork.</p>
+<h3 id="additional-information-related-work">Additional information,
+related work</h3>
+<p>This algorithm builds on the well-established concept of inverted
+indexes used in information retrieval. What’s novel here is not the data
+structure itself, but the general pattern for conflict detection across
+domains. To my knowledge, this specific abstraction—with pluggable
+lookup and aggregation rules—hasn’t been formalized as a design pattern
+for conflict graph construction.</p>
+<p>In my original paper, I used this technique specifically for building
+a graph for t-way testing. This blog post generalizes that solution into
+a broader pattern.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>What started as a niche solution for a software testing problem
+turned out to be a flexible framework for a fundamental computational
+task: building conflict-graphs. If you are building those, or if you
+want to avoid people at your local movie club, perhaps Cedric’s clever
+strategies will be useful to you too.</p>
+<p>The core pattern is simple:<br />
+1. <strong>Index your data by its attributes.</strong><br />
+2. <strong>Define your conflict rules (lookup and
+aggregation).</strong><br />
+3. <strong>Run the algorithm to build your conflict graph in near-linear
+time.</strong></p>
+<p>The pattern applications we saw in this blog post:</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 31%" />
+<col style="width: 34%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Lookup Rule</th>
+<th>Aggregation</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scheduling</td>
+<td>find_same</td>
+<td>INTERSECTION</td>
+<td>Conflict requires same time AND room</td>
+</tr>
+<tr>
+<td>Version Control</td>
+<td>find_different</td>
+<td>UNION</td>
+<td>Any line conflict is enough</td>
+</tr>
+<tr>
+<td>Sudoku</td>
+<td>find_same</td>
+<td>UNION</td>
+<td>Conflict in any group violates constraint</td>
+</tr>
+</tbody>
+</table>
+<p><em>You can find the original paper where a specific version of this
+algorithm was published <a
+href="https://onlinelibrary.wiley.com/doi/10.1002/stvr.1842">here</a>.
+The relevant section is “Efficient graph generation.” </em></p>
+<h3 id="event-scheduling-python-code">Event Scheduling Python code</h3>
+<p>Here is a minimal, runnable Python implementation for our university
+scheduling example.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Our Data ---</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;CS101 Lecture&#39;</span>, <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;101&#39;</span>},</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;Team Standup&#39;</span>,  <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;204&#39;</span>},</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;Marketing Sync&#39;</span>,<span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 10am&#39;</span>,<span class="st">&#39;Room&#39;</span>: <span class="st">&#39;101&#39;</span>},</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;Physics Lab&#39;</span>,   <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;101&#39;</span>},</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;CEO 1-on-1&#39;</span>,    <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Tue 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;300&#39;</span>}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># --- The &quot;Pluggable&quot; Rules for Scheduling ---</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_same_request(attribute, value, database):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Lookup Rule: Find entities with the SAME attribute value.&quot;&quot;&quot;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> database.get((attribute, value), <span class="bu">set</span>())</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> aggregate_by_intersection(list_of_sets):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Aggregation Rule: A conflict must exist on ALL attributes.&quot;&quot;&quot;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> list_of_sets:</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">set</span>()</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">set</span>.intersection(<span class="op">*</span>list_of_sets)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># --- The Generalized Algorithm ---</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_conflicts(entity_id, all_entities, database, lookup_fn, aggregate_fn):</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    entity <span class="op">=</span> all_entities[entity_id]</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    potential_conflict_sets <span class="op">=</span> []</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We only care about attributes that define a resource</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    attributes_to_check <span class="op">=</span> [<span class="st">&#39;Time&#39;</span>, <span class="st">&#39;Room&#39;</span>]</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attr <span class="kw">in</span> attributes_to_check:</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> entity[attr]</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        conflicts <span class="op">=</span> lookup_fn(attr, value, database).copy() <span class="co"># Use .copy() to be safe</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        conflicts.discard(entity_id) <span class="co"># Remove self</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        potential_conflict_sets.append(conflicts)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> aggregate_fn(potential_conflict_sets)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Main Execution ---</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build the database (one-time cost)</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> defaultdict(<span class="bu">set</span>)</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> event_id, details <span class="kw">in</span> events.items():</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    db[(<span class="st">&#39;Time&#39;</span>, details[<span class="st">&#39;Time&#39;</span>])].add(event_id)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    db[(<span class="st">&#39;Room&#39;</span>, details[<span class="st">&#39;Room&#39;</span>])].add(event_id)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Find conflicts for a specific entity (e.g., E1: CS101)</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>target_id <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>conflict_ids <span class="op">=</span> find_conflicts(</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    target_id, events, db, </span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    lookup_fn<span class="op">=</span>find_same_request, </span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    aggregate_fn<span class="op">=</span>aggregate_by_intersection</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Print the result</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Finding conflicts for: </span><span class="sc">{</span>events[target_id][<span class="st">&#39;name&#39;</span>]<span class="sc">}</span><span class="ss"> (ID: </span><span class="sc">{</span>target_id<span class="sc">}</span><span class="ss">)&quot;</span>)</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> conflict_ids:</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cid <span class="kw">in</span> conflict_ids:</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;  -&gt; CONFLICTS WITH: </span><span class="sc">{</span>events[cid][<span class="st">&#39;name&#39;</span>]<span class="sc">}</span><span class="ss"> (ID: </span><span class="sc">{</span>cid<span class="sc">}</span><span class="ss">)&quot;</span>)</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;  -&gt; No conflicts found.&quot;</span>)</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected Output:</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding conflicts for: CS101 Lecture (ID: 1)</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#   -&gt; CONFLICTS WITH: Physics Lab (ID: 4)</span></span></code></pre></div>
+</body>
+</html>
