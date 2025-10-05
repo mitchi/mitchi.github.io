@@ -535,95 +535,106 @@ conflict on line 1 and passes line 2. Because the aggregation rule is
 <strong>UNION</strong>, the moment the first conflict is found, the
 entire merge can be flagged as a failure.</p>
 <hr />
-<h3 id="example-3-solving-sudoku">Example 3: Solving Sudoku</h3>
-<p>At its heart, solving a Sudoku puzzle is a Constraint Satisfaction
-Problem (CSP). We need to assign a value (1-9) to each variable (cell)
-subject to a set of constraints (no repeated numbers in any row, column,
-or 3x3 box). Many advanced Sudoku solvers work by reasoning over these
-constraints. Our algorithm is the perfect tool for the first, critical
-step: building a “constraint graph” that explicitly maps out every
-single possible conflict.</p>
-<p><strong>The Scenario:</strong> We’re building a constraint graph for
-a 4x4 Mini Sudoku grid.</p>
-<p><strong>Defining the Terms:</strong><br />
-* <strong>Entities:</strong> All possible <em>assignments</em> of a
-number to a cell (e.g., “Assign Value=3 to Cell=(0,0)”). There are 64
-such possibilities.<br />
-* <strong>Attributes:</strong> The constraint groups an assignment
-belongs to: its <code>Row</code>, <code>Column</code>, and
-<code>Box</code>.<br />
-* <strong>Conflict Rule:</strong> Two assignments conflict if they have
-the <strong>SAME</strong> value in the <strong>SAME</strong> group (Row,
-Col, OR Box).</p>
-<p><strong>Step 1: The Database (Index all 64 possible
-assignments)</strong><br />
-A sample of the database would look like this:<br />
-<code>db_Assignments</code>:<br />
-* <code>('Row-0', 3)</code>:
-<code>{ID for (Val=3, Cell=(0,0)), ID for (Val=3, Cell=(0,1)), ...}</code><br />
-* <code>('Col-0', 3)</code>:
-<code>{ID for (Val=3, Cell=(0,0)), ID for (Val=3, Cell=(1,0)), ...}</code><br />
-* <code>('Box-0', 3)</code>:
-<code>{ID for (Val=3, Cell=(0,0)), ID for (Val=3, Cell=(0,1)), ...}</code></p>
-<p><strong>Step 2: The Rules (A Mix-and-Match)</strong><br />
-* <strong>Lookup Rule:</strong> We need to find other assignments in the
-same group with the <strong>SAME</strong> value. This is
-<code>find_same_request</code> from our scheduling example.<br />
-* <strong>Aggregation Rule:</strong> A conflict in <strong>ANY</strong>
-of the groups is sufficient. We use <strong>UNION</strong> from our
-version control example.</p>
-<p><strong>Step 3: The Walkthrough (Finding conflicts for “Assign 3 to
-Cell (0,0)”)</strong><br />
-Let’s call our target entity A1. It belongs to <code>Row-0</code>,
-<code>Col-0</code>, and <code>Box-0</code>.</p>
-<ul>
-<li><strong>Analyze <code>Row-0</code> Constraint:</strong>
-<ul>
-<li>We look up <code>('Row-0', 3)</code> in the database.<br />
-</li>
-<li>This gives us all assignments of <code>3</code> to any cell in the
-first row.<br />
-</li>
-<li><em>Potential Conflicts on Row-0:
-<code>{Assign 3 to (0,1), Assign 3 to (0,2), ...}</code></em></li>
-</ul></li>
-<li><strong>Analyze <code>Col-0</code> Constraint:</strong>
-<ul>
-<li>We look up <code>('Col-0', 3)</code>.<br />
-</li>
-<li>This gives us all assignments of <code>3</code> to any cell in the
-first column.<br />
-</li>
-<li><em>Potential Conflicts on Col-0:
-<code>{Assign 3 to (1,0), Assign 3 to (2,0), ...}</code></em></li>
-</ul></li>
-<li><strong>Analyze <code>Box-0</code> Constraint:</strong>
-<ul>
-<li>We look up <code>('Box-0', 3)</code>.<br />
-</li>
-<li>This gives us all assignments of <code>3</code> to any other cell in
-the top-left 2x2 box.<br />
-</li>
-<li><em>Potential Conflicts on Box-0:
-<code>{Assign 3 to (0,1), Assign 3 to (1,0), Assign 3 to (1,1)}</code></em></li>
-</ul></li>
-<li><strong>Aggregate the Results:</strong>
-<ul>
-<li>We apply the <strong>UNION</strong> rule to these three sets.</li>
-</ul></li>
-</ul>
-<p><strong>The Result:</strong> The final conflict list for “Assign 3 to
-Cell (0,0)” is the complete set of all other assignments of the number 3
-within its row, column, and box. By building this graph for all 64
-possibilities, a solver has a complete map of the problem’s constraints,
-allowing it to search the graph and backtrack to find a solution.</p>
+<h2 id="example-3-cloud-computing---vm-anti-affinity">Example 3: Cloud
+Computing - VM Anti-Affinity</h2>
+<p>Our final example takes us to the cloud. When you click “Launch
+Instance” on AWS, Azure, or Google Cloud, your virtual machine needs to
+be placed on a physical host within milliseconds. But cloud providers
+manage hundreds of thousands of VMs with complex anti-affinity rules:
+your VMs should be spread across different hosts for redundancy,
+different availability zones for disaster recovery, and separated from
+other tenants for security.</p>
+<p>Checking every VM against every other VM would create unacceptable
+latency. Our approach will be useful here, since it will create the
+conflict graph a lot faster.</p>
+<h3 id="the-scenario-placing-vms-in-a-data-center">The Scenario: Placing
+VMs in a Data Center</h3>
+<p>A cloud provider needs to validate a batch of VM placement decisions.
+We have six VMs being placed across three physical hosts:</p>
+<p><strong>VM Placement Requests:</strong></p>
+<p>V1: tenant-A, app-group-X, zone-1 → host-1<br />
+V2: tenant-A, app-group-X, zone-1 → host-1<br />
+V3: tenant-B, app-group-Y, zone-1 → host-2<br />
+V4: tenant-B, app-group-Y, zone-2 → host-2<br />
+V5: tenant-C, app-group-X, zone-1 → host-3<br />
+V6: tenant-A, app-group-Z, zone-2 → host-3</p>
+<p><strong>Anti-Affinity Rules:</strong> To ensure high availability and
+fault tolerance: - VMs from the same <strong>tenant</strong> should not
+share a physical host (security &amp; blast radius)<br />
+- VMs from the same <strong>app-group</strong> should not share a
+physical host (redundancy)<br />
+- A conflict occurs if ANY of these rules are violated</p>
+<h3 id="defining-the-terms-1">Defining the Terms:</h3>
+<p><strong>Entities:</strong> VM placement decisions (VM_ID assigned to
+Host_ID).<br />
+<strong>Attributes:</strong> The tenant, app-group, and host for each
+placement.<br />
+<strong>Conflict Rule:</strong> Two placements conflict if they have the
+SAME tenant OR same app-group, AND they’re on the SAME host.</p>
+<h3 id="step-1-the-database-the-one-time-setup-1">Step 1: The Database
+(The One-Time Setup)</h3>
+<p>We index all six placements by their tenant and app-group, organized
+by which host they’re on:</p>
+<p><strong>db_Tenant:</strong></p>
+<p>(‘tenant-A’, ‘host-1’): {V1, V2}<br />
+(‘tenant-A’, ‘host-3’): {V6}<br />
+(‘tenant-B’, ‘host-2’): {V3, V4}<br />
+(‘tenant-C’, ‘host-3’): {V5}</p>
+<p><strong>db_AppGroup:</strong></p>
+<p>(‘app-group-X’, ‘host-1’): {V1, V2}<br />
+(‘app-group-X’, ‘host-3’): {V5}<br />
+(‘app-group-Y’, ‘host-2’): {V3, V4}<br />
+(‘app-group-Z’, ‘host-3’): {V6}</p>
+<h3 id="step-2-the-rules-plugging-into-the-framework-1">Step 2: The
+Rules (Plugging into the Framework)</h3>
+<p><strong>Lookup Rule:</strong> For a given attribute (tenant or
+app-group) and host, find all OTHER placements with the same attribute
+value on the same host. We use <code>find_same_request</code> from our
+scheduling example.<br />
+<strong>Aggregation Rule:</strong> A conflict on EITHER tenant OR
+app-group is enough to violate anti-affinity. We use UNION.</p>
+<h3 id="step-3-the-walkthrough-finding-conflicts-for-v1">Step 3: The
+Walkthrough (Finding conflicts for V1)</h3>
+<p>Our target entity is V1: tenant-A, app-group-X on host-1.</p>
+<p><strong>Analyze the Tenant Attribute:</strong></p>
+<p>We look up (‘tenant-A’, ‘host-1’) in db_Tenant.<br />
+The database returns {V1, V2}.<br />
+We remove V1’s own ID, leaving {V2}.<br />
+Potential Conflicts on Tenant: {V2}.</p>
+<p><strong>Analyze the App-Group Attribute:</strong></p>
+<p>We look up (‘app-group-X’, ‘host-1’) in db_AppGroup.<br />
+The database returns {V1, V2}.<br />
+We remove V1’s own ID, leaving {V2}.<br />
+Potential Conflicts on App-Group: {V2}.</p>
+<p><strong>Aggregate the Results:</strong></p>
+<p>We apply the UNION rule to our potential conflict sets.<br />
+Union({V2}, {V2}) gives us {V2}.</p>
+<p><strong>The Result:</strong> V1 conflicts with V2. Both VMs belong to
+tenant-A and app-group-X, and they’re both assigned to host-1. This
+violates anti-affinity rules—if host-1 fails, both VMs go down together,
+and the customer loses redundancy.</p>
+<h3 id="checking-all-placements">Checking All Placements</h3>
+<p>Running the algorithm for all six VMs:</p>
+<p><strong>V1:</strong> Conflicts with V2 (same tenant AND app-group on
+host-1)<br />
+<strong>V2:</strong> Conflicts with V1 (same tenant AND app-group on
+host-1)<br />
+<strong>V3:</strong> Conflicts with V4 (same tenant AND app-group on
+host-2)<br />
+<strong>V4:</strong> Conflicts with V3 (same tenant AND app-group on
+host-2)<br />
+<strong>V5:</strong> No conflicts ✓<br />
+<strong>V6:</strong> No conflicts ✓</p>
+<p>The placement validator flags four violations. The cloud orchestrator
+would need to reassign V2, V4, or others to different hosts before
+proceeding.</p>
 <h3 id="additional-information-related-work">Additional information,
 related work</h3>
 <p>This algorithm builds on the well-established concept of inverted
 indexes used in information retrieval. What’s novel here is not the data
 structure itself, but the general pattern for conflict detection across
-domains. To my knowledge, this specific abstraction—with pluggable
-lookup and aggregation rules—hasn’t been formalized as a design pattern
+domains. To my knowledge, this specific abstraction, with pluggable
+lookup and aggregation rules, hasn’t been formalized as a design pattern
 for conflict graph construction.</p>
 <p>In my original paper, I used this technique specifically for building
 a graph for t-way testing (combinatorial testing for interactions). This
@@ -684,71 +695,92 @@ The relevant section is “Efficient graph generation.” </em></p>
 <p>Here is a minimal, runnable Python implementation for our university
 scheduling example.</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Our Data ---</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> {</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;CS101 Lecture&#39;</span>, <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;101&#39;</span>},</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;Team Standup&#39;</span>,  <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;204&#39;</span>},</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;Marketing Sync&#39;</span>,<span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 10am&#39;</span>,<span class="st">&#39;Room&#39;</span>: <span class="st">&#39;101&#39;</span>},</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;Physics Lab&#39;</span>,   <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;101&#39;</span>},</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;CEO 1-on-1&#39;</span>,    <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Tue 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;300&#39;</span>}</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># --- The &quot;Pluggable&quot; Rules for Scheduling ---</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_same_request(attribute, value, database):</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Lookup Rule: Find entities with the SAME attribute value.&quot;&quot;&quot;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> database.get((attribute, value), <span class="bu">set</span>())</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> aggregate_by_intersection(list_of_sets):</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Aggregation Rule: A conflict must exist on ALL attributes.&quot;&quot;&quot;</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> list_of_sets:</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">set</span>()</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">set</span>.intersection(<span class="op">*</span>list_of_sets)</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># --- The Generalized Algorithm ---</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_conflicts(entity_id, all_entities, database, lookup_fn, aggregate_fn):</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    entity <span class="op">=</span> all_entities[entity_id]</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    potential_conflict_sets <span class="op">=</span> []</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We only care about attributes that define a resource</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    attributes_to_check <span class="op">=</span> [<span class="st">&#39;Time&#39;</span>, <span class="st">&#39;Room&#39;</span>]</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attr <span class="kw">in</span> attributes_to_check:</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> entity[attr]</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        conflicts <span class="op">=</span> lookup_fn(attr, value, database).copy() <span class="co"># Use .copy() to be safe</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        conflicts.discard(entity_id) <span class="co"># Remove self</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        potential_conflict_sets.append(conflicts)</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> aggregate_fn(potential_conflict_sets)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Main Execution ---</span></span>
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Our Data ---</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>classes <span class="op">=</span> {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;CS101 Intro to Programming&#39;</span>, <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;Hall-A&#39;</span>},</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;MATH201 Calculus II&#39;</span>,         <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;Hall-B&#39;</span>},</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;PHYS150 Mechanics Lab&#39;</span>,       <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;Hall-A&#39;</span>},</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;ENG105 Technical Writing&#39;</span>,    <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 10am&#39;</span>,<span class="st">&#39;Room&#39;</span>: <span class="st">&#39;Hall-A&#39;</span>},</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;CS201 Data Structures&#39;</span>,       <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Tue 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;Hall-C&#39;</span>},</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">6</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;HIST110 World History&#39;</span>,       <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 10am&#39;</span>,<span class="st">&#39;Room&#39;</span>: <span class="st">&#39;Hall-B&#39;</span>},</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">7</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;CHEM101 General Chemistry&#39;</span>,   <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Mon 9am&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;Lab-1&#39;</span>},</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">8</span>: {<span class="st">&#39;name&#39;</span>: <span class="st">&#39;BIO120 Cell Biology&#39;</span>,         <span class="st">&#39;Time&#39;</span>: <span class="st">&#39;Wed 2pm&#39;</span>, <span class="st">&#39;Room&#39;</span>: <span class="st">&#39;Hall-A&#39;</span>}</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># --- The &quot;Pluggable&quot; Rules for Scheduling ---</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_same_request(attribute, value, database):</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Lookup Rule: Find entities with the SAME attribute value.&quot;&quot;&quot;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> database.get((attribute, value), <span class="bu">set</span>())</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> aggregate_by_intersection(list_of_sets):</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Aggregation Rule: A conflict must exist on ALL attributes.&quot;&quot;&quot;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> list_of_sets:</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">set</span>()</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">set</span>.intersection(<span class="op">*</span>list_of_sets)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># --- The Generalized Algorithm ---</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_conflicts(class_id, all_classes, database, lookup_fn, aggregate_fn):</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    class_info <span class="op">=</span> all_classes[class_id]</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    potential_conflict_sets <span class="op">=</span> []</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We only care about attributes that define a resource</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    attributes_to_check <span class="op">=</span> [<span class="st">&#39;Time&#39;</span>, <span class="st">&#39;Room&#39;</span>]</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attr <span class="kw">in</span> attributes_to_check:</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> class_info[attr]</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        conflicts <span class="op">=</span> lookup_fn(attr, value, database).copy()</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        conflicts.discard(class_id)  <span class="co"># Remove self</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        potential_conflict_sets.append(conflicts)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> aggregate_fn(potential_conflict_sets)</span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build the database (one-time cost)</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> defaultdict(<span class="bu">set</span>)</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> event_id, details <span class="kw">in</span> events.items():</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    db[(<span class="st">&#39;Time&#39;</span>, details[<span class="st">&#39;Time&#39;</span>])].add(event_id)</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    db[(<span class="st">&#39;Room&#39;</span>, details[<span class="st">&#39;Room&#39;</span>])].add(event_id)</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Find conflicts for a specific entity (e.g., E1: CS101)</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>target_id <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>conflict_ids <span class="op">=</span> find_conflicts(</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    target_id, events, db, </span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    lookup_fn<span class="op">=</span>find_same_request, </span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    aggregate_fn<span class="op">=</span>aggregate_by_intersection</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Print the result</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Finding conflicts for: </span><span class="sc">{</span>events[target_id][<span class="st">&#39;name&#39;</span>]<span class="sc">}</span><span class="ss"> (ID: </span><span class="sc">{</span>target_id<span class="sc">}</span><span class="ss">)&quot;</span>)</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> conflict_ids:</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cid <span class="kw">in</span> conflict_ids:</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;  -&gt; CONFLICTS WITH: </span><span class="sc">{</span>events[cid][<span class="st">&#39;name&#39;</span>]<span class="sc">}</span><span class="ss"> (ID: </span><span class="sc">{</span>cid<span class="sc">}</span><span class="ss">)&quot;</span>)</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;  -&gt; No conflicts found.&quot;</span>)</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected Output:</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding conflicts for: CS101 Lecture (ID: 1)</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#   -&gt; CONFLICTS WITH: Physics Lab (ID: 4)</span></span></code></pre></div>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Main Execution ---</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build the database (one-time cost)</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> defaultdict(<span class="bu">set</span>)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> class_id, details <span class="kw">in</span> classes.items():</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    db[(<span class="st">&#39;Time&#39;</span>, details[<span class="st">&#39;Time&#39;</span>])].add(class_id)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    db[(<span class="st">&#39;Room&#39;</span>, details[<span class="st">&#39;Room&#39;</span>])].add(class_id)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Find conflicts for all classes</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;University Class Scheduling - Conflict Detection&quot;</span>)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;=&quot;</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>conflict_found <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> class_id <span class="kw">in</span> classes:</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    conflict_ids <span class="op">=</span> find_conflicts(</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        class_id, classes, db, </span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>        lookup_fn<span class="op">=</span>find_same_request, </span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>        aggregate_fn<span class="op">=</span>aggregate_by_intersection</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="sc">{</span>classes[class_id][<span class="st">&#39;name&#39;</span>]<span class="sc">}</span><span class="ss"> (ID: </span><span class="sc">{</span>class_id<span class="sc">}</span><span class="ss">)&quot;</span>)</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  Time: </span><span class="sc">{</span>classes[class_id][<span class="st">&#39;Time&#39;</span>]<span class="sc">}</span><span class="ss">, Room: </span><span class="sc">{</span>classes[class_id][<span class="st">&#39;Room&#39;</span>]<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> conflict_ids:</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>        conflict_found <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> cid <span class="kw">in</span> conflict_ids:</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f&quot;  ⚠ CONFLICTS WITH: </span><span class="sc">{</span>classes[cid][<span class="st">&#39;name&#39;</span>]<span class="sc">}</span><span class="ss"> (ID: </span><span class="sc">{</span>cid<span class="sc">}</span><span class="ss">)&quot;</span>)</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;  ✓ No conflicts&quot;</span>)</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span> <span class="op">+</span> <span class="st">&quot;=&quot;</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> conflict_found:</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Conflicts detected! Schedule adjustments needed.&quot;</span>)</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;No conflicts! Schedule is valid.&quot;</span>)</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected Output:</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="co"># CS101 Intro to Programming (ID: 1)</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="co">#   Time: Mon 9am, Room: Hall-A</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="co">#   ⚠ CONFLICTS WITH: PHYS150 Mechanics Lab (ID: 3)</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="co"># PHYS150 Mechanics Lab (ID: 3)</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="co">#   Time: Mon 9am, Room: Hall-A</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="co">#   ⚠ CONFLICTS WITH: CS101 Intro to Programming (ID: 1)</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="co"># (All other classes show: ✓ No conflicts)</span></span></code></pre></div>
 </body>
 </html>
