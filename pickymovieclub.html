@@ -241,12 +241,11 @@
 <p class="author">Edmond La Chance</p>
 <p class="date">Oct 5th 2025</p>
 </header>
-<p>A few years ago, when I was a computer science researcher, I designed
-a simple, elegant algorithm to solve a specific problem in my field. I
-published it, left research for other adventures, and thought little of
-it. But I’ve come to realize that the solution I built is not a niche
-tool for one problem, but a powerful, general-purpose pattern applicable
-to dozens of domains.</p>
+<p>A few years ago, I designed a simple, elegant algorithm to solve a
+specific problem in my field. I published it, left research for other
+adventures, and thought little of it. But I’ve come to realize that the
+solution I built is not a niche tool for one problem, but a powerful,
+general-purpose pattern applicable to dozens of domains.</p>
 <p>I had accidentally buried a powerful idea in a niche paper. Today, I
 want to dig it up and share it properly.</p>
 <p>This is the story of that algorithm, how it works, and how a simple
@@ -301,8 +300,8 @@ and had to speak to every other member to find the ones he likes. That
 was awful, and he’s not doing that again.</p>
 <p>This year, he has a new approach. To avoid starting conversations
 with these uninteresting members, Cedric creates a list of the people he
-has to avoid. To make this list, Cedric calculates a “conflict list” for
-<em>every category</em> by doing the following:</p>
+has to avoid. To make this list, Cedric calculates a “avoid list” (or
+conflict list) for <em>every category</em> by doing the following:</p>
 <ol type="1">
 <li>He grabs the list of members who like his favorite movie in that
 category.</li>
@@ -313,10 +312,10 @@ list” of everyone he <em>doesn’t</em> have a conflict with for that
 category.</li>
 <li>He then takes the club’s complete membership roster and subtracts
 his ‘safe list’. The people who remain are, by definition, the ones who
-chose a different movie. This is his ‘conflict list’ for just that one
+chose a different movie. This is his ‘avoid list’ for just that one
 category.</li>
 </ol>
-<p>Finally, by merging (taking the union of) the conflict lists from all
+<p>Finally, by merging (taking the union of) the avoid lists from all
 the categories he has an opinion on, Cedric creates his final list of
 all the members he should avoid at the party. The genius of his plan is
 that he never had to ask a single person about their movie choices. He
@@ -379,77 +378,91 @@ therefore proportional to <code>N * k</code>.</p></li>
 <code>aggregation</code> functions, we can solve vastly different
 problems. Let’s see it in action.</p>
 <hr />
-<h3 id="example-1-university-class-scheduling">Example 1: University
-Class Scheduling</h3>
+<h2 id="example-1-university-class-scheduling">Example 1: University
+Class Scheduling</h2>
 <p>Our first stop is a university’s scheduling office. We need to build
-a conflict graph for all classes to help find a valid schedule.</p>
-<p><strong>The Scenario:</strong> We have five classes to schedule<br />
-* <strong>E1:</strong> CS101 Lecture (Time: <code>Mon 9am</code>, Room:
-<code>101</code>)<br />
-* <strong>E2:</strong> Team Standup (Time: <code>Mon 9am</code>, Room:
-<code>204</code>)<br />
-* <strong>E3:</strong> Marketing Sync (Time: <code>Mon 10am</code>,
-Room: <code>101</code>)<br />
-* <strong>E4:</strong> Physics Lab (Time: <code>Mon 9am</code>, Room:
-<code>101</code>)<br />
-* <strong>E5:</strong> CEO 1-on-1 (Time: <code>Tue 9am</code>, Room:
-<code>300</code>)</p>
-<p><strong>Defining the Terms:</strong><br />
-* <strong>Entities:</strong> The classes (E1, E2, …).<br />
-* <strong>Attributes:</strong> <code>Time</code> and
-<code>Room</code>.<br />
-* <strong>Conflict Rule:</strong> A true conflict occurs if two events
-want the same <code>Time</code> <strong>AND</strong> the same
-<code>Room</code>.</p>
-<p><strong>Step 1: The Database (The One-Time Setup)</strong> We index
-all five events into two lookup tables:<br />
-<code>db_Time</code>:<br />
-* <code>'Mon 9am'</code>: <code>{1, 2, 4}</code><br />
-* <code>'Mon 10am'</code>: <code>{3}</code><br />
-* <code>'Tue 9am'</code>: <code>{5}</code></p>
-<p><code>db_Room</code>:<br />
-* <code>'101'</code>: <code>{1, 3, 4}</code><br />
-* <code>'204'</code>: <code>{2}</code><br />
-* <code>'300'</code>: <code>{5}</code></p>
-<p><strong>Step 2: The Rules (Plugging into the Framework)</strong></p>
-<p><strong>Lookup Rule:</strong> We need to find other events with the
-<em>same</em> attribute value. We’ll call this
+a conflict graph for all classes to help find a valid schedule. Each
+class needs a time slot and a room, but we can’t have two classes
+competing for the same room at the same time.</p>
+<h3 id="the-scenario-we-have-eight-classes-to-schedule">The Scenario: We
+have eight classes to schedule</h3>
+<p><strong>E1:</strong> CS101 Intro to Programming (Time: Mon 9am, Room:
+Hall-A)<br />
+<strong>E2:</strong> MATH201 Calculus II (Time: Mon 9am, Room:
+Hall-B)<br />
+<strong>E3:</strong> PHYS150 Mechanics Lab (Time: Mon 9am, Room:
+Hall-A)<br />
+<strong>E4:</strong> ENG105 Technical Writing (Time: Mon 10am, Room:
+Hall-A)<br />
+<strong>E5:</strong> CS201 Data Structures (Time: Tue 9am, Room:
+Hall-C)<br />
+<strong>E6:</strong> HIST110 World History (Time: Mon 10am, Room:
+Hall-B)<br />
+<strong>E7:</strong> CHEM101 General Chemistry (Time: Mon 9am, Room:
+Lab-1)<br />
+<strong>E8:</strong> BIO120 Cell Biology (Time: Wed 2pm, Room:
+Hall-A)</p>
+<h3 id="defining-the-terms">Defining the Terms:</h3>
+<p><strong>Entities:</strong> The classes (E1, E2, …, E8).<br />
+<strong>Attributes:</strong> Time and Room.<br />
+<strong>Conflict Rule:</strong> A true conflict occurs if two classes
+want the same Time AND the same Room.</p>
+<h3 id="step-1-the-database-the-one-time-setup">Step 1: The Database
+(The One-Time Setup)</h3>
+<p>We index all eight classes into two lookup tables:</p>
+<p><strong>db_Time:</strong></p>
+<p>‘Mon 9am’: {1, 2, 3, 7}<br />
+‘Mon 10am’: {4, 6}<br />
+‘Tue 9am’: {5}<br />
+‘Wed 2pm’: {8}</p>
+<p><strong>db_Room:</strong> ‘Hall-A’: {1, 3, 4, 8}<br />
+‘Hall-B’: {2, 6}<br />
+‘Hall-C’: {5}<br />
+‘Lab-1’: {7}</p>
+<h3 id="step-2-the-rules-plugging-into-the-framework">Step 2: The Rules
+(Plugging into the Framework)</h3>
+<p><strong>Lookup Rule:</strong> We need to find other classes with the
+same attribute value. We’ll call this
 <code>find_same_request</code>.<br />
-<strong>Aggregation Rule:</strong> A conflict must exist across
-<em>all</em> attributes. We must use <strong>INTERSECTION</strong>.</p>
-<p><strong>Step 3: The Walkthrough (Finding conflicts for E1:
-CS101)</strong><br />
-Our target entity (our Cedric) is E1, which is
-<code>(Time: Mon 9am, Room: 101)</code>.</p>
-<ul>
-<li><strong>Analyze the <code>Time</code> Attribute:</strong>
-<ul>
-<li>We use <code>find_same_request</code> for
-<code>Time = 'Mon 9am'</code>.</li>
-<li>The database returns <code>{1, 2, 4}</code>.</li>
-<li>We remove E1’s own ID, leaving <code>{2, 4}</code>.</li>
-<li><em>Potential Conflicts on Time: <code>{E2, E4}</code>.</em></li>
-</ul></li>
-<li><strong>Analyze the <code>Room</code> Attribute:</strong>
-<ul>
-<li>We use <code>find_same_request</code> for
-<code>Room = '101'</code>.</li>
-<li>The database returns <code>{1, 3, 4}</code>.</li>
-<li>We remove E1’s own ID, leaving <code>{3, 4}</code>.</li>
-<li><em>Potential Conflicts on Room: <code>{E3, E4}</code>.</em></li>
-</ul></li>
-<li><strong>Aggregate the Results:</strong>
-<ul>
-<li>We apply the <strong>INTERSECTION</strong> rule to our potential
-conflict sets.</li>
-<li><code>Intersection({2, 4}, {3, 4})</code> gives us
-<code>{4}</code>.</li>
-</ul></li>
-</ul>
+<strong>Aggregation Rule:</strong> A conflict must exist across all
+attributes. We must use INTERSECTION.</p>
+<h3 id="step-3-the-walkthrough-finding-conflicts-for-e1-cs101">Step 3:
+The Walkthrough (Finding conflicts for E1: CS101)</h3>
+<p>Our target entity (our Cedric) is E1, which is (Time: Mon 9am, Room:
+Hall-A).</p>
+<p><strong>Analyze the Time Attribute:</strong></p>
+<p>We use <code>find_same_request</code> for Time = ‘Mon 9am’.<br />
+The database returns {1, 2, 3, 7}.<br />
+We remove E1’s own ID, leaving {2, 3, 7}.<br />
+<strong>Potential Conflicts on Time:</strong> {E2, E3, E7}.</p>
+<p><strong>Analyze the Room Attribute:</strong></p>
+<p>We use <code>find_same_request</code> for Room = ‘Hall-A’.<br />
+The database returns {1, 3, 4, 8}.<br />
+We remove E1’s own ID, leaving {3, 4, 8}.<br />
+<strong>Potential Conflicts on Room:</strong> {E3, E4, E8}.</p>
+<p><strong>Aggregate the Results:</strong></p>
+<p>We apply the INTERSECTION rule to our potential conflict sets.<br />
+Intersection({2, 3, 7}, {3, 4, 8}) gives us {3}.</p>
 <p><strong>The Result:</strong> The algorithm correctly identifies that
-<strong>E4 (Physics Lab)</strong> is the one and only conflict for E1.
-It did this without ever needing to compare E1 to E5, proving its
-efficiency.</p>
+E3 (PHYS150 Mechanics Lab) is the one and only conflict for E1. Both
+classes need Hall-A at Mon 9am. The algorithm did this without ever
+comparing E1 to E2, E4, E5, E6, E7, or E8—a significant efficiency
+gain.</p>
+<h3 id="checking-all-classes">Checking All Classes</h3>
+<p>Let’s run the algorithm for all eight classes to build the complete
+conflict graph:</p>
+<p><strong>E1 (CS101, Mon 9am, Hall-A):</strong> Conflicts with E3<br />
+<strong>E2 (MATH201, Mon 9am, Hall-B):</strong> No conflicts ✓<br />
+<strong>E3 (PHYS150, Mon 9am, Hall-A):</strong> Conflicts with E1<br />
+<strong>E4 (ENG105, Mon 10am, Hall-A):</strong> No conflicts ✓<br />
+<strong>E5 (CS201, Tue 9am, Hall-C):</strong> No conflicts ✓<br />
+<strong>E6 (HIST110, Mon 10am, Hall-B):</strong> No conflicts ✓<br />
+<strong>E7 (CHEM101, Mon 9am, Lab-1):</strong> No conflicts ✓<br />
+<strong>E8 (BIO120, Wed 2pm, Hall-A):</strong> No conflicts ✓</p>
+<p>The algorithm has identified one scheduling conflict: E1 and E3
+cannot both be scheduled. The university needs to either reassign one
+class to a different time slot or find a different room for one of
+them.</p>
 <hr />
 <h3 id="example-2-version-control-merge-conflicts">Example 2: Version
 Control Merge Conflicts</h3>
@@ -603,8 +616,7 @@ the top-left 2x2 box.<br />
 Cell (0,0)” is the complete set of all other assignments of the number 3
 within its row, column, and box. By building this graph for all 64
 possibilities, a solver has a complete map of the problem’s constraints,
-allowing it to find a solution far more intelligently than blind
-guesswork.</p>
+allowing it to search the graph and backtrack to find a solution.</p>
 <h3 id="additional-information-related-work">Additional information,
 related work</h3>
 <p>This algorithm builds on the well-established concept of inverted
@@ -614,8 +626,8 @@ domains. To my knowledge, this specific abstraction—with pluggable
 lookup and aggregation rules—hasn’t been formalized as a design pattern
 for conflict graph construction.</p>
 <p>In my original paper, I used this technique specifically for building
-a graph for t-way testing. This blog post generalizes that solution into
-a broader pattern.</p>
+a graph for t-way testing (combinatorial testing for interactions). This
+blog post generalizes that solution into a broader pattern.</p>
 <h3 id="conclusion">Conclusion</h3>
 <p>The core pattern is simple:<br />
 1. Index your data by its attributes. 2. Define your conflict rules
