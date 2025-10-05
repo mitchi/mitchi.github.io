@@ -535,8 +535,8 @@ conflict on line 1 and passes line 2. Because the aggregation rule is
 <strong>UNION</strong>, the moment the first conflict is found, the
 entire merge can be flagged as a failure.</p>
 <hr />
-<h2 id="example-3-cloud-computing---vm-anti-affinity">Example 3: Cloud
-Computing - VM Anti-Affinity</h2>
+<h3 id="example-3-cloud-computing---vm-anti-affinity">Example 3: Cloud
+Computing - VM Anti-Affinity</h3>
 <p>Our final example takes us to the cloud. When you click “Launch
 Instance” on AWS, Azure, or Google Cloud, your virtual machine needs to
 be placed on a physical host within milliseconds. But cloud providers
@@ -545,10 +545,9 @@ your VMs should be spread across different hosts for redundancy,
 different availability zones for disaster recovery, and separated from
 other tenants for security.</p>
 <p>Checking every VM against every other VM would create unacceptable
-latency. Our approach will be useful here, since it will create the
-conflict graph a lot faster.</p>
-<h3 id="the-scenario-placing-vms-in-a-data-center">The Scenario: Placing
-VMs in a Data Center</h3>
+latency. Our approach will be useful here, since it will quickly create
+the conflict graph.</p>
+<p><strong>The Scenario: Placing VMs in a Data Center</strong></p>
 <p>A cloud provider needs to validate a batch of VM placement decisions.
 We have six VMs being placed across three physical hosts:</p>
 <p><strong>VM Placement Requests:</strong></p>
@@ -564,15 +563,14 @@ share a physical host (security &amp; blast radius)<br />
 - VMs from the same <strong>app-group</strong> should not share a
 physical host (redundancy)<br />
 - A conflict occurs if ANY of these rules are violated</p>
-<h3 id="defining-the-terms-1">Defining the Terms:</h3>
+<p><strong>Defining the Terms:</strong></p>
 <p><strong>Entities:</strong> VM placement decisions (VM_ID assigned to
 Host_ID).<br />
 <strong>Attributes:</strong> The tenant, app-group, and host for each
 placement.<br />
 <strong>Conflict Rule:</strong> Two placements conflict if they have the
 SAME tenant OR same app-group, AND they’re on the SAME host.</p>
-<h3 id="step-1-the-database-the-one-time-setup-1">Step 1: The Database
-(The One-Time Setup)</h3>
+<p><strong>Step 1: The Database (The One-Time Setup)</strong></p>
 <p>We index all six placements by their tenant and app-group, organized
 by which host they’re on:</p>
 <p><strong>db_Tenant:</strong></p>
@@ -585,16 +583,15 @@ by which host they’re on:</p>
 (‘app-group-X’, ‘host-3’): {V5}<br />
 (‘app-group-Y’, ‘host-2’): {V3, V4}<br />
 (‘app-group-Z’, ‘host-3’): {V6}</p>
-<h3 id="step-2-the-rules-plugging-into-the-framework-1">Step 2: The
-Rules (Plugging into the Framework)</h3>
+<p><strong>Step 2: The Rules (Plugging into the Framework)</strong></p>
 <p><strong>Lookup Rule:</strong> For a given attribute (tenant or
 app-group) and host, find all OTHER placements with the same attribute
 value on the same host. We use <code>find_same_request</code> from our
 scheduling example.<br />
 <strong>Aggregation Rule:</strong> A conflict on EITHER tenant OR
 app-group is enough to violate anti-affinity. We use UNION.</p>
-<h3 id="step-3-the-walkthrough-finding-conflicts-for-v1">Step 3: The
-Walkthrough (Finding conflicts for V1)</h3>
+<p><strong>Step 3: The Walkthrough (Finding conflicts for
+V1)</strong></p>
 <p>Our target entity is V1: tenant-A, app-group-X on host-1.</p>
 <p><strong>Analyze the Tenant Attribute:</strong></p>
 <p>We look up (‘tenant-A’, ‘host-1’) in db_Tenant.<br />
@@ -609,11 +606,12 @@ Potential Conflicts on App-Group: {V2}.</p>
 <p><strong>Aggregate the Results:</strong></p>
 <p>We apply the UNION rule to our potential conflict sets.<br />
 Union({V2}, {V2}) gives us {V2}.</p>
-<p><strong>The Result:</strong> V1 conflicts with V2. Both VMs belong to
-tenant-A and app-group-X, and they’re both assigned to host-1. This
-violates anti-affinity rules—if host-1 fails, both VMs go down together,
-and the customer loses redundancy.</p>
-<h3 id="checking-all-placements">Checking All Placements</h3>
+<p><strong>The Result:</strong><br />
+V1 conflicts with V2. Both VMs belong to tenant-A and app-group-X, and
+they’re both assigned to host-1. This violates anti-affinity rules—if
+host-1 fails, both VMs go down together, and the customer loses
+redundancy.</p>
+<p><strong>Checking All Placements:</strong></p>
 <p>Running the algorithm for all six VMs:</p>
 <p><strong>V1:</strong> Conflicts with V2 (same tenant AND app-group on
 host-1)<br />
@@ -641,8 +639,8 @@ a graph for t-way testing (combinatorial testing for interactions). This
 blog post generalizes that solution into a broader pattern.</p>
 <h3 id="conclusion">Conclusion</h3>
 <p>The core pattern is simple:<br />
-1. Index your data by its attributes. 2. Define your conflict rules
-(lookup and aggregation).<br />
+1. Index your data by its attributes.<br />
+2. Define your conflict rules (lookup and aggregation).<br />
 3. Run the algorithm to build your conflict graph in near-linear
 time.</p>
 <p>The pattern applications we saw in this blog post:</p>
